@@ -1,4 +1,4 @@
-let userInput = 567;
+const userInput = 567;
 let result;
 
 result = 18 + userInput;
