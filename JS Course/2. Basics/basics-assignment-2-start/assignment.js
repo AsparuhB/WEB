@@ -6,7 +6,7 @@ function simple() {
 }
 
 function inputNeeded(name) {
-    alert(name);
+    alert(`Hello there, ${name}`);
 }
 
 inputNeeded("Alex")
