@@ -2,11 +2,11 @@ const defaultResult = 0;
 let currentResult = defaultResult;
 
 function addsNumbers(num1, num2) {
-	  num1 + num2;
-	alert(`The result is ${result}`);
+	const result = num1 + num2;
+	alert("The result is " + result);
 }
 
-addsNumbers(1, 2);
+addsNumbers(1, 3);
 addsNumbers(5, 5);
 
 currentResult = (currentResult + 10) * 3 / 2 - 1; 
