@@ -6,8 +6,6 @@ function addsNumbers(num1, num2) {
   return result;
 }
 
-currentResult = addsNumbers(1, 2);
-
-let calculationDescription = `(${defaultResult} + 10) * 3 / 2 - 1`;
+addBtn.addEventListener("click", addsNumbers);
 
 outputResult(currentResult, calculationDescription);
