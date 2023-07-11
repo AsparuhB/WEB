@@ -14,10 +14,10 @@ inputNeeded("Alex")
 task3Element.addEventListener("click", simple);
 
 function threeStrings(str1, str2, str3) {
-    let stringimusPrime = str1 + str2 + str3;
+    const stringimusPrime = str1 + str2 + str3;
     return stringimusPrime;
 }
 
-threeStrings("az", " sum", " tuka");
-alert(threeStrings("az", " sum", " tuka"));
+const sdf = threeStrings("az", " sum", " tuka");
+alert(sdf);
 
