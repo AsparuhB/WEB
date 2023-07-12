@@ -6,7 +6,7 @@ function getUserNumberInput() {
 }
 
 function add() {
-  const enteredNumber = getUserNumberInput;
+  const enteredNumber = getUserNumberInput();
   const calcDesciption = `${currentResult} + ${enteredNumber}`;
   currentResult = currentResult + enteredNumber;
   outputResult(currentResult,calcDesciption );
