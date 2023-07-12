@@ -12,7 +12,7 @@ function createAndWriteOutput(resultBefore, operator, calcNumber) {
   outputResult(currentResult,calcDesciption); // from vendor file!
 } 
 
-
+// adds and inputs result.
 function add() {
   const enteredNumber = getUserNumberInput();
   const initialResult = currentResult;
@@ -21,6 +21,7 @@ function add() {
 
 }
 
+// No need for comment here, but test.
 function subtract() {
   const enteredNumber = getUserNumberInput();
   const initialResult = currentResult;
@@ -28,6 +29,7 @@ function subtract() {
   createAndWriteOutput(initialResult, "-", enteredNumber);
 }
 
+// Kind of self explanatory.
 function multiply() {
   const enteredNumber = getUserNumberInput();
   const initialResult = currentResult;
@@ -35,6 +37,7 @@ function multiply() {
   createAndWriteOutput(initialResult, "*", enteredNumber);
 }
 
+// I mean... yeah...
 function divide() {
   const enteredNumber = getUserNumberInput();
   const initialResult = currentResult;
@@ -42,6 +45,7 @@ function divide() {
   createAndWriteOutput(initialResult, "/", enteredNumber);
 }
 
+//Grouping all buttons and linking them to functions.
 addBtn.addEventListener('click', add);
 subtractBtn.addEventListener("click", subtract);
 divideBtn.addEventListener("click", divide);
