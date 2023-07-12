@@ -22,6 +22,7 @@ addBtn.addEventListener('click', add);
 
 function subtract() {
   const enteredNumber = getUserNumberInput();
+  const initialResult = currentResult;
   currentResult = currentResult - enteredNumber;
   createAndWriteOutput("-", initialResult, enteredNumber);
 }
@@ -30,6 +31,7 @@ subtractBtn.addEventListener("click", subtract);
 
 function multiply() {
   const enteredNumber = getUserNumberInput();
+  const initialResult = currentResult;
   currentResult = currentResult * enteredNumber;
   createAndWriteOutput("*", initialResult, enteredNumber);
 }
@@ -38,6 +40,7 @@ multiplyBtn.addEventListener("click", multiply);
 
 function divide() {
   const enteredNumber = getUserNumberInput();
+  const initialResult = currentResult;
   currentResult = currentResult / enteredNumber;
   createAndWriteOutput("/", initialResult, enteredNumber);
 }
