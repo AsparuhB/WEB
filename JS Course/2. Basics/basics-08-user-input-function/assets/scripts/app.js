@@ -1,10 +1,12 @@
 const defaultResult = 0;
 let currentResult = defaultResult;
 
+// Making a function that gets the input value from the user.
 function getUserNumberInput() {
   return parseFloat(userInput.value);
 }
 
+// Making a function that rewrites the output. Takes the result before the c a
 function createAndWriteOutput(resultBefore, operator, calcNumber) {
   const calcDesciption = `${resultBefore} ${operator} ${calcNumber}`;
   outputResult(currentResult,calcDesciption);
