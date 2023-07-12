@@ -1,21 +1,22 @@
 const defaultResult = 0;
 let currentResult = defaultResult;
 
-// Making a function that gets the input value from the user.
+// Gets input from input field
 function getUserNumberInput() {
   return parseFloat(userInput.value);
 }
 
-// Making a function that rewrites the output. Takes the result before the c a
+// Generates and writes calculation log.
 function createAndWriteOutput(resultBefore, operator, calcNumber) {
   const calcDesciption = `${resultBefore} ${operator} ${calcNumber}`;
-  outputResult(currentResult,calcDesciption);
+  outputResult(currentResult,calcDesciption); // from vendor file!
 } 
+
 
 function add() {
   const enteredNumber = getUserNumberInput();
   const initialResult = currentResult;
-  currentResult = currentResult + enteredNumber;
+  currentResult += enteredNumber;
   createAndWriteOutput(initialResult, "+", enteredNumber);
 
 }
@@ -23,21 +24,21 @@ function add() {
 function subtract() {
   const enteredNumber = getUserNumberInput();
   const initialResult = currentResult;
-  currentResult = currentResult - enteredNumber;
+  currentResult -= enteredNumber;
   createAndWriteOutput(initialResult, "-", enteredNumber);
 }
 
 function multiply() {
   const enteredNumber = getUserNumberInput();
   const initialResult = currentResult;
-  currentResult = currentResult * enteredNumber;
+  currentResult *= enteredNumber;
   createAndWriteOutput(initialResult, "*", enteredNumber);
 }
 
 function divide() {
   const enteredNumber = getUserNumberInput();
   const initialResult = currentResult;
-  currentResult = currentResult / enteredNumber;
+  currentResult /= enteredNumber;
   createAndWriteOutput(initialResult, "/", enteredNumber);
 }
 
