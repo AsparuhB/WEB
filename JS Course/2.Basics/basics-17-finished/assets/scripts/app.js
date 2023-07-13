@@ -1,29 +1,29 @@
 const defaultResult = 0;
 let currentResult = defaultResult;
-let logEntries = [];
+let logEntries = [];    // Array
 
 // Gets input from input field
 function getUserNumberInput() {
   return parseInt(usrInput.value);
-}
+}   // parseInt() converts string to number
 
 // Generates and writes calculation log
 function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
   const calcDescription = `${resultBeforeCalc} ${operator} ${calcNumber}`;
   outputResult(currentResult, calcDescription); // from vendor file
-}
+}   // `` is a template literal
 
-function writeToLog(
-  operationIdentifier,
-  prevResult,
-  operationNumber,
-  newResult
+function writeToLog(  // function to write to log
+  operationIdentifier, // string 
+  prevResult, // result before calculation  
+  operationNumber, // number entered by user
+  newResult // result after calculation
 ) {
   const logEntry = {
     operation: operationIdentifier,
-    prevResult: prevResult,
-    number: operationNumber,
-    result: newResult
+    prevResult: prevResult, 
+    number: operationNumber, 
+    result: newResult 
   };
   logEntries.push(logEntry);
   console.log(logEntries);
