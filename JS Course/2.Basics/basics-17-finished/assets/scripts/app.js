@@ -5,13 +5,13 @@ let logEntries = []; // Array
 // Gets input from input field
 function getUserNumberInput() {
   return parseInt(usrInput.value);
-} // parseInt() converts string to number
+} 
 
 // Generates and writes calculation log
 function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
   const calcDescription = `${resultBeforeCalc} ${operator} ${calcNumber}`;
   outputResult(currentResult, calcDescription); // from vendor file
-} // `` is a template literal
+} 
 
 function writeToLog( // function to write to log
   operationIdentifier, // string
@@ -28,7 +28,7 @@ function writeToLog( // function to write to log
   }; // object
   logEntries.push(logEntry); // push() adds new element to end of array
   console.log(logEntries); // console.log() prints to console
-} // push() adds new element to end of array
+}
 
 function add() {
   // function to add
