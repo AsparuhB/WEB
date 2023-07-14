@@ -4,7 +4,7 @@ let logEntries = []; // Array
 
 // Gets input from input field
 function getUserNumberInput() {
-  return parseInt(usrInput.value);
+  return parseInt(usrInput.value);  
 } 
 
 // Generates and writes calculation log
@@ -33,6 +33,7 @@ function writeToLog( // function to write to log
 function add() {
   // function to add
   const enteredNumber = getUserNumberInput();
+  console.log("Input", enteredNumber, currentResult);
   const initialResult = currentResult;
   currentResult += enteredNumber;
   createAndWriteOutput("+", initialResult, enteredNumber);
