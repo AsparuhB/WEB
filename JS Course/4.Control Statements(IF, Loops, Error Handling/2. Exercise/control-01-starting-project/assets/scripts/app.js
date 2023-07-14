@@ -38,7 +38,7 @@ function calculateResult(calculationType) {
     mathOperator = "+";
   } else if (calculationType === "SUBTRACT") {
     currentResult -= enteredNumber;
-    mathOperator = "-"; 
+    mathOperator = "-";
   } else if (calculationType === "MULTIPLY") {
     currentResult *= enteredNumber;
     mathOperator = "*";
