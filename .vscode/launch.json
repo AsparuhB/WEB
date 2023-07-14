@@ -7,8 +7,9 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Open index.html",
-            "file": "file:///Users/asparuhbambov/Desktop/WEB/JS%20Course/2.Basics/basics-17-finished/index.html"
+            "name": "Launch Chrome against localhost",
+            "url": "file:///Users/asparuhbambov/Desktop/WEB/JS%20Course/2.Basics/basics-17-finished/index.html",
+            "webRoot": "${workspaceFolder}"
         }
     ]
 }
