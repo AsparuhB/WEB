@@ -12,7 +12,7 @@ function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
   const calcDescription = `${resultBeforeCalc} ${operator} ${calcNumber}`;
   outputResult(currentResult, calcDescription); // from vendor file
 }
-
+// need only 1 commit
 function writeToLog(
   operationIdentifier,
   prevResult,
