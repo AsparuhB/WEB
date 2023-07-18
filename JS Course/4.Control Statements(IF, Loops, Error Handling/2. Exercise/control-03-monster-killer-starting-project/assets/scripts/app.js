@@ -1,6 +1,6 @@
-const ATTACK_VALUE  = 10;
-const STRONG_ATTACK_VALUE = 17;
-const MONSTER_ATTACK_VALUE = 19;
+const ATTACK_VALUE  = 12;
+const STRONG_ATTACK_VALUE = 20;
+const MONSTER_ATTACK_VALUE = 23;
 const HEAL_VALUE = 20;
 
 let chosenMaxLife = 100;
