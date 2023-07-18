@@ -1,7 +1,7 @@
 const ATTACK_VALUE  = 12;
 const STRONG_ATTACK_VALUE = 20;
 const MONSTER_ATTACK_VALUE = 23;
-const HEAL_VALUE = 20;
+const HEAL_VALUE = 40;
 
 let chosenMaxLife = 100;
 let currentMonsterHealth = chosenMaxLife;
@@ -49,8 +49,8 @@ function healPlayer() {
     } else {
         healValue = HEAL_VALUE;
     }
-    increasePlayerHealth(HEAL_VALUE);
-    currentPlayerHealth += HEAL_VALUE;
+    increasePlayerHealth(healValue);
+    currentPlayerHealth += healValue;
     endRound();
 }
 
