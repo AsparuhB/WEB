@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
-            "url": "file:///Users/asparuhbambov/Desktop/WEB/JS%20Course/2.Basics/basics-17-finished/index.html",
+            "url": "file:///Users/asparuhbambov/Desktop/WEB/JS%20Course/4.Control%20Statements%28IF%2C%20Loops%2C%20Error%20Handling/2.%20Exercise/control-03-monster-killer-starting-project/index.html",
             "webRoot": "${workspaceFolder}"
         }
     ]
