@@ -88,7 +88,7 @@ function writeToLog(ev, val, monsterHealth, playerHealth) {
     logEntry = {
         event: ev,
         value: val,
-         target: "MONSTER",
+        target: "MONSTER",
         finalMonsterHealth: monsterHealth,
         finalPlayerHealth: playerHealth,
     }; // - longer, more readable version, but with more object creating.
