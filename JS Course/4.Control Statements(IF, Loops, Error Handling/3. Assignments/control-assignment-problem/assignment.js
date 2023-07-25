@@ -1,7 +1,6 @@
 const randomNumber = Math.random(); // produces random number between 0 (including) and 1 (excluding)
 const randomSecondNumber = Math.random(); // produces random number between 0 (including) and 1 (excluding)
-console.log(randomNumber);
-console.log(randomSecondNumber);
+
 
 let isGreater = false;
 let isThisGreater = false;
@@ -52,7 +51,9 @@ function assignment4Part2() {
     }
 }
 
-
+console.log(randomNumber);
+console.log(randomSecondNumber);
+console.log("------------");
 assignment1();
 console.log("------------");
 arrayTesting();
