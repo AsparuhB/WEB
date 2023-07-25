@@ -13,7 +13,7 @@ function assignment1() {
   }
 }
 
-testArray = [1, 4, 6, 2, 3, 23, 14, 6, 654, 9];
+const testArray = [1, 4, 6, 2, 3, 23, 14, 6, 654, 9];
 
 function arrayTesting() {
   for (const number of testArray) {
