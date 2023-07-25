@@ -37,9 +37,19 @@ function assignment4() {
         (randomNumber <= 0.2 && !isThisGreater) ||
         (randomSecondNumber <= 0.2 && !isThisGreater)
       ) {
-        alert("Assignment 4");
+        alert("Both are greater than 0.7 or at least one is NOT greater than 0.2");
         isThisGreater = true;
       }
+}
+
+function assignment4Part2() {
+    if (randomNumber > 0.7 && randomSecondNumber > 0.7) {
+        alert("Both are greater than 0.7");
+    } else if (randomNumber <= 0.2) {
+        alert("randomNumber is NOT greater than 0.2");
+    } else if (randomSecondNumber <= 0.2) {
+        alert("randomSecondNumber is NOT greater than 0.2");
+    }
 }
 
 
@@ -52,3 +62,4 @@ console.log("------------");
 reversedArray();
 console.log("------------");
 assignment4();
+assignment4Part2();
