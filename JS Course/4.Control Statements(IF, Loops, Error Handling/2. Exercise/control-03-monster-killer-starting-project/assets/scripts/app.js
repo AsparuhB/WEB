@@ -240,8 +240,8 @@ function printLogHandler() {
   //   }
   // }
   if (lastLoggedEntry == battleLog.length - 1) {
-    console.log("No more entries")
-  }else{
+    console.log("No entries");
+  } else {
     let i = 0;
     for (const logEntry of battleLog) {
       if ((!lastLoggedEntry && lastLoggedEntry !== 0) || lastLoggedEntry < i) {
@@ -255,7 +255,6 @@ function printLogHandler() {
       i++;
     }
   }
-  
 }
 
 console.log(battleLog);
