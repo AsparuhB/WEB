@@ -19,7 +19,7 @@ function getMaxLifeValues() {
 
    const parsedValue = parseInt(enteredValue);
   if (isNaN(parsedValue) || parsedValue <= 0) {
-    throw {message: "Invalid user input, not a number!" };
+    throw {message: "Invalid user input, not a number!" }; // throw your own custom error
   }
   return parsedValue;
 }
@@ -31,7 +31,7 @@ try {
   console.log(error);
   chosenMaxLife = 100;
   alert("You entered something wrong, default value of 100 was used.");
-}
+} // working with try-catch in order to catch errors and deal with them. Used for network errors.
 
 let currentMonsterHealth = chosenMaxLife;
 let currentPlayerHealth = chosenMaxLife;
