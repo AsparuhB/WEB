@@ -238,18 +238,6 @@ function printLogHandler() {
     console.log("--------");
   }
 
-  let sum = 0;
-for (let i = 0; i < 3; i++) {
-    for (let j = 5; j > 2; j--) {
-        sum = sum + j + i;
-    }
-}
-console.log(sum);
-
-  let j = 0;
-  while (j < 3) {
-    console.log(j);
-    j++;
   }
   //   for (let i = 0; i < battleLog.length; i++) {
   //     console.log(battleLog[i]);
@@ -263,7 +251,7 @@ console.log(sum);
     }
     i++;
   }
-}
+
 console.log(battleLog);
 
 attackBtn.addEventListener("click", attackHandler);
