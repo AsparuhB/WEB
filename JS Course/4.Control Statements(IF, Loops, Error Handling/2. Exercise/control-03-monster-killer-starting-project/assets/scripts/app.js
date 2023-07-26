@@ -199,7 +199,7 @@ function endRound() {
 }
 
 function attackMonster(mode) {
-  const maxDamage = mode === MODE_ATTACK ? ATTACK_VALUE : STRONG_ATTACK_VALUE;
+  const maxDamage = mode === MODE_ATTACK ? ATTACK_VALUE : STRONG_ATTACK_VALUE; // This is a ternary expression
   const logEvent =
     mode === MODE_ATTACK
       ? LOG_EVENT_PLAYER_ATTACK
