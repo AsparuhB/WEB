@@ -32,20 +32,30 @@ const getComputerChoice = function () {
     return SCISSORS;
   }
 };
+//  Normal function
+// const getWinner = (cChoice, pChoice) => {
+//   if (cChoice === pChoice) {
+//     return RESULT_DRAW;
+//   } else if (
+//     (cChoice === ROCK && pChoice === PAPER) ||
+//     (cChoice === PAPER && pChoice === SCISSORS) ||
+//     (cChoice === SCISSORS) & (pChoice === ROCK)
+//   ) {
+//     return RESULT_PLAYER_WON;
+//   } else {
+//     return RESULT_COMPUTER_WON;
+//   }
+// };
 
-const getWinner = function (cChoice, pChoice) { // cChoice -> Computer Choice , pChoice -> Player Choice.
-  if (cChoice === pChoice) {
-    return RESULT_DRAW;
-  } else if (
-    (cChoice === ROCK && pChoice === PAPER) ||
-    (cChoice === PAPER && pChoice === SCISSORS) ||
-    (cChoice === SCISSORS) & (pChoice === ROCK)
-  ) {
-    return RESULT_PLAYER_WON;
-  } else {
-    return RESULT_COMPUTER_WON;
-  }
-};
+// ARROW FUNCTION. WE can use it with Ternary expressions to shorten the code.
+const getWinner = (cChoice, pChoice) =>
+  cChoice === pChoice
+    ? RESULT_DRAW
+    : (cChoice === ROCK && pChoice === PAPER) ||
+      (cChoice === PAPER && pChoice === SCISSORS) ||
+      (cChoice === SCISSORS) & (pChoice === ROCK)
+    ? RESULT_PLAYER_WON
+    : RESULT_COMPUTER_WON;
 
 startGameBtn.addEventListener("click", function () {
   if (gameIsRunning) {
