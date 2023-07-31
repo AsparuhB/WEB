@@ -1,8 +1,9 @@
 const startGameBtn = document.getElementById('start-game-btn');
 
-function startGame() {
+const start = function() {
     console.log("Game is starting...");
-}
+}; // this is a function expression, not a declaration/statement. 
+// functions without names, stored in variables are also called anonymous expressions.
 
 // const person = {
 //     name: "Asparuh", // This is a property of the function.
@@ -13,6 +14,6 @@ function startGame() {
 
 // person.greet();
 
-console.dir(startGame);
+// console.dir(startGame);
 
-startGameBtn.addEventListener('click', startGame)
+startGameBtn.addEventListener('click', start)
