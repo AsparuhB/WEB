@@ -9,11 +9,11 @@ const start = function() {
 //     name: "Asparuh", // This is a property of the function.
 //     greet: function greet() {
 //         console.log("Hello there!");
-//     } // Functions, stored inside objects are called Methods. They are accesed by a .
+//     } // Functions, stored inside objects are called Methods. They are accessed by a .
 // };
 
 // person.greet();
 
-// console.dir(startGame);
+// console.dir(startGame);  
 
 startGameBtn.addEventListener('click', start)
