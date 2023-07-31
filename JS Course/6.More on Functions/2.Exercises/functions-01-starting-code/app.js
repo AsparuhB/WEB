@@ -5,7 +5,7 @@ const PAPER = "PAPER";
 const SCISSORS = "SCISSORS";
 const DEFAULT_USER_CHOICE = ROCK;
 const RESULT_DRAW = "DRAW";
-const RESULT_PLAYER_WON = "PLATER_WON";
+const RESULT_PLAYER_WON = "PLAYER_WON";
 const RESULT_COMPUTER_WON = "COMPUTER_WON";
 
 let gameIsRunning = false;
@@ -33,13 +33,13 @@ const getComputerChoice = function () {
   }
 };
 
-const getWinner = function (cChoice, pChoice) {
+const getWinner = function (cChoice, pChoice) { // cChoice -> Computer Choice , pChoice -> Player Choice.
   if (cChoice === pChoice) {
     return RESULT_DRAW;
   } else if (
     (cChoice === ROCK && pChoice === PAPER) ||
-    (cChoice === SCISSORS) & (pChoice === ROCK) ||
-    (cChoice === PAPER && pChoice === SCISSORS)
+    (cChoice === PAPER && pChoice === SCISSORS) ||
+    (cChoice === SCISSORS) & (pChoice === ROCK)
   ) {
     return RESULT_PLAYER_WON;
   } else {
