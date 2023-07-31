@@ -5,6 +5,7 @@ function getName() {
 function greet() {
   const userName = getName();
   console.log("Hello, " + userName + "!");
+  alert("Hello, " + userName + "!");
 }
 
 greet();
