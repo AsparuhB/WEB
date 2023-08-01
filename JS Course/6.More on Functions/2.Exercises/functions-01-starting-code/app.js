@@ -17,7 +17,7 @@ const getPlayerChoice = () => {
   ).toUpperCase();
   if (selection !== ROCK && selection !== PAPER && selection !== SCISSORS) {
     alert(`Invalid choice! We chose ${DEFAULT_USER_CHOICE} for you!`);
-    return DEFAULT_USER_CHOICE;
+    return;
   }
   return selection;
 };
@@ -48,7 +48,7 @@ const getComputerChoice = () => {
 // };
 
 // ARROW FUNCTION. WE can use it with Ternary expressions to shorten the code.
-const getWinner = (cChoice, pChoice) =>
+const getWinner = (cChoice, pChoice = DEFAULT_USER_CHOICE) =>
   cChoice === pChoice
     ? RESULT_DRAW
     : (cChoice === ROCK && pChoice === PAPER) ||
@@ -72,7 +72,7 @@ startGameBtn.addEventListener("click", () => {
     winner = getWinner(computerChoice);
   }
   
-  let message = `You picked ${playerChoice}, computer picked ${computerChoice}, therefore `;
+  let message = `You picked ${playerChoice || DEFAULT_USER_CHOICE}, computer picked ${computerChoice}, therefore `;
   if (winner === RESULT_DRAW) {
     message = message + "you had a draw.";
   } else if (winner === RESULT_COMPUTER_WON) {
