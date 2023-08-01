@@ -1,4 +1,4 @@
-function sayHello(name) {
+const sayHello = (name) => {
   console.log('Hi ' + name);
 }
 
