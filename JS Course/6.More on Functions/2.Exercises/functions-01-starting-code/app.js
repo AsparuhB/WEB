@@ -65,6 +65,15 @@ startGameBtn.addEventListener("click", () => {
   console.log("Game is starting...");
   const playerChoice = getPlayerChoice();
   const computerChoice = getComputerChoice();
-  const winner = getWinner(playerChoice, computerChoice);
-  console.log(winner);
+  const winner = getWinner(computerChoice, playerChoice);
+  let message = `You picked ${playerChoice}, computer picked ${computerChoice}, therefore `;
+  if (winner === RESULT_DRAW) {
+    message = message + "you had a draw."
+  } else if (winner === RESULT_COMPUTER_WON) {
+    message = message + "COMPUTER won!"
+  } else {
+    message = message + "YOU won!"
+  }
+  alert(message);
+  gameIsRunning = false;
 });
