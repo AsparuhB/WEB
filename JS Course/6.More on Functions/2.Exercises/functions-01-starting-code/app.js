@@ -69,7 +69,7 @@ startGameBtn.addEventListener("click", () => {
   if (playerChoice) {
     winner = getWinner(computerChoice, playerChoice);
   } else {
-    winner = getWinner(computerChoice);
+    winner = getWinner(computerChoice, playerChoice);
   }
   
   let message = `You picked ${playerChoice || DEFAULT_USER_CHOICE}, computer picked ${computerChoice}, therefore `;
