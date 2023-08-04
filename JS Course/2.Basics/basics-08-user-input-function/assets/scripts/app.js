@@ -35,6 +35,43 @@ function writeToLog( // Function with 4 parameters.
   console.log(logEntries); // Logging array.
 }
 
+// No need for comment here, but test.
+// function add() {
+//   const enteredNumber = getUserNumberInput();
+//   const initialResult = currentResult;
+//   currentResult += enteredNumber;
+//   createAndWriteOutput(initialResult, "+", enteredNumber);
+//   writeToLog("ADD", initialResult, enteredNumber, currentResult)
+// }
+
+// // Same as above.
+// function subtract() {
+//   const enteredNumber = getUserNumberInput();
+//   const initialResult = currentResult;
+//   currentResult -= enteredNumber;
+//   createAndWriteOutput(initialResult, "-", enteredNumber);
+//   writeToLog("SUBTRACT", initialResult, enteredNumber, currentResult)
+// }
+
+// // Kind of self explanatory.
+// function multiply() {
+//   const enteredNumber = getUserNumberInput();
+//   const initialResult = currentResult;
+//   currentResult *= enteredNumber;
+//   createAndWriteOutput(initialResult, "*", enteredNumber);
+//   writeToLog("MULTIPLY", initialResult, enteredNumber, currentResult)
+// }
+
+// // Same as above.
+// function divide() {
+//   const enteredNumber = getUserNumberInput();
+//   const initialResult = currentResult;
+//   currentResult /= enteredNumber;
+//   createAndWriteOutput(initialResult, "/", enteredNumber);
+//   writeToLog("DIVIDE", initialResult, enteredNumber, currentResult)
+// }
+
+
 function calculate(operation) {
   const enteredNumber = getUserNumberInput();
   const initialResult = currentResult;
