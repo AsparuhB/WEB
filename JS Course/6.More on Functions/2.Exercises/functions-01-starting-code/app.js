@@ -98,7 +98,7 @@ const combine = (resultHandler, operation, ...numbers) => {
 //     resultHandler(sum);
 //   };
 
-const showResult = (result, messageText) => {
+const showResult = (messageText, result) => {
   alert(messageText + " " + result);
 };
 
