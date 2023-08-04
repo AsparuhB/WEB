@@ -71,24 +71,41 @@ function writeToLog( // Function with 4 parameters.
 //   writeToLog("DIVIDE", initialResult, enteredNumber, currentResult)
 // }
 
-
 function calculate(operation) {
   const enteredNumber = getUserNumberInput();
   const initialResult = currentResult;
   let operator;
-  if (operation === ADD) {
-    currentResult += enteredNumber;
-    operator = "+";
-  } else if (operation === SUBTRACT) {
-    currentResult -= enteredNumber;
-    operator = "-";
-  } else if (operation === MULTIPLY) {
-    currentResult *= enteredNumber;
-    operator = "*";
-  } else if (operation === DIVIDE) {
-    currentResult /= enteredNumber;
-    operator = "/";
+  switch (operation) {
+    case ADD:
+      currentResult += enteredNumber;
+      operator = "+";
+      break;
+    case SUBTRACT:
+      currentResult -= enteredNumber;
+      operator = "-";
+      break;
+    case MULTIPLY:
+      currentResult *= enteredNumber;
+      operator = "*";
+      break;
+    case DIVIDE:
+      currentResult /= enteredNumber;
+      operator = "/";
+      break;
   }
+  // if (operation === ADD) {
+  //   currentResult += enteredNumber;
+  //   operator = "+";
+  // } else if (operation === SUBTRACT) {
+  //   currentResult -= enteredNumber;
+  //   operator = "-";
+  // } else if (operation === MULTIPLY) {
+  //   currentResult *= enteredNumber;
+  //   operator = "*";
+  // } else if (operation === DIVIDE) {
+  //   currentResult /= enteredNumber;
+  //   operator = "/";
+  // }
   createAndWriteOutput(initialResult, operator, enteredNumber);
   writeToLog(operation, initialResult, enteredNumber, currentResult);
 }
