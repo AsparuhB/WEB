@@ -72,11 +72,12 @@
 //   gameIsRunning = false;
 // });
 
+// Not related to the game.
+
 const ADD = "ADD";
 const SUBTRACT = "SUBTRACT";
 const MULTIPLY = "MULTIPLY";
 const DIVIDE = "DIVIDE";
-// Not related to the game.
 
 const combine = (resultHandler, operation, ...numbers) => {
   const validateNumber = (number) => {
