@@ -10,7 +10,7 @@ lastLi.textContent = lastLi.textContent + " (Changed!)";
 const listItemElement = document.querySelectorAll("li");
 
 for (const listItemEl of listItemElement) {
-    console.log(listItemEl);
+    console.dir(listItemEl);
 };
 
 const body = document.body;
