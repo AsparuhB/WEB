@@ -1,8 +1,8 @@
 // Task 1
 const task1 = document.querySelector("li");
-task1.style.color = "white";
-
 const task1opt2 = document.getElementById('task-1');
+
+task1.style.color = "white";
 task1opt2.style.backgroundColor = "black";
 
 // Task 2
