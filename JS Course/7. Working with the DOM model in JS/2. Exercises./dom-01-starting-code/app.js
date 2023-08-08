@@ -7,11 +7,10 @@ h1.style.backgroundColor = "black";
 const lastLi = document.querySelector("li:last-of-type");
 lastLi.textContent = lastLi.textContent + " (Changed!)";
 
-const body = document.body;
-
-
 const listItemElement = document.querySelectorAll("li");
 
 for (const listItemEl of listItemElement) {
     console.log(listItemEl);
-}
+};
+
+const body = document.body;
