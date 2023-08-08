@@ -22,6 +22,10 @@ h1opt1.textContent = "Assignment - Solved!";
 
 // // Way 2
 // const body = document.body;
-// const titleHead = body.querySelector("h1");
+// const h1body= body.querySelector("h1");
 
 // titleHead.textContent = "Assignment - Solved";
+
+// // Wa 3
+// const h1 = document.getElementsByTagName("h1");
+// h1[0].textContent = "Assignment - Solved";
