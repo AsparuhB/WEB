@@ -1,16 +1,17 @@
-const h1 = document.getElementById("main-title");
+const section = document.querySelector("section");
+const button = document.querySelector("button");
 
-h1.textContent = "Some new title!";
-h1.style.color = "white";
-h1.style.backgroundColor = "black";
+// section.style.backgroundColor = "blue";
 
-const lastLi = document.querySelector("li:last-of-type");
-lastLi.textContent = lastLi.textContent + " (Changed!)";
+section.className = "red-bg";
 
-const listItemElement = document.querySelectorAll("li");
+button.addEventListener("click", () => {
+  //   if (section.className === "red-bg visible") {
+  //     section.className = "red-bg invisible";
+  //   } else {
+  //     section.className = "red-bg visible";
+  //   }
 
-for (const listItemEl of listItemElement) {
-    console.dir(listItemEl);
-};
-
-const body = document.body;
+  // section.classList.toggle("visible");
+  section.classList.toggle("invisible");
+});
