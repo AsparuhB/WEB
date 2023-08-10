@@ -19,24 +19,51 @@
       .invisible {
         display: none;
       }
+
+      .newText {
+
+        color: aqua;
+        background-color: black;
+        display: flex;
+        
+      }
     </style>
     <script src="app.js" defer></script>
+
   </head>
   <body>
     <header>
       <h1 id="main-title" value="worthless">Dive into the DOM</h1>
     </header>
     <section class="red-bg visible">
+      <!-- beforebegin -->
       <ul>
+        <!-- afterbegin -->
         <li class="list-item">Item 1</li>
         <li class="list-item">Item 2</li>
         <li class="list-item">Item 3</li>
+        <!-- beforeend -->
       </ul>
+      <!-- afterend -->
     </section>
 
+    <br />
     <button>Toggle Visibility</button>
+    <br />
+    
+    <div>
+      <p>
+        <input id="input-id"type="text", value="Enter Something." />
+        <button id="slap">Slap it somewhere</button>
+        <button id="reset">Reset</button>
+      </p>
+    </div>
 
-    <input type="text" , value="Enter text here" />
+    <br />
+
+    <div>
+      <input type="text" , value="Enter text here" />
+    </div>
 
     <p id="welcome-text" class="text-default">Welcome!</p>
 
