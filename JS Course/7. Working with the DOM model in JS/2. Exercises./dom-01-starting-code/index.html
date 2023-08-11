@@ -1,23 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>DOM Interaction</title>
-  <script src="app.js" defer></script>
-</head>
-<body>
-  <header>
-    <h1 id= "main-title">Dive into the DOM</h1>
-  </header>
-  <ul>
-    <li>Item 1</li>
-    <li class="list-item"> Item 2</li>
-    <li class="list-item"> Item 3</li>
-  </ul>
-  <main>
-    <p>There is a lot to it!</p>
-  </main>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>DOM Interaction</title>
+
+    <style>
+      .red-bg {
+        background-color: red;
+        color: white;
+      }
+
+      .visible {
+        display: block;
+      }
+
+      .invisible {
+        display: none;
+      }
+
+      .newText {
+        color: aqua;
+        background-color: black;
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+        <script src="app.js" defer></script>
+    <header>
+      <h1 id="main-title" value="worthless">Dive into the DOM</h1>
+    </header>
+    <section class="red-bg visible">
+      <!--.insertAdjacentElements()-->
+      <!-- beforebegin -->
+      <ul>
+        <!-- afterbegin -->
+        <li class="list-item">Item 1</li>
+        <li class="list-item">Item 2</li>
+        <li class="list-item">Item 3</li>
+        <!-- beforeend -->
+      </ul>
+      <!-- afterend -->
+    </section>
+
+    <br />
+    <button>Toggle Visibility</button>
+    <br />
+
+    <div>
+      <div>
+        <input
+          style="margin: 5px"
+          id="input-id"
+          type="text"
+          value="Enter Something."
+        />
+      </div>
+      <button id="slap">Slap it somewhere</button>
+      <button id="reset" style="display: inline">Reset</button>
+    </div>
+
+    <br />
+
+    <div id="please">
+      <input type="text" , value="Enter text here" />
+    </div>
+
+    <p id="welcome-text" class="text-default">Welcome!</p>
+
+    <main>
+      <p>There is a lot to it!</p>
+    </main>
+  </body>
 </html>
