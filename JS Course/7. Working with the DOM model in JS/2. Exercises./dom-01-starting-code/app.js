@@ -1,7 +1,7 @@
 const section = document.querySelector("section");
 const button = document.querySelector("button");
 
-const div = document.querySelector("#please");
+const div = document.querySelector("body > div:last-of-type");
 console.log(div)
 
 
