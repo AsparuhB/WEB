@@ -21,21 +21,19 @@
       }
 
       .newText {
-
         color: aqua;
         background-color: black;
         display: flex;
-        
       }
     </style>
-    <script src="app.js" defer></script>
-
   </head>
   <body>
+        <script src="app.js" defer></script>
     <header>
       <h1 id="main-title" value="worthless">Dive into the DOM</h1>
     </header>
     <section class="red-bg visible">
+      <!--.insertAdjacentElements()-->
       <!-- beforebegin -->
       <ul>
         <!-- afterbegin -->
@@ -50,18 +48,23 @@
     <br />
     <button>Toggle Visibility</button>
     <br />
-    
+
     <div>
-      <p>
-        <input id="input-id"type="text", value="Enter Something." />
-        <button id="slap">Slap it somewhere</button>
-        <button id="reset">Reset</button>
-      </p>
+      <div>
+        <input
+          style="margin: 5px"
+          id="input-id"
+          type="text"
+          value="Enter Something."
+        />
+      </div>
+      <button id="slap">Slap it somewhere</button>
+      <button id="reset" style="display: inline">Reset</button>
     </div>
 
     <br />
 
-    <div>
+    <div id="please">
       <input type="text" , value="Enter text here" />
     </div>
 

@@ -1,7 +1,9 @@
 const section = document.querySelector("section");
 const button = document.querySelector("button");
 
-const div = document.querySelector("div:last-of-type")
+const div = document.querySelector("#please");
+console.log(div)
+
 
 // section.style.backgroundColor = "blue";
 
