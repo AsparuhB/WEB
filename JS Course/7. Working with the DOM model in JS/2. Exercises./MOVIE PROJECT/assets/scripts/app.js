@@ -13,6 +13,18 @@ const toggleBackdrop = () => {
 
 const cancelAddMovieHandler = () => {
   toggleMovieModal();
+  clearMovieInputs();
+};
+
+const clearMovieInputs = () => {
+  for (const userInput of userInputs) {
+    userInput.value = "";
+  }
+};
+
+const toggleMovieModal = () => {
+  addMovieModal.classList.toggle("visible");
+  toggleBackdrop();
 };
 
 const addMovieHandler = () => {
@@ -31,20 +43,16 @@ const addMovieHandler = () => {
     return;
   }
 
-    const newMovie = {
-        title: titleValue,
-        image: imageUrlValue,
-        rating: ratingValue
-    };
+  const newMovie = {
+    title: titleValue,
+    image: imageUrlValue,
+    rating: ratingValue,
+  };
 
-        movies.push(newMovie);
-        console.log(movies);
-        toggleMovieModal();
-};
-
-const toggleMovieModal = () => {
-  addMovieModal.classList.toggle("visible");
-  toggleBackdrop();
+  movies.push(newMovie);
+  console.log(movies);
+  toggleMovieModal();
+  clearMovieInputs();
 };
 
 const backdropClickHandler = () => {
