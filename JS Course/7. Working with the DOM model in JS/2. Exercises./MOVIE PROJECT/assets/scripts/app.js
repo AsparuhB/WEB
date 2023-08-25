@@ -26,7 +26,7 @@ const closeMovieDeletionModal = () => {
   deleteMovieModal.classList.remove("visible");
 };
 
-const deleteMovieHandler = (movieId) => {
+const deleteMovieHandler = movieId => {
   let movieIndex = 0;
   for (const movie of movies) {
     if (movie.id == movieId) {
