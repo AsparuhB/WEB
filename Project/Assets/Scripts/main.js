@@ -312,14 +312,3 @@ const data = [
         ]
       }
     ];
-
-    data.forEach((d)=>{
-        if(17 === d["id"]){
-            console.log(d);
-            console.log(d.comments)
-        }
-    })
-
-    console.log(data[16])
-    console.log(data[2].comments[1])
-    

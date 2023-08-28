@@ -1,4 +1,8 @@
-{
+
+  {
+  "type": "module"
+  }
+  {
   "posts": [
     {
       "id": 1,
