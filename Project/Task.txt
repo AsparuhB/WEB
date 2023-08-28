@@ -1,0 +1,18 @@
+Create page like twitter.
+Components:
+
+1. List with latest courses in the middle ordered by date from courses.json file.
+
+2. Show course name author, date created and short content max 25 char.
+
+3. Set default image for the course(optional : add the link for the image in the database file).
+
+4. Show counter how many comments each course has and with modal show the comments.
+
+5. On the left top list all authors and set how many courses eaxh author has.
+
+6. Set in the modal input for comment and write it in the json file.
+
+7. On the right side show how many courses are total under it how many authors are total.
+
+The page is 3 column view.
