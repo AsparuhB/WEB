@@ -31,7 +31,6 @@
           </svg>
         </a>
       </div>
-
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
         <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
         <li><a href="#" class="nav-link px-2">Features</a></li>
@@ -45,45 +44,60 @@
       </div>
     </header>
 
-    <div class="container text-center rounded" style="border-color: aqua">
-      <div class="row align-items-start">
-        <div class="col-3 border border-primary">Authors, Dates and a short resume </div>
-        <div class="col-6 border border-primary">Comments
-        </div>
-        <div class="col-3 border border-primary">Courses and Authors Total</div>
-      </div>
-      <div class="row align-items-start">
-        <div class="col-3 border border-primary rounded-bottom">
-          <div>
-            <ol>
-              <li>Item 1</li>
-              <li>Item 1</li>
-              <li>Item 1</li>
-              <li>Item 1</li>
-              <li>Item 1</li>
-            </ol>
+    <section class="container-fluid">
+      <div class="row">
+        <div id="authors" class="col-md-3">
+          <!-- Author section -->
+          <div class="container py-4 shadow-sm">
+            <div class="lc-block">
+              <img
+                alt="image"
+                class="rounded-circle float-start me-4"
+                src="https://images.unsplash.com/photo-1542909192-2f2241a99c9d?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80"
+                style="width: 10vh"
+                loading="lazy"
+              />
+              <div editable="rich">
+                <h4><strong>Neil Amstrong</strong></h4>
+              </div>
+              <h5>Courses: <span class="badge bg-secondary">25</span></h5>
+              <div editable="rich">
+                <p></p>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-6 border border-primary rounded-bottom">
-          <ol>
-            <li>Item 1</li>
-            <li>Item 1</li>
-            <li>Item 1</li>
-            <li>Item 1</li>
-            <li>Item 1</li>
-          </ol>
+
+        <div class="col-md-6">
+          <!-- Courses section -->
+          <div class="container shadow-sm">
+            <div class="text-center">
+              <img
+                src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pixelstalk.net%2Fwp-content%2Fuploads%2F2016%2F08%2FFunny-Random-Wallpaper-1.jpg&f=1&nofb=1&ipt=c26e9fc128e917745d19e4a14e2fecd94ccc42f6c03f6c0b14b21bbaf2479cae&ipo=images"
+                class="img-fluid"
+                alt="..."
+              />
+            </div>
+            <h2 class="text-center">Title</h2>
+            <p class="text-center">Description</p>
+            <div class="row">
+              <div class="col-md-6 text-center">
+                <button class="btn btn-primary rounded-pill px-3" type="button">
+                  Primary
+                </button>
+              </div>
+              <div class="col-md-6 text-center">
+                <p>Date</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col-3 border border-primary rounded-bottom">
-          <ol>
-            <li>Item 1</li>
-            <li>Item 1</li>
-            <li>Item 1</li>
-            <li>Item 1</li>
-            <li>Item 1</li>
-          </ol>
+
+        <div class="col-md-3">
+          <!-- info section / total -->
         </div>
       </div>
-    </div>
+    </section>
 
     <footer
       class="py-3 my-4"
