@@ -3,11 +3,11 @@ Components:
 
 1. List with latest courses in the middle ordered by date from courses.json file.
 
-2. Show course name author, date created and short content max 25 char.
+    - Show course name author, date created and short content max 25 char.
 
-3. Set default image for the course(optional : add the link for the image in the database file).
+    - Set default image for the course(optional : add the link for the image in the database file).
 
-4. Show counter how many comments each course has and with modal show the comments.
+    - Show counter how many comments each course has and with modal show the comments.
 
 5. On the left top list all authors and set how many courses eaxh author has.
 
