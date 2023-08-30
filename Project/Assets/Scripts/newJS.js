@@ -19,15 +19,12 @@ pictures = [
   "https://i.pravatar.cc/150?img=16",
   "https://i.pravatar.cc/150?img=17",
   "https://i.pravatar.cc/150?img=18",
-  "https://i.pravatar.cc/150?img=19"
-]
+  "https://i.pravatar.cc/150?img=19",
+];
 
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
-
-console.log(parseInt(getRandomArbitrary(0, 19)))
-
 
 // authorArr = [];
 
@@ -39,30 +36,31 @@ console.log(parseInt(getRandomArbitrary(0, 19)))
 // });
 
 // console.log(authorArr);
-  
-  const encounteredAuthors = new Set();
-  const pureAuthorArr = [];
-  
-  data.forEach(article => {
+
+const encounteredAuthors = new Set();
+const pureAuthorArr = [];
+
+const authorsAdded = () => {
+  data.forEach((article) => {
     const author = article.author;
     if (!encounteredAuthors.has(author)) {
       encounteredAuthors.add(author);
       pureAuthorArr.push({
-        "Name": author,
-        "Courses": 0
+        Name: author,
+        Courses: 0,
       });
     }
   });
 
-  for(const author in pureAuthorArr) {
+  for (const author in pureAuthorArr) {
     let courseCount = 0;
     for (const i in data) {
       if (pureAuthorArr[author].Name === data[i].author) {
-        courseCount+= 1;
-      } 
+        courseCount += 1;
+      }
     }
-    
-    pureAuthorArr[author].Courses = courseCount
+
+    pureAuthorArr[author].Courses = courseCount;
     authorlist.innerHTML += ` 
      <div class="container mt-2 mb-2 shadow-sm">
         <div class="lc-block">
@@ -76,20 +74,20 @@ console.log(parseInt(getRandomArbitrary(0, 19)))
       <div editable="rich">
         <h4><strong>${pureAuthorArr[author].Name}</strong></h4>
       </div>
-      <h5>Courses: <span class="badge bg-secondary">${pureAuthorArr[author].Courses}</span></h5>
+      <h5>Courses: <span class="badge bg-secondary">${
+        pureAuthorArr[author].Courses
+      }</span></h5>
       <div editable="rich">
         <p></p>
       </div>
     </div>
   </div>`;
-    courseCount = 0
-    console.log(pureAuthorArr[author])
-
+    courseCount = 0;
+    console.log(pureAuthorArr[author]);
   }
+};
 
+authorsAdded();
 
-  
-  // console.log("Unique authors:");
-  // console.log(pureAuthorArr);
-  
-  
+// console.log("Unique authors:");
+// console.log(pureAuthorArr);
