@@ -240,7 +240,7 @@ const data = [
         "id": 16,
         "title": "Responsive Web Design Techniques",
         "content": "Responsive design ensures your website looks and functions well...",
-        "author": "ResponsiveWebbie",
+        "author": "AIFanatic",
         "timestamp": "2023-09-11T14:10:00",
         "comments": [
           {
