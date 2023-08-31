@@ -94,8 +94,6 @@ const coursesAdded = () => {
     let courseComments = data[obj].comments;
     let courseDate = data[obj].timestamp;
 
-    console.log(courseComments)
-
     coursesList.innerHTML += `
    <div class="container mt-2 mb-2 col-md-6">
    <!-- Courses section -->
