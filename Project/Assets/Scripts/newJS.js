@@ -1,4 +1,5 @@
-const authorlist = document.getElementById("authors");
+const authorList = document.getElementById("authors");
+const coursesList = authorList.nextElementSibling;
 
 pictures = [
   "https://i.pravatar.cc/150?img=1",
@@ -61,7 +62,7 @@ const authorsAdded = () => {
     }
 
     pureAuthorArr[author].Courses = courseCount;
-    authorlist.innerHTML += ` 
+    authorList.innerHTML += ` 
      <div class="container mt-2 mb-2 shadow-sm">
         <div class="lc-block">
       <img
@@ -83,11 +84,46 @@ const authorsAdded = () => {
     </div>
   </div>`;
     courseCount = 0;
-    console.log(pureAuthorArr[author]);
   }
 };
 
-authorsAdded();
+const coursesAdded = () => {
+  for (const obj in data) {
+    let courseName = data[obj].title;
+    let courseDescr = data[obj].content;
+    let courseComments = data[obj].comments;
+    let courseDate = data[obj].timestamp;
 
-// console.log("Unique authors:");
-// console.log(pureAuthorArr);
+    console.log(courseComments)
+
+    coursesList.innerHTML += `
+   <div class="container mt-2 mb-2 col-md-6">
+   <!-- Courses section -->
+   <div class="container shadow-sm">
+     <div class="text-center">
+       <img
+         src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pixelstalk.net%2Fwp-content%2Fuploads%2F2016%2F08%2FFunny-Random-Wallpaper-1.jpg&f=1&nofb=1&ipt=c26e9fc128e917745d19e4a14e2fecd94ccc42f6c03f6c0b14b21bbaf2479cae&ipo=images"
+         class="img-fluid"
+         alt="..."
+       />
+     </div>
+     <h2 class="text-center">${courseName}</h2>
+     <p class="text-center">${courseDescr}</p>
+     <div class="row">
+       <div class="col-md-6 text-center">
+         <button class="btn btn-primary rounded-pill px-3" type="button">
+           ${"Comments"}
+         </button>
+       </div>
+       <div class="col-md-6 text-center">
+         <p>${Date(courseDate)}</p>
+       </div>
+     </div>
+   </div>
+   
+   `;
+  }
+};
+
+coursesAdded();
+authorsAdded();
