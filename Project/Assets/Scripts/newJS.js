@@ -1,5 +1,9 @@
 const authorList = document.getElementById("authors");
 const coursesList = authorList.nextElementSibling;
+const totalAuthorsAndComments = coursesList.nextElementSibling;
+const selectModal = document.getElementById("comment-modal");
+const pAuthors = document.getElementById("pAuthors");
+const pCourses = pAuthors.nextElementSibling;
 
 pictures = [
   "https://i.pravatar.cc/150?img=1",
@@ -41,7 +45,8 @@ function getRandomArbitrary(min, max) {
 const encounteredAuthors = new Set();
 const pureAuthorArr = [];
 
-const authorsAdded = () => {
+console.log(pureAuthorArr);
+
   data.forEach((article) => {
     const author = article.author;
     if (!encounteredAuthors.has(author)) {
@@ -85,14 +90,14 @@ const authorsAdded = () => {
   </div>`;
     courseCount = 0;
   }
-};
 
-const coursesAdded = () => {
+
   for (const obj in data) {
     let courseName = data[obj].title;
-    let courseDescr = data[obj].content;
+    let courseDescription = data[obj].content;
     let courseComments = data[obj].comments;
     let courseDate = data[obj].timestamp;
+    let courseId = data[obj].id;
 
     coursesList.innerHTML += `
    <div class="container mt-2 mb-2 col-md-6">
@@ -106,11 +111,11 @@ const coursesAdded = () => {
        />
      </div>
      <h2 class="text-center">${courseName}</h2>
-     <p class="text-center">${courseDescr}</p>
+     <p class="text-center">${courseDescription}</p>
      <div class="row">
        <div class="col-md-6 text-center">
-         <button class="btn btn-primary rounded-pill px-3" type="button">
-           ${"Comments"}
+         <button id="${courseId}" name="comments" class="btn btn-primary rounded-pill px-3" type="button " data-bs-toggle="modal" data-bs-target="#comment-modal">
+           Comments: ${courseComments.length}
          </button>
        </div>
        <div class="col-md-6 text-center">
@@ -118,10 +123,25 @@ const coursesAdded = () => {
        </div>
      </div>
    </div>
-   
    `;
-  }
-};
+    const pleaseWork = document.getElementsByName("comments");
 
-coursesAdded();
-authorsAdded();
+    pleaseWork.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        const buttonId = event.target.id;
+        console.log("Button ID:", buttonId);
+      });
+    });
+  }
+
+  pAuthors.innerHTML = `
+  <p id="pAuthors">Authors: ${pureAuthorArr.length}</p>
+  `
+  pCourses.innerHTML = `
+  <p>Courses: ${data.length}</p>
+
+  `
+
+
+
+
