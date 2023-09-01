@@ -134,37 +134,40 @@ for (const obj in data) {
    `;
 }
 
-commentSelect.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    const buttonId = event.target.id;
-    console.log("Button ID:", buttonId);
-
-    for (const i in data) {
-      if (data[i].id === +buttonId) {
-        modalHeader.innerHTML = `
-        <h1 class="modal-title fs-5" id="comment-modal-Label">
-        Comments for "${data[i].title}"
-      </h1>
-        `;
-        modalBody.innerHTML = "";
-        for (c in data[i].comments) {
-          modalBody.innerHTML += ` 
-          <div class="container mt-2 mb-2 shadow-sm">
-             <div class="lc-block">
-           <div editable="rich">
-             <h4><strong>${data[i].comments[c].author}</strong></h4>
+const showingComments = () => {
+  commentSelect.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const buttonId = event.target.id;
+      console.log("Button ID:", buttonId);
+  
+      for (const i in data) {
+        if (data[i].id === +buttonId) {
+          modalHeader.innerHTML = `
+          <h1 class="modal-title fs-5" id="comment-modal-Label">
+          Comments for "${data[i].title}"
+        </h1>
+          `;
+          modalBody.innerHTML = "";
+          for (c in data[i].comments) {
+            modalBody.innerHTML += ` 
+            <div class="container mt-2 mb-2 shadow-sm">
+               <div class="lc-block">
+             <div editable="rich">
+               <h4><strong>${data[i].comments[c].author}</strong></h4>
+             </div>
+             <h5>${data[i].comments[c].text}</h5>
+             <div editable="rich">
+               <p></p>
+             </div>
            </div>
-           <h5>${data[i].comments[c].text}</h5>
-           <div editable="rich">
-             <p></p>
-           </div>
-         </div>
-       </div>`;
+         </div>`;
+          }
         }
       }
-    }
+    });
   });
-});
+}
+
 
 pAuthors.innerHTML = `
   <p id="pAuthors">Authors: ${pureAuthorArr.length}</p>
@@ -175,8 +178,46 @@ pCourses.innerHTML = `
   `;
 
 authorSelectionElement.forEach((element) => {
-  console.log(element)
+  console.log(element);
   element.addEventListener("click", () => {
     console.log("Element ID:", element.id);
+    for (const i in data) {
+      if (element.id === data[i].author) {
+        console.log(data[i].title);
+        coursesList.innerHTML = "";
+        data.forEach((course) => {
+          if (course.author === element.id) {
+            coursesList.innerHTML += `
+            <div class="container mt-2 mb-2 col-md-6">
+            <!-- Courses section -->
+            <div class="container shadow-sm">
+              <div class="text-center">
+                <img
+                  src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pixelstalk.net%2Fwp-content%2Fuploads%2F2016%2F08%2FFunny-Random-Wallpaper-1.jpg&f=1&nofb=1&ipt=c26e9fc128e917745d19e4a14e2fecd94ccc42f6c03f6c0b14b21bbaf2479cae&ipo=images"
+                  class="img-fluid"
+                  alt="..."
+                />
+              </div>
+              <h2 class="text-center">${course.title}</h2>
+              <p class="text-center">${course.content}</p>
+              <div class="row">
+                <div class="col-md-6 text-center">
+                  <button id="${course.id}" name="comments" class="btn btn-primary rounded-pill px-3" type="button " data-bs-toggle="modal" data-bs-target="#comment-modal">
+                    Comments: ${course.comments.length}
+                  </button>
+                </div>
+                <div class="col-md-6 text-center">
+                  <p>${Date(course.timestamp)}</p>
+                </div>
+              </div>
+            </div>
+            `;
+          }
+        });
+      }
+    }
+    showingComments();
   });
 });
+
+showingComments();
