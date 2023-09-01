@@ -7,6 +7,7 @@ const pAuthors = document.getElementById("pAuthors");
 const pCourses = pAuthors.nextElementSibling;
 const commentSelect = document.getElementsByName("comments");
 const authorSelectionElement = document.getElementsByName("authorElements");
+const allCoursesButton = document.getElementById('myButton')
 
 console.log(commentSelect);
 console.log(authorSelectionElement);
@@ -219,5 +220,42 @@ authorSelectionElement.forEach((element) => {
     showingComments();
   });
 });
+
+allCoursesButton.addEventListener("click",() =>{
+  for (const obj in data) {
+    let courseName = data[obj].title;
+    let courseDescription = data[obj].content;
+    let courseComments = data[obj].comments;
+    let courseDate = data[obj].timestamp;
+    let courseId = data[obj].id;
+  
+    coursesList.innerHTML += `
+     <div class="container mt-2 mb-2 col-md-6">
+     <!-- Courses section -->
+     <div class="container shadow-sm">
+       <div class="text-center">
+         <img
+           src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pixelstalk.net%2Fwp-content%2Fuploads%2F2016%2F08%2FFunny-Random-Wallpaper-1.jpg&f=1&nofb=1&ipt=c26e9fc128e917745d19e4a14e2fecd94ccc42f6c03f6c0b14b21bbaf2479cae&ipo=images"
+           class="img-fluid"
+           alt="..."
+         />
+       </div>
+       <h2 class="text-center">${courseName}</h2>
+       <p class="text-center">${courseDescription}</p>
+       <div class="row">
+         <div class="col-md-6 text-center">
+           <button id="${courseId}" name="comments" class="btn btn-primary rounded-pill px-3" type="button " data-bs-toggle="modal" data-bs-target="#comment-modal">
+             Comments: ${courseComments.length}
+           </button>
+         </div>
+         <div class="col-md-6 text-center">
+           <p>${Date(courseDate)}</p>
+         </div>
+       </div>
+     </div>
+     `;
+     showingComments();
+  }
+} )
 
 showingComments();
