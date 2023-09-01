@@ -1,9 +1,15 @@
 const authorList = document.getElementById("authors");
 const coursesList = authorList.nextElementSibling;
 const totalAuthorsAndComments = coursesList.nextElementSibling;
-const selectModal = document.getElementById("comment-modal");
+const modalHeader = document.getElementById("header-modal");
+const modalBody = document.getElementById("header-body");
 const pAuthors = document.getElementById("pAuthors");
 const pCourses = pAuthors.nextElementSibling;
+const commentSelect = document.getElementsByName("comments");
+const authorSelectionElement = document.getElementsByName("authorElements");
+
+console.log(commentSelect);
+console.log(authorSelectionElement);
 
 pictures = [
   "https://i.pravatar.cc/150?img=1",
@@ -45,30 +51,33 @@ function getRandomArbitrary(min, max) {
 const encounteredAuthors = new Set();
 const pureAuthorArr = [];
 
-console.log(pureAuthorArr);
+data.forEach((article) => {
+  const author = article.author;
+  if (!encounteredAuthors.has(author)) {
+    encounteredAuthors.add(author);
+    pureAuthorArr.push({
+      Name: author,
+      Courses: 0,
+      coursesId: [],
+    });
+  }
+});
 
-  data.forEach((article) => {
-    const author = article.author;
-    if (!encounteredAuthors.has(author)) {
-      encounteredAuthors.add(author);
-      pureAuthorArr.push({
-        Name: author,
-        Courses: 0,
-      });
+for (const author in pureAuthorArr) {
+  let courseCount = 0;
+  for (const i in data) {
+    if (pureAuthorArr[author].Name === data[i].author) {
+      courseCount += 1;
+      pureAuthorArr[author].coursesId.push(data[i].id);
+      console.log(pureAuthorArr[author]);
     }
-  });
+  }
 
-  for (const author in pureAuthorArr) {
-    let courseCount = 0;
-    for (const i in data) {
-      if (pureAuthorArr[author].Name === data[i].author) {
-        courseCount += 1;
-      }
-    }
-
-    pureAuthorArr[author].Courses = courseCount;
-    authorList.innerHTML += ` 
-     <div class="container mt-2 mb-2 shadow-sm">
+  pureAuthorArr[author].Courses = courseCount;
+  authorList.innerHTML += ` 
+     <div id="${
+       pureAuthorArr[author].Name
+     }" name="authorElements" class="container mt-2 mb-2 shadow-sm">
         <div class="lc-block">
       <img
         alt="image"
@@ -88,18 +97,17 @@ console.log(pureAuthorArr);
       </div>
     </div>
   </div>`;
-    courseCount = 0;
-  }
+  courseCount = 0;
+}
 
+for (const obj in data) {
+  let courseName = data[obj].title;
+  let courseDescription = data[obj].content;
+  let courseComments = data[obj].comments;
+  let courseDate = data[obj].timestamp;
+  let courseId = data[obj].id;
 
-  for (const obj in data) {
-    let courseName = data[obj].title;
-    let courseDescription = data[obj].content;
-    let courseComments = data[obj].comments;
-    let courseDate = data[obj].timestamp;
-    let courseId = data[obj].id;
-
-    coursesList.innerHTML += `
+  coursesList.innerHTML += `
    <div class="container mt-2 mb-2 col-md-6">
    <!-- Courses section -->
    <div class="container shadow-sm">
@@ -124,24 +132,51 @@ console.log(pureAuthorArr);
      </div>
    </div>
    `;
-    const pleaseWork = document.getElementsByName("comments");
+}
 
-    pleaseWork.forEach((button) => {
-      button.addEventListener("click", (event) => {
-        const buttonId = event.target.id;
-        console.log("Button ID:", buttonId);
-      });
-    });
-  }
+commentSelect.forEach((button) => {
+  button.addEventListener("click", (event) => {
+    const buttonId = event.target.id;
+    console.log("Button ID:", buttonId);
 
-  pAuthors.innerHTML = `
+    for (const i in data) {
+      if (data[i].id === +buttonId) {
+        modalHeader.innerHTML = `
+        <h1 class="modal-title fs-5" id="comment-modal-Label">
+        Comments for "${data[i].title}"
+      </h1>
+        `;
+        modalBody.innerHTML = "";
+        for (c in data[i].comments) {
+          modalBody.innerHTML += ` 
+          <div class="container mt-2 mb-2 shadow-sm">
+             <div class="lc-block">
+           <div editable="rich">
+             <h4><strong>${data[i].comments[c].author}</strong></h4>
+           </div>
+           <h5>${data[i].comments[c].text}</h5>
+           <div editable="rich">
+             <p></p>
+           </div>
+         </div>
+       </div>`;
+        }
+      }
+    }
+  });
+});
+
+pAuthors.innerHTML = `
   <p id="pAuthors">Authors: ${pureAuthorArr.length}</p>
-  `
-  pCourses.innerHTML = `
+  `;
+pCourses.innerHTML = `
   <p>Courses: ${data.length}</p>
 
-  `
+  `;
 
-
-
-
+authorSelectionElement.forEach((element) => {
+  console.log(element)
+  element.addEventListener("click", () => {
+    console.log("Element ID:", element.id);
+  });
+});
