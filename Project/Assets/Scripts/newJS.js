@@ -222,6 +222,7 @@ authorSelectionElement.forEach((element) => {
 });
 
 allCoursesButton.addEventListener("click",() =>{
+  coursesList.innerHTML = '';
   for (const obj in data) {
     let courseName = data[obj].title;
     let courseDescription = data[obj].content;
