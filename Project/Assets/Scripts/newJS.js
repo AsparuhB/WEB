@@ -7,10 +7,12 @@ const pAuthors = document.getElementById("pAuthors");
 const pCourses = pAuthors.nextElementSibling;
 const commentSelect = document.getElementsByName("comments");
 const authorSelectionElement = document.getElementsByName("authorElements");
-const allCoursesButton = document.getElementById('myButton')
+const allCoursesButton = document.getElementById("myButton");
+const commentInput = document.getElementById("comment-input");
+const commentUsernameInput = commentInput.previousElementSibling;
+const commentInputButton = document.getElementById("comment-input-button");
 
-console.log(commentSelect);
-console.log(authorSelectionElement);
+let CURRENT_COURSE = 0;
 
 pictures = [
   "https://i.pravatar.cc/150?img=1",
@@ -70,7 +72,6 @@ for (const author in pureAuthorArr) {
     if (pureAuthorArr[author].Name === data[i].author) {
       courseCount += 1;
       pureAuthorArr[author].coursesId.push(data[i].id);
-      console.log(pureAuthorArr[author]);
     }
   }
 
@@ -140,7 +141,8 @@ const showingComments = () => {
     button.addEventListener("click", (event) => {
       const buttonId = event.target.id;
       console.log("Button ID:", buttonId);
-  
+      CURRENT_COURSE = buttonId;
+      console.log(CURRENT_COURSE)
       for (const i in data) {
         if (data[i].id === +buttonId) {
           modalHeader.innerHTML = `
@@ -163,12 +165,13 @@ const showingComments = () => {
            </div>
          </div>`;
           }
+          
         }
       }
     });
-  });
-}
 
+  });
+};
 
 pAuthors.innerHTML = `
   <p id="pAuthors">Authors: ${pureAuthorArr.length}</p>
@@ -179,12 +182,9 @@ pCourses.innerHTML = `
   `;
 
 authorSelectionElement.forEach((element) => {
-  console.log(element);
   element.addEventListener("click", () => {
-    console.log("Element ID:", element.id);
     for (const i in data) {
       if (element.id === data[i].author) {
-        console.log(data[i].title);
         coursesList.innerHTML = "";
         data.forEach((course) => {
           if (course.author === element.id) {
@@ -203,7 +203,9 @@ authorSelectionElement.forEach((element) => {
               <p class="text-center">${course.content}</p>
               <div class="row">
                 <div class="col-md-6 text-center">
-                  <button id="${course.id}" name="comments" class="btn btn-primary rounded-pill px-3" type="button " data-bs-toggle="modal" data-bs-target="#comment-modal">
+                  <button id="${
+                    course.id
+                  }" name="comments" class="btn btn-primary rounded-pill px-3" type="button " data-bs-toggle="modal" data-bs-target="#comment-modal">
                     Comments: ${course.comments.length}
                   </button>
                 </div>
@@ -221,15 +223,15 @@ authorSelectionElement.forEach((element) => {
   });
 });
 
-allCoursesButton.addEventListener("click",() =>{
-  coursesList.innerHTML = '';
+allCoursesButton.addEventListener("click", () => {
+  coursesList.innerHTML = "";
   for (const obj in data) {
     let courseName = data[obj].title;
     let courseDescription = data[obj].content;
     let courseComments = data[obj].comments;
     let courseDate = data[obj].timestamp;
     let courseId = data[obj].id;
-  
+
     coursesList.innerHTML += `
      <div class="container mt-2 mb-2 col-md-6">
      <!-- Courses section -->
@@ -255,8 +257,29 @@ allCoursesButton.addEventListener("click",() =>{
        </div>
      </div>
      `;
-     showingComments();
+    showingComments();
   }
-} )
-
+});
 showingComments();
+
+const addingCourseComments = () => {
+  const usernameCommentInputValue = commentUsernameInput.value;
+  const commentInputValue = commentInput.value;
+  // for ()
+  if (
+    commentInputValue.trim() === "" ||
+    usernameCommentInputValue.trim() === ""
+  ) {
+    alert("Please enter a valid input!");
+  } else {
+    data[i].comments.push({
+      id: data[i - 1].comments.id + 1,
+      text: commentInputValue,
+      author: usernameCommentInputValue,
+      timestamp: Date.now(),
+    });
+  }
+};
+
+commentInputButton.addEventListener("click", addingCourseComments);
+
