@@ -59,7 +59,9 @@
           <p class="container" id="pAuthors">Authors:</p>
           <p class="container">Courses:</p>
           <div class="container">
-            <button id="myButton" type="button" class="btn btn-success">All Courses</button>
+            <button id="myButton" type="button" class="btn btn-success">
+              All Courses
+            </button>
           </div>
         </div>
       </div>
@@ -76,11 +78,9 @@
       aria-hidden="true"
     >
       <div class="modal-dialog">
-        <div  class="modal-content">
+        <div class="modal-content">
           <div id="header-modal" class="modal-header">
-            <h1 class="modal-title fs-5" id="comment-modal-Label">
-              Comments
-            </h1>
+            <h1 class="modal-title fs-5" id="comment-modal-Label">Comments</h1>
             <button
               type="button"
               class="btn-close"
@@ -90,6 +90,13 @@
           </div>
           <div id="header-body" class="modal-body"></div>
           <div class="modal-footer">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <button id="comment-input-button" class="btn btn-primary" type="button" >Add Comment</button>
+              </span>
+              <input id="comment-username" type="text" class="form-control" placeholder="Username">
+              <input id="comment-input" type="text" class="form-control" placeholder="Comment" />
+            </div>
             <button
               type="button"
               class="btn btn-secondary"
@@ -97,7 +104,6 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Add Comment</button>
           </div>
         </div>
       </div>
