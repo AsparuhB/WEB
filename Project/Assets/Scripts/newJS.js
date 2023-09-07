@@ -111,7 +111,6 @@ const addingCourseComments = () => {
       timestamp: Date(Date.now().toString()),
     };
     data[CURRENT_COURSE_ID - 1].comments.push(newComment);
-    console.log(CURRENT_COURSE_ID);
     console.log(data[CURRENT_COURSE_ID -1].comments[data[CURRENT_COURSE_ID -1].comments.length - 1].id);
     console.log(data[CURRENT_COURSE_ID -1].comments);
     authorName.value = "";
