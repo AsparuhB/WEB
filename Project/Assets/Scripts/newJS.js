@@ -8,11 +8,11 @@ const pCourses = pAuthors.nextElementSibling;
 const commentSelect = document.getElementsByName("comments");
 const authorSelectionElement = document.getElementsByName("authorElements");
 const allCoursesButton = document.getElementById("myButton");
-const commentInput = document.getElementById("comment-input");
-const commentUsernameInput = commentInput.previousElementSibling;
+const authorName = document.getElementById("comment-username-input");
+const commentText = document.getElementById("comment-input");
 const commentInputButton = document.getElementById("comment-input-button");
 
-let CURRENT_COURSE = 0;
+let CURRENT_COURSE_ID = 0;
 
 pictures = [
   "https://i.pravatar.cc/150?img=1",
@@ -40,16 +40,7 @@ function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-// authorArr = [];
-
-// data.forEach((obj) => {
-//     authorArr.push({
-//     Author: obj.author,
-//     Courses: 0
-//   });
-// });
-
-// console.log(authorArr);
+// filtering duplicate authors
 
 const encounteredAuthors = new Set();
 const pureAuthorArr = [];
@@ -102,6 +93,66 @@ for (const author in pureAuthorArr) {
   courseCount = 0;
 }
 
+const addingCourseComments = () => {
+  const usernameCommentInputValue = authorName.value;
+  const commentInputValue = commentText.value;
+  let commentId;
+  if (
+    commentInputValue.trim() === "" ||
+    usernameCommentInputValue.trim() === ""
+  ) {
+    alert("Please enter a valid input!");
+  } else {
+    const newComment = {
+      id: "fucking piece of shit",
+      text: commentInputValue,
+      author: usernameCommentInputValue,
+      timestamp: Date(Date.now().toString()),
+    };
+    data[CURRENT_COURSE_ID - 1].comments.push(newComment);
+    authorName.value = "";
+    commentText.value = "";
+    showingComments();
+  }
+};
+
+// Showing the comments logic
+const showingComments = () => {
+  commentSelect.forEach((button) => {
+    button.addEventListener("click", (event) => {
+      const buttonId = event.target.id;
+      console.log("Button ID:", buttonId);
+      CURRENT_COURSE_ID = +buttonId;
+      console.log(CURRENT_COURSE_ID);
+      for (const i in data) {
+        if (data[i].id === +buttonId) {
+          modalHeader.innerHTML = `
+          <h1 class="modal-title fs-5" id="comment-modal-Label">
+          Comments for "${data[i].title}"
+        </h1>
+          `;
+          modalBody.innerHTML = "";
+          for (c in data[i].comments) {
+            modalBody.innerHTML += ` 
+            <div class="container mt-2 mb-2 shadow-sm">
+               <div class="lc-block">
+             <div editable="rich">
+               <h4><strong>${data[i].comments[c].author}</strong></h4>
+             </div>
+             <h5>${data[i].comments[c].text}</h5>
+             <div editable="rich">
+               <p></p>
+             </div>
+           </div>
+         </div>`;
+          }
+        }
+      }
+    });
+  });
+};
+
+
 for (const obj in data) {
   let courseName = data[obj].title;
   let courseDescription = data[obj].content;
@@ -135,43 +186,6 @@ for (const obj in data) {
    </div>
    `;
 }
-
-const showingComments = () => {
-  commentSelect.forEach((button) => {
-    button.addEventListener("click", (event) => {
-      const buttonId = event.target.id;
-      console.log("Button ID:", buttonId);
-      CURRENT_COURSE = buttonId;
-      console.log(CURRENT_COURSE)
-      for (const i in data) {
-        if (data[i].id === +buttonId) {
-          modalHeader.innerHTML = `
-          <h1 class="modal-title fs-5" id="comment-modal-Label">
-          Comments for "${data[i].title}"
-        </h1>
-          `;
-          modalBody.innerHTML = "";
-          for (c in data[i].comments) {
-            modalBody.innerHTML += ` 
-            <div class="container mt-2 mb-2 shadow-sm">
-               <div class="lc-block">
-             <div editable="rich">
-               <h4><strong>${data[i].comments[c].author}</strong></h4>
-             </div>
-             <h5>${data[i].comments[c].text}</h5>
-             <div editable="rich">
-               <p></p>
-             </div>
-           </div>
-         </div>`;
-          }
-          
-        }
-      }
-    });
-
-  });
-};
 
 pAuthors.innerHTML = `
   <p id="pAuthors">Authors: ${pureAuthorArr.length}</p>
@@ -260,26 +274,8 @@ allCoursesButton.addEventListener("click", () => {
     showingComments();
   }
 });
+
+
 showingComments();
 
-const addingCourseComments = () => {
-  const usernameCommentInputValue = commentUsernameInput.value;
-  const commentInputValue = commentInput.value;
-  // for ()
-  if (
-    commentInputValue.trim() === "" ||
-    usernameCommentInputValue.trim() === ""
-  ) {
-    alert("Please enter a valid input!");
-  } else {
-    data[i].comments.push({
-      id: data[i - 1].comments.id + 1,
-      text: commentInputValue,
-      author: usernameCommentInputValue,
-      timestamp: Date.now(),
-    });
-  }
-};
-
 commentInputButton.addEventListener("click", addingCourseComments);
-
