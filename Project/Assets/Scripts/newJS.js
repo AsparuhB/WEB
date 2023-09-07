@@ -97,7 +97,7 @@ for (const author in pureAuthorArr) {
 const addingCourseComments = () => {
   const usernameCommentInputValue = authorName.value;
   const commentInputValue = commentText.value;
-  let commentId = data[CURRENT_COURSE_ID -1].comments[data[CURRENT_COURSE_ID -1].comments.length - 1].id;
+  let commentId = data[CURRENT_COURSE_ID - 1].comments[data[CURRENT_COURSE_ID -1].comments.length - 1].id;
   if (
     commentInputValue.trim() === "" ||
     usernameCommentInputValue.trim() === ""
