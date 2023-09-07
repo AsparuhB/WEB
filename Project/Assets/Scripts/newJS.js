@@ -93,10 +93,11 @@ for (const author in pureAuthorArr) {
   courseCount = 0;
 }
 
+// Adding comments.
 const addingCourseComments = () => {
   const usernameCommentInputValue = authorName.value;
   const commentInputValue = commentText.value;
-  let commentId;
+  let commentId = data[CURRENT_COURSE_ID -1].comments[data[CURRENT_COURSE_ID -1].comments.length - 1].id;
   if (
     commentInputValue.trim() === "" ||
     usernameCommentInputValue.trim() === ""
@@ -104,16 +105,19 @@ const addingCourseComments = () => {
     alert("Please enter a valid input!");
   } else {
     const newComment = {
-      id: "fucking piece of shit",
+      id: commentId + 1,
       text: commentInputValue,
       author: usernameCommentInputValue,
       timestamp: Date(Date.now().toString()),
     };
     data[CURRENT_COURSE_ID - 1].comments.push(newComment);
+    console.log(CURRENT_COURSE_ID);
+    console.log(data[CURRENT_COURSE_ID -1].comments[data[CURRENT_COURSE_ID -1].comments.length - 1].id);
+    console.log(data[CURRENT_COURSE_ID -1].comments);
     authorName.value = "";
     commentText.value = "";
-    showingComments();
   }
+  showingAllCourses();
 };
 
 // Showing the comments logic
@@ -152,92 +156,8 @@ const showingComments = () => {
   });
 };
 
-
-for (const obj in data) {
-  let courseName = data[obj].title;
-  let courseDescription = data[obj].content;
-  let courseComments = data[obj].comments;
-  let courseDate = data[obj].timestamp;
-  let courseId = data[obj].id;
-
-  coursesList.innerHTML += `
-   <div class="container mt-2 mb-2 col-md-6">
-   <!-- Courses section -->
-   <div class="container shadow-sm">
-     <div class="text-center">
-       <img
-         src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pixelstalk.net%2Fwp-content%2Fuploads%2F2016%2F08%2FFunny-Random-Wallpaper-1.jpg&f=1&nofb=1&ipt=c26e9fc128e917745d19e4a14e2fecd94ccc42f6c03f6c0b14b21bbaf2479cae&ipo=images"
-         class="img-fluid"
-         alt="..."
-       />
-     </div>
-     <h2 class="text-center">${courseName}</h2>
-     <p class="text-center">${courseDescription}</p>
-     <div class="row">
-       <div class="col-md-6 text-center">
-         <button id="${courseId}" name="comments" class="btn btn-primary rounded-pill px-3" type="button " data-bs-toggle="modal" data-bs-target="#comment-modal">
-           Comments: ${courseComments.length}
-         </button>
-       </div>
-       <div class="col-md-6 text-center">
-         <p>${Date(courseDate)}</p>
-       </div>
-     </div>
-   </div>
-   `;
-}
-
-pAuthors.innerHTML = `
-  <p id="pAuthors">Authors: ${pureAuthorArr.length}</p>
-  `;
-pCourses.innerHTML = `
-  <p>Courses: ${data.length}</p>
-
-  `;
-
-authorSelectionElement.forEach((element) => {
-  element.addEventListener("click", () => {
-    for (const i in data) {
-      if (element.id === data[i].author) {
-        coursesList.innerHTML = "";
-        data.forEach((course) => {
-          if (course.author === element.id) {
-            coursesList.innerHTML += `
-            <div class="container mt-2 mb-2 col-md-6">
-            <!-- Courses section -->
-            <div class="container shadow-sm">
-              <div class="text-center">
-                <img
-                  src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pixelstalk.net%2Fwp-content%2Fuploads%2F2016%2F08%2FFunny-Random-Wallpaper-1.jpg&f=1&nofb=1&ipt=c26e9fc128e917745d19e4a14e2fecd94ccc42f6c03f6c0b14b21bbaf2479cae&ipo=images"
-                  class="img-fluid"
-                  alt="..."
-                />
-              </div>
-              <h2 class="text-center">${course.title}</h2>
-              <p class="text-center">${course.content}</p>
-              <div class="row">
-                <div class="col-md-6 text-center">
-                  <button id="${
-                    course.id
-                  }" name="comments" class="btn btn-primary rounded-pill px-3" type="button " data-bs-toggle="modal" data-bs-target="#comment-modal">
-                    Comments: ${course.comments.length}
-                  </button>
-                </div>
-                <div class="col-md-6 text-center">
-                  <p>${Date(course.timestamp)}</p>
-                </div>
-              </div>
-            </div>
-            `;
-          }
-        });
-      }
-    }
-    showingComments();
-  });
-});
-
-allCoursesButton.addEventListener("click", () => {
+ // showing the courses.
+const courseData = () => {
   coursesList.innerHTML = "";
   for (const obj in data) {
     let courseName = data[obj].title;
@@ -271,11 +191,73 @@ allCoursesButton.addEventListener("click", () => {
        </div>
      </div>
      `;
-    showingComments();
   }
-});
+};
+
+pAuthors.innerHTML = `
+  <p id="pAuthors">Authors: ${pureAuthorArr.length}</p>
+  `;
+pCourses.innerHTML = `
+  <p>Courses: ${data.length}</p>
+
+  `;
+
+// showing specific author.
+
+const showingSpecificAuthor = () => {
+  authorSelectionElement.forEach((element) => {
+    element.addEventListener("click", () => {
+      for (const i in data) {
+        if (element.id === data[i].author) {
+          coursesList.innerHTML = "";
+          data.forEach((course) => {
+            if (course.author === element.id) {
+              coursesList.innerHTML += `
+              <div class="container mt-2 mb-2 col-md-6">
+              <!-- Courses section -->
+              <div class="container shadow-sm">
+                <div class="text-center">
+                  <img
+                    src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pixelstalk.net%2Fwp-content%2Fuploads%2F2016%2F08%2FFunny-Random-Wallpaper-1.jpg&f=1&nofb=1&ipt=c26e9fc128e917745d19e4a14e2fecd94ccc42f6c03f6c0b14b21bbaf2479cae&ipo=images"
+                    class="img-fluid"
+                    alt="..."
+                  />
+                </div>
+                <h2 class="text-center">${course.title}</h2>
+                <p class="text-center">${course.content}</p>
+                <div class="row">
+                  <div class="col-md-6 text-center">
+                    <button id="${
+                      course.id
+                    }" name="comments" class="btn btn-primary rounded-pill px-3" type="button " data-bs-toggle="modal" data-bs-target="#comment-modal">
+                      Comments: ${course.comments.length}
+                    </button>
+                  </div>
+                  <div class="col-md-6 text-center">
+                    <p>${Date(course.timestamp)}</p>
+                  </div>
+                </div>
+              </div>
+              `;
+            }
+          });
+        }
+      }
+      showingComments();
+    });
+  });
+};
+
+const showingAllCourses = () => {
+  courseData();
+  showingComments();
+};
 
 
+
+courseData();
+showingSpecificAuthor();
 showingComments();
 
 commentInputButton.addEventListener("click", addingCourseComments);
+allCoursesButton.addEventListener("click", showingAllCourses);
