@@ -11,7 +11,7 @@ const listItems = document.querySelectorAll('li')
 console.log(listItems);
 
 const arrayListItems = Array.from(listItems);
-console.log(arrayListItems);
+console.log(arrayListItems)
 
 const moreNumbers = Array.from('Hi!');
 console.log(moreNumbers); 
