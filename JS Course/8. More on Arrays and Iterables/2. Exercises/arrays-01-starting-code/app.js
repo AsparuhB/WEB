@@ -30,5 +30,7 @@ hobbies.push("Reading");
 hobbies.unshift("Coding");
 console.log(hobbies);
 
+const shifted = hobbies.shift();
+console.log(shifted);
 let popped = hobbies.pop();
-console.log(popped)
+console.log(popped);
