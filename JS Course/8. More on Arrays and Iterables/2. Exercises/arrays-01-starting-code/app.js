@@ -14,7 +14,7 @@
 // console.log(arrayListItems)
 
 // const moreNumbers = Array.from('Hi!');
-// console.log(moreNumbers); 
+// console.log(moreNumbers);
 
 // const analyticsData = [[1, 1,6], [-5.4, 2.1]];
 
@@ -48,9 +48,7 @@
 
 // console.log(testResults, storedResults);
 // console.log(testResults.indexOf(1.5));
-// console.log(testResults.lastIndexOf(1.5)) 
-
-
+// console.log(testResults.lastIndexOf(1.5))
 
 // const personData = [{name: "Max"}, {name: "Manuel"}];
 // console.log(personData.indexOf({name: "Manuel"}));
@@ -77,7 +75,7 @@ const taxAdjustedPrices = [];
 // }
 
 prices.forEach((price, idx, prices) => {
-    const priceObj = {index: idx, taxAdjPrice: price * (1 + tax)};
-    taxAdjustedPrices.push(priceObj);
+  const priceObj = { index: idx, taxAdjPrice: price * (1 + tax) };
+  taxAdjustedPrices.push(priceObj);
 });
 console.log(taxAdjustedPrices);
