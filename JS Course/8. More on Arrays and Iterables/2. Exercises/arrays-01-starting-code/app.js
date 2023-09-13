@@ -24,13 +24,60 @@
 //     }
 // }
 
-const hobbies = ["Sports", "Cooking"];
+// const hobbies = ["Sports", "Cooking"];
 
-hobbies.push("Reading");
-hobbies.unshift("Coding");
-console.log(hobbies);
+// hobbies.push("Reading");
+// hobbies.unshift("Coding");
 
-const shifted = hobbies.shift();
-console.log(shifted);
-let popped = hobbies.pop();
-console.log(popped);
+// const shifted = hobbies.shift();
+// let popped = hobbies.pop();
+
+// hobbies.splice(1, 0, "Good food");
+
+// console.log(hobbies);
+
+// const removedElements = hobbies.splice(0, 2, "Newly added element");
+// console.log(hobbies);
+// console.log(removedElements);
+
+// const testResults = [1, 5.3, 1.5, 10.99, 1.5, -5, 10];
+// // const storedResults = testResults.slice(2);
+// const storedResults = testResults.concat([3.99, 2]);
+
+// testResults.push(5.91);
+
+// console.log(testResults, storedResults);
+// console.log(testResults.indexOf(1.5));
+// console.log(testResults.lastIndexOf(1.5)) 
+
+
+
+// const personData = [{name: "Max"}, {name: "Manuel"}];
+// console.log(personData.indexOf({name: "Manuel"}));
+
+// const manuel = personData.find((person, index, persons) => {
+//     return person.name === "Manuel";
+// });
+
+// manuel.name = "Anna";
+// console.log(manuel, personData);
+
+// const maxIndex = personData.findIndex((person, idx, persons) => {
+//     return person.name === "Max";
+// });
+
+// console.log(maxIndex)
+
+const prices = [10.99, 5.99, 3.99, 6.59];
+const tax = 0.19;
+const taxAdjustedPrices = [];
+
+// for (const price of prices) {
+//     taxAdjustedPrices.push(price * (1 + tax));
+// }
+
+prices.forEach((price, idx, prices) => {
+    const priceObj = {index: idx, taxAdjPrice: price * (1 + tax)};
+    taxAdjustedPrices.push(priceObj);
+});
+console.log(taxAdjustedPrices);
