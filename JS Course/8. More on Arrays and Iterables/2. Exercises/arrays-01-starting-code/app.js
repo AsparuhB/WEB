@@ -161,18 +161,18 @@
 
 // console.log(firstName, lastName, otherInformation);
 
-const people = [
-  { name: "Alice", age: 28, favoriteFood: "Pizza" },
-  { name: "Bob", age: 22, favoriteFood: "Burgers" },
-  { name: "Charlie", age: 35, favoriteFood: "Sushi" },
-  { name: "David", age: 30, favoriteFood: "Pasta" },
-  { name: "Eve", age: 25, favoriteFood: "Tacos" },
-];
+// const people = [
+//   { name: "Alice", age: 28, favoriteFood: "Pizza" },
+//   { name: "Bob", age: 22, favoriteFood: "Burgers" },
+//   { name: "Charlie", age: 35, favoriteFood: "Sushi" },
+//   { name: "David", age: 30, favoriteFood: "Pasta" },
+//   { name: "Eve", age: 25, favoriteFood: "Tacos" },
+// ];
 
-const peopleChange = people.map((person) => {
-  return { name: person.name, age: person.age + 1, favoriteFood: person.favoriteFood };
-});
+// const peopleChange = people.map((person) => {
+//   return { name: person.name, age: person.age + 1, favoriteFood: person.favoriteFood };
+// });
 
-peopleChange.push({ name: "Alex", age: 30, favoriteFood: "Sadness" });
+// peopleChange.push({ name: "Alex", age: 30, favoriteFood: "Sadness" });
 
-console.log(people, peopleChange);
+// console.log(people, peopleChange);
