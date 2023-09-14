@@ -83,26 +83,26 @@
 // const prices = [10.99, 5.99, 3.99, 6.59];
 // const tax = 0.19;
 
-// const taxAdjustedPrices =  prices.map((price, idx, prices) => {
+// const taxAdjustedPrices = prices.map((price, idx, prices) => {
 //   const priceObj = { index: idx, taxAdjPrice: price * (1 + tax) };
 //   return priceObj;
 // });
 // // console.log(prices, taxAdjustedPrices);
 
 // const sortedPrices = prices.sort((a, b) => {
-//     if (a > b) {
-//         return 1;
-//     } else if (a === b) {
-//         return 0;
-//     } else {
-//         return -1
-//     }
+//   if (a > b) {
+//     return 1;
+//   } else if (a === b) {
+//     return 0;
+//   } else {
+//     return -1;
+//   }
 // });
 // console.log(sortedPrices);
 
-// const filteredArray = prices.filter(price => price > 6);
+// const filteredArray = prices.filter((price)   => price > 6);
 
-// console.log(filteredArray)
+// console.log(filteredArray);
 
 // // let sum = 0;
 
@@ -111,13 +111,68 @@
 // // })
 // // console.log(sum);
 
-// const sum = prices.reduce((prevValue, curValue) => prevValue + curValue, 0);
+// // const sum = prices.reduce((prevValue, curValue) => prevValue + curValue, 0);
 
-// console.log(sum)
+// // console.log(sum)
 
-const originalArray = [{ price: 10.99 }, { price: 5.99 }, { price: 29.99 }];
+// const originalArray = [{ price: 10.99 }, { price: 5.99 }, { price: 29.99 }];
 
-const sum = originalArray.map(obj => obj.price).reduce((sumVal, curVal) => sumVal + curVal, 0);
+// const sum = originalArray
+//   .map((obj) => obj.price)
+//   .reduce((sumVal, curVal) => sumVal + curVal, 0);
 
-console.log(originalArray);
-console.log(sum);
+// console.log(originalArray);
+// console.log(sum);
+
+// const data = "new york;10.99;2000";
+
+// const transformedData = data.split(";");
+
+// console.log(transformedData);
+
+// const nameFragments = ["Max", "Schwarz"];
+// const name = nameFragments.join(" ");
+// console.log(name);
+
+// const copiedNameFragments = [...nameFragments];
+// nameFragments.unshift("Mr");
+// console.log(nameFragments, copiedNameFragments);
+
+// console.log(Math.min(...prices));
+
+// const persons = [
+//   { name: "Max", age: 30 },
+//   { name: "Manuel", age: 31 },
+// ];
+// const copiedPersons = [...persons];
+
+// const copiedPersonsDiff = [
+//   ...persons.map((person) => ({ name: person.name, age: person.age })),
+// ];
+
+// persons.push({ name: "Anna", age: 29 });
+// persons[0].age = 31
+
+// console.log(persons, copiedPersonsDiff);
+
+// const nameData = ["Max", "Schwarz", "Mr", 30];
+
+// const [firstName, lastName, ...otherInformation] = nameData;
+
+// console.log(firstName, lastName, otherInformation);
+
+const people = [
+  { name: "Alice", age: 28, favoriteFood: "Pizza" },
+  { name: "Bob", age: 22, favoriteFood: "Burgers" },
+  { name: "Charlie", age: 35, favoriteFood: "Sushi" },
+  { name: "David", age: 30, favoriteFood: "Pasta" },
+  { name: "Eve", age: 25, favoriteFood: "Tacos" },
+];
+
+const peopleChange = people.map((person) => {
+  return { name: person.name, age: person.age + 1, favoriteFood: person.favoriteFood };
+});
+
+peopleChange.push({ name: "Alex", age: 30, favoriteFood: "Sadness" });
+
+console.log(people, peopleChange);
