@@ -7,9 +7,10 @@ const mappedValue = numbers.map((val) => ({ num: val }));
 console.log(mappedValue)
 
 const reducedNumbers = numbers.reduce(
-  (totalVal, curVal) => totalVal + curVal,
-  0
+  (totalVal, curVal) => totalVal * curVal,
+  1
 );
+console.log(reducedNumbers)
 
 const arrayOfMinMax = [];
 const findMax = (arguments) => {
