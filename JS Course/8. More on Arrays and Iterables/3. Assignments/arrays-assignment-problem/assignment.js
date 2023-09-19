@@ -1,11 +1,9 @@
 const numbers = [1, 5, 4, 12, 24, 3, 4, 53, 27.55, 89.23, 99];
 
-const numsGreater5 = numbers.filter(number => number > 5);
+const numsGreater5 = numbers.filter((number) => number > 5);
+console.log(numsGreater5)
 
-const numbersObject = [];
-
-const mappedValue = numbers.map(val => ({num: val}));
-
+const mappedValue = numbers.map((val) => ({ num: val }));
 console.log(mappedValue)
 
 const reducedNumbers = numbers.reduce(
