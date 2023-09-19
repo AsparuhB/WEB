@@ -1,6 +1,6 @@
 const numbers = [1, 5, 4, 12, 24, 3, 4, 53, 27.55, 89.23, 99];
 
-console.log(numbers.filter((number) => number > 5));
+const numsGreater5 = numbers.filter((number) => number > 5);
 
 const numbersObject = [];
 
