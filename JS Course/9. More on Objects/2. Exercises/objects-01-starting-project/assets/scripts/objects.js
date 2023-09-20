@@ -8,8 +8,9 @@ const person = {
 };
 
 person.isAdmin = true;
+person.age = 31;
+console.log(person.isAdmin);
+console.log(person);
 
-console.log(person.isAdmin)
-
-delete person.age
-console.log(person)
+delete person.age;
+console.log(person);
