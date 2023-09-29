@@ -1,13 +1,15 @@
 class Product {
-    title = "DEFAULT";
-    imageUrl;
-    description;
-    price;
-    
+  title = "DEFAULT";
+  imageUrl;
+  description;
+  price;
 }
+
+console.log(new Product());
 
 productList = {
   products: [
+    // new Product(),
     {
       title: "A Pillow",
       imageUrl:
