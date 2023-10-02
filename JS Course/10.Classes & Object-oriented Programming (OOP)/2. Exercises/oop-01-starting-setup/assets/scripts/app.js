@@ -1,8 +1,8 @@
 class Product {
-//   title = "DEFAULT";
-//   imageUrl;
-//   description;
-//   price;
+  title = "DEFAULT";
+  imageUrl;
+  description;
+  price;
 
   constructor(title, imageUrl, desc, price) {
     this.title = title;
@@ -16,7 +16,7 @@ productList = {
   products: [
     new Product(
       "A Pillow",
-      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi5.walmartimages.com%2Fasr%2F22ef571b-11a8-4b1a-89fd-53fec208d818.c0c6173d7d75cddaf96ab8db25679471.jpeg%3FodnWidth%3D1000%26odnHeight%3D1000%26odnBg%3Dffffff&f=1&nofb=1&ipt=3b4dab32c5aa064c48636840805c8be0121050b37fbae4dfd36acb969b2e8fec&ipo=images",
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages-na.ssl-images-amazon.com%2Fimages%2FI%2F61x7uBGN6tS._SL1500_.jpg&f=1&nofb=1&ipt=f16e047d7ec4e09fc00d0be98d2fd6df99f5fd11c91bd323b5a63c043368034f&ipo=images",
       "A soft Pillow!",
       19.99
     ),
