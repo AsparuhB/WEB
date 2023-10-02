@@ -1,19 +1,19 @@
 class Product {
-  title = "DEFAULT";
-  imageUrl;
-  description;
-  price;
+  //   title = "DEFAULT";
+  //   imageUrl;
+  //   description;
+  //   price;
 
-  constructor(title, imageUrl, desc, price) {
+  constructor(title, image, desc, price) {
     this.title = title;
-    this.imageUrl = imageUrl;
+    this.imageUrl = image;
     this.description = desc;
     this.price = price;
   }
 }
 
-productList = {
-  products: [
+class ProductList {
+  products = [
     new Product(
       "A Pillow",
       "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages-na.ssl-images-amazon.com%2Fimages%2FI%2F61x7uBGN6tS._SL1500_.jpg&f=1&nofb=1&ipt=f16e047d7ec4e09fc00d0be98d2fd6df99f5fd11c91bd323b5a63c043368034f&ipo=images",
@@ -26,30 +26,45 @@ productList = {
       "A carpet which you might like - or not.",
       89.99
     ),
-  ],
+  ];
+
+  constructor() {}
 
   render() {
     const renderHook = document.getElementById("app");
     const prodList = document.createElement("ul");
     prodList.className = "product-list";
     for (const prod of this.products) {
-      const prodEl = document.createElement("li");
-      prodEl.className = "product-item";
-      prodEl.innerHTML = `
-         <div>
-            <img src="${prod.imageUrl}" alt="${prod.title}" >
-            <div class="product-item__content">
-                <h2>${prod.title}</h2>
-                <h3>\$${prod.price}</h3>
-                <p>${prod.description}</p>
-                <button>Add to Cart</button>
-            </div>
-         <div>
-        `;
-      prodList.append(prodEl);
+      const productItem = new ProductItem(prod);
+      const prodEL = productItem.render();
+      prodList.append(prodEL);
     }
     renderHook.append(prodList);
-  },
-};
+  }
+}
 
+class ProductItem {
+  constructor(product) {
+    this.product = product;
+  }
+
+  render() {
+    const prodEl = document.createElement("li");
+    prodEl.className = "product-item";
+    prodEl.innerHTML = `
+           <div>
+              <img src="${this.product.imageUrl}" alt="${this.product.title}" >
+              <div class="product-item__content">
+                  <h2>${this.product.title}</h2>
+                  <h3>\$${this.product.price}</h3>
+                  <p>${this.product.description}</p>
+                  <button>Add to Cart</button>
+              </div>
+           <div>
+          `;
+    return prodEl;
+  }
+}
+
+const productList = new ProductList();
 productList.render();
