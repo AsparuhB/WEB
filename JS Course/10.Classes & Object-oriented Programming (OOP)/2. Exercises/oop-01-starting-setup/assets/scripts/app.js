@@ -12,6 +12,29 @@ class Product {
   }
 }
 
+class ProductItem {
+    constructor(product) {
+      this.product = product;
+    }
+  
+    renderProduct() {
+      const prodEl = document.createElement("li");
+      prodEl.className = "product-item";
+      prodEl.innerHTML = `
+             <div>
+                <img src="${this.product.imageUrl}" alt="${this.product.title}" >
+                <div class="product-item__content">
+                    <h2>${this.product.title}</h2>
+                    <h3>\$${this.product.price}</h3>
+                    <p>${this.product.description}</p>
+                    <button>Add to Cart</button>
+                </div>
+             <div>
+            `;
+      return prodEl;
+    }
+  }
+
 class ProductList {
   products = [
     new Product(
@@ -30,41 +53,18 @@ class ProductList {
 
   constructor() {}
 
-  render() {
+  renderList() {
     const renderHook = document.getElementById("app");
     const prodList = document.createElement("ul");
     prodList.className = "product-list";
     for (const prod of this.products) {
       const productItem = new ProductItem(prod);
-      const prodEL = productItem.render();
+      const prodEL = productItem.renderProduct();
       prodList.append(prodEL);
     }
     renderHook.append(prodList);
   }
 }
 
-class ProductItem {
-  constructor(product) {
-    this.product = product;
-  }
-
-  render() {
-    const prodEl = document.createElement("li");
-    prodEl.className = "product-item";
-    prodEl.innerHTML = `
-           <div>
-              <img src="${this.product.imageUrl}" alt="${this.product.title}" >
-              <div class="product-item__content">
-                  <h2>${this.product.title}</h2>
-                  <h3>\$${this.product.price}</h3>
-                  <p>${this.product.description}</p>
-                  <button>Add to Cart</button>
-              </div>
-           <div>
-          `;
-    return prodEl;
-  }
-}
-
 const productList = new ProductList();
-productList.render();
+productList.renderList();
