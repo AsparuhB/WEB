@@ -112,7 +112,7 @@ class Shop {
     this.cart = new ShoppingCart();
     const cartEL = this.cart.render();
     const productList = new ProductList();
-    const prodl istEl = productList.renderList();
+    const prodlistEl = productList.renderList();
 
     renderHook.append(cartEL);
     renderHook.append(prodlistEl);
