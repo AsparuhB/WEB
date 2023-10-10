@@ -127,7 +127,7 @@ class ProductList extends Component {
   }
 
   renderList() {
-    const prodList = this.createElement("ul", "product-list", [
+    const prodList = this.createRootElement("ul", "product-list", [
       new ElementAttribute("id", "prod-list"),
     ]);
     for (const prod of this.products) {
