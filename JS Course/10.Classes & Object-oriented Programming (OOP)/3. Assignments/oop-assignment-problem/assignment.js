@@ -18,6 +18,22 @@ class Course {
     this.price = price;
   }
 
+  // WRONG:
+//   set correctPrice(price) {
+//     this._price = price;
+//     if (price < 0) {
+//     alert("Please enter a positive value");
+//     console.log("Hello");
+//     return;
+//     }
+// }
+
+// correctPrice = this.price
+
+// get correctPrice() {
+//     return (this.correctPrice = `\$${this.correctPrice}`);
+// }
+
   courseOverview() {
     return `This course is a ${this.title}. You will get ${this.length} hours of quality content for the mere price of ${this.price}.`;
   }
