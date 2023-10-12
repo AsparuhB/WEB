@@ -1,33 +1,31 @@
 class Course {
+    #price;
+
+  get price() {
+    return "$" + this.#price;
+  }
+
+  set price(value) {
+    if (value < 0) {
+        throw "Invalid value!"
+    }
+    this.#price = value;
+  }
+
   constructor(title, length, price) {
     this.title = title;
     this.length = length;
     this.price = price;
   }
 
-  set correctPrice(price) {
-    this.price = price;
-    if (price < 0) {
-      alert("Please enter a positive value");
-      console.log("Hello");
-      return;
-    }
-  }
-
-correctPrice = this.price
-
-  get correctPrice() {
-    return (this.correctPrice = `\$${this.correctPrice}`);
-  }
-
   courseOverview() {
-    return `This course is a ${this.title}. You will get ${this.length} minutes of quality content for the mere price of ${this.correctPrice}.`;
+    return `This course is a ${this.title}. You will get ${this.length} hours of quality content for the mere price of ${this.price}.`;
   }
 
   sumCalculate() {
-    let sum = this.length / this.price;
+    let sum = this.length / this.#price;
     return (
-      `You get ${sum.toFixed(2)} minutes per dollar paid of the ${
+      `You get ${sum.toFixed(2)} hours per dollar paid of the ${
         this.title
       }.` + this.courseOverview()
     );
@@ -55,21 +53,14 @@ class PracticalCourse extends Course {
 }
 
 class TheoreticalCourse extends Course {
-  constructor(title, length, price) {
-    super(title, length, price);
-  }
-
-  render() {
-    return this.sumCalculate();
-  }
   publish() {
     console.log("Print something to the console.");
   }
 }
 
 const pracCourse = new PracticalCourse("CSS Course", 25, 38.99, 5);
-const theorCourse = new TheoreticalCourse("Python Course", 112, 190, 45);
+const theorCourse = new TheoreticalCourse("Python Course", 112, 190);
 
 console.log(pracCourse.render());
-console.log(theorCourse.render());
+console.log(theorCourse.sumCalculate());
 theorCourse.publish();
