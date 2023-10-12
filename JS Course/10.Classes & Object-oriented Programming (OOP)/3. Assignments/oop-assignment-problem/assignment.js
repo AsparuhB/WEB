@@ -5,8 +5,23 @@ class Course {
     this.price = price;
   }
 
+  set correctPrice(price) {
+    this.price = price;
+    if (price < 0) {
+      alert("Please enter a positive value");
+      console.log("Hello");
+      return;
+    }
+  }
+
+correctPrice = this.price
+
+  get correctPrice() {
+    return (this.correctPrice = `\$${this.correctPrice}`);
+  }
+
   courseOverview() {
-    return `This course is a ${this.title}. You will get ${this.length} minutes of quality content for the mere price of \$${this.price}.`;
+    return `This course is a ${this.title}. You will get ${this.length} minutes of quality content for the mere price of ${this.correctPrice}.`;
   }
 
   sumCalculate() {
@@ -19,7 +34,7 @@ class Course {
   }
 }
 
-const course1 = new Course("Hentai Course", 15, 19.99);
+const course1 = new Course("Hentai Course", 18, 19.99);
 const course2 = new Course("JavaScript Course", 49, 79.99);
 
 console.log(course1, course2);
@@ -33,7 +48,9 @@ class PracticalCourse extends Course {
   }
 
   render() {
-    return this.sumCalculate() + ` You also get ${this.numOFExercises} exercises.`;
+    return (
+      this.sumCalculate() + ` You also get ${this.numOFExercises} exercises.`
+    );
   }
 }
 
@@ -42,19 +59,17 @@ class TheoreticalCourse extends Course {
     super(title, length, price);
   }
 
-render() {
+  render() {
     return this.sumCalculate();
-}
-  consoling() {
-    console.log("Svetinyata")
+  }
+  publish() {
+    console.log("Print something to the console.");
   }
 }
 
 const pracCourse = new PracticalCourse("CSS Course", 25, 38.99, 5);
+const theorCourse = new TheoreticalCourse("Python Course", 112, 190, 45);
 
-console.log(pracCourse.render())
-
-const theorCourse = new TheoreticalCourse("Python Course", 112, 190,45);
-
+console.log(pracCourse.render());
 console.log(theorCourse.render());
-theorCourse.consoling();
+theorCourse.publish();
