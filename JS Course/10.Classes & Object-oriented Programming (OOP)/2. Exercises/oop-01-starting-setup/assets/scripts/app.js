@@ -14,14 +14,12 @@ class Product {
 
 const productList = {
   products: [
-    new Product(),
-    {
-      title: "A Pillow",
-      imageUrl:
-        "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.dumas-paris.com%2F93-thickbox_default%2Fimperial-90-goose-down-pillow.jpg&f=1&nofb=1&ipt=34e6c2fbf86ca71690e579103d5a4e9c2686c814f08e60f16563f8adb854d0ab&ipo=images",
-      price: 19.99,
-      description: "A soft pillow!",
-    },
+    new Product(
+      "A Pillow",
+      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.dumas-paris.com%2F93-thickbox_default%2Fimperial-90-goose-down-pillow.jpg&f=1&nofb=1&ipt=34e6c2fbf86ca71690e579103d5a4e9c2686c814f08e60f16563f8adb854d0ab&ipo=images",
+      "A soft pillow!",
+      19.99
+    ),
     {
       title: "A carpet",
       imageUrl:
