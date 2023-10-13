@@ -1,8 +1,8 @@
 class Product {
-//   title = "DEFAULT";
-//   imageUrl;
-//   description;
-//   price;
+  //   title = "DEFAULT";
+  //   imageUrl;
+  //   description;
+  //   price;
 
   constructor(title, imageUrl, description, price) {
     this.title = title;
@@ -29,7 +29,6 @@ const productList = {
   ],
 
   render() {
-    const renderHook = document.getElementById("app");
     const prodList = document.createElement("ul");
     prodList.className = "product-list";
     for (const prod of this.products) {
@@ -52,4 +51,5 @@ const productList = {
   },
 };
 
-productList.render();
+const shop = new Shop();
+shop.render();
