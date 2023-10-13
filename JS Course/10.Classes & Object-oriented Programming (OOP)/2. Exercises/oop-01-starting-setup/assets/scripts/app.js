@@ -12,8 +12,8 @@ class Product {
   }
 }
 
-class ProducItem {
-    
+class ProductItem {
+
 
 }
 
