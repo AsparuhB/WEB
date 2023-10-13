@@ -22,11 +22,11 @@ class ProductItem {
     prodEl.className = "product-item";
     prodEl.innerHTML = `
           <div>
-              <img src="${prod.imageUrl} alt="${prod.description}" >
+              <img src="${this.product.imageUrl} alt="${this.product.description}" >
               <div class="product-item__content">
-              <h2>${prod.title}</h2>
-              <h3>\$${prod.price}</h3>
-              <p>${prod.description}</p>
+              <h2>${this.product.title}</h2>
+              <h3>\$${this.product.price}</h3>
+              <p>${this.product.description}</p>
               <button>Add to Cart</button>
               </div>
           </div>
@@ -57,7 +57,6 @@ class ProductList {
     const prodList = document.createElement("ul");
     prodList.className = "product-list";
     for (const prod of this.products) {
-      
       prodList.append(prodEl);
     }
     renderHook.append(prodList);
