@@ -12,6 +12,11 @@ class Product {
   }
 }
 
+class ProducItem {
+    
+
+}
+
 class ProductList {
   products = [
     new Product(
@@ -27,10 +32,8 @@ class ProductList {
       89.99
     ),
   ];
-}
 
-const productList = {
-  products: [],
+  constructor() {}
 
   render() {
     const renderHook = document.getElementById("app");
@@ -53,7 +56,8 @@ const productList = {
       prodList.append(prodEl);
     }
     renderHook.append(prodList);
-  },
-};
+  }
+}
 
+const productList = new ProductList();
 productList.render();
