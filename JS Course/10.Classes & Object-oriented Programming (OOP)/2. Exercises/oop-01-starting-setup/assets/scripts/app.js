@@ -31,6 +31,7 @@ class ProductItem {
               </div>
           </div>
           `;
+    return prodEl;
   }
 }
 
@@ -57,6 +58,8 @@ class ProductList {
     const prodList = document.createElement("ul");
     prodList.className = "product-list";
     for (const prod of this.products) {
+        const productItem = new ProductItem(prod)
+        const prodEl = productItem.render();
       prodList.append(prodEl);
     }
     renderHook.append(prodList);
