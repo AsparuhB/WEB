@@ -1,5 +1,13 @@
+class Product {
+  title = "DEFAULT";
+  imageUrl;
+  description;
+  price;
+}
+
 const productList = {
   products: [
+    new Product(),
     {
       title: "A Pillow",
       imageUrl:
@@ -21,9 +29,9 @@ const productList = {
     const prodList = document.createElement("ul");
     prodList.className = "product-list";
     for (const prod of this.products) {
-        const prodEl = document.createElement("li");
-        prodEl.className = "product-item";
-        prodEl.innerHTML = `
+      const prodEl = document.createElement("li");
+      prodEl.className = "product-item";
+      prodEl.innerHTML = `
         <div>
             <img src="${prod.imageUrl} alt="${prod.description}" >
             <div class="product-item__content">
@@ -33,8 +41,8 @@ const productList = {
             <button>Add to Cart</button>
             </div>
         </div>
-        `
-        prodList.append(prodEl);
+        `;
+      prodList.append(prodEl);
     }
     renderHook.append(prodList);
   },
