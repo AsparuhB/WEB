@@ -27,28 +27,34 @@ class ShoppingCart {
 }
 
 class ProductItem {
-  constructor(product) {
-    this.product = product;
+    constructor(product) {
+      this.product = product;
+    }
+  
+    addToCart() {
+      console.log("Adding product to cart..")
+      console.log(this.product)
+    }
+  
+    render() {
+      const prodEl = document.createElement("li");
+      prodEl.className = "product-item";
+      prodEl.innerHTML = `
+            <div>
+                <img src="${this.product.imageUrl} alt="${this.product.description}" >
+                <div class="product-item__content">
+                <h2>${this.product.title}</h2>
+                <h3>\$${this.product.price}</h3>
+                <p>${this.product.description}</p>
+                <button>Add to Cart</button>
+                </div>
+            </div>
+            `;
+      const addCartButton = prodEl.querySelector("button");
+      addCartButton.addEventListener("click", this.addToCart.bind(this))
+      return prodEl;
+    }
   }
-
-  render() {
-    const prodEl = document.createElement("li");
-    prodEl.className = "product-item";
-    prodEl.innerHTML = `
-          <div>
-              <img src="${this.product.imageUrl} alt="${this.product.description}" >
-              <div class="product-item__content">
-              <h2>${this.product.title}</h2>
-              <h3>\$${this.product.price}</h3>
-              <p>${this.product.description}</p>
-              <button>Add to Cart</button>
-              </div>
-          </div>
-          `;
-          
-    return prodEl;
-  }
-}
 
 class ProductList {
   products = [
