@@ -93,11 +93,5 @@ class Shop {
   }
 }
 
-class App {
-  static init() {
-    const shop = new Shop();
-    shop.render();
-  }
-}
-
-App.init();
+const shop = new Shop();
+shop.render();
