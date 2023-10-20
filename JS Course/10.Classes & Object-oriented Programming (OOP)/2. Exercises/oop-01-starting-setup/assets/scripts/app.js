@@ -75,7 +75,7 @@ class ProductList {
       const prodEl = productItem.render();
       prodList.append(prodEl);
     }
-    return prodList
+    return prodList;
   }
 }
 
@@ -83,14 +83,13 @@ class Shop {
   render() {
     const renderHook = document.getElementById("app");
 
-
     const cart = new ShoppingCart();
     const cartEl = cart.render();
     const productList = new ProductList();
     const prodListEl = productList.render();
 
-    renderHook.append(cartEl)
-    renderHook.append(prodListEl)
+    renderHook.append(cartEl);
+    renderHook.append(prodListEl);
   }
 }
 
