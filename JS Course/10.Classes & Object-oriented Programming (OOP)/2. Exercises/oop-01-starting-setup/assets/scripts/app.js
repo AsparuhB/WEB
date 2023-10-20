@@ -19,7 +19,7 @@ class ShoppingCart {
     const cartEl = document.createElement("section");
     cartEl.innerHTML = `
             <h2>Total: \$${0}</h2>
-            <button>Order now!</button>
+            <button>Order Now!</button>
         `;
     cartEl.className = "cart";
     return cartEl;
