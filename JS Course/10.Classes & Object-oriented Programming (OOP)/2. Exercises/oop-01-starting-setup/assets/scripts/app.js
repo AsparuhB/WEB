@@ -129,17 +129,25 @@ class ProductList extends Component {
   }
 
   render() {
-    const prodList = this.createRootElement("ul", "product-list", [
+    this.createRootElement("ul", "product-list", [
       new ElementAttribute("id", "prod-list"),
     ]);
     for (const prod of this.products) {
-      const productItem = new ProductItem(prod, "prod-list");
-      productItem.render();
+      new ProductItem(prod, "prod-list");
     }
   }
 }
 
-class Shop {
+class Shop extends Component {
+  constructor() {
+    super();
+  }
+
+  /* class Shop {  // this is another option, as extending the Component class might be a bit redundand
+    constructor() {
+        this.render
+    }
+  */
   render() {
     this.cart = new ShoppingCart("app");
     new ProductList("app");
