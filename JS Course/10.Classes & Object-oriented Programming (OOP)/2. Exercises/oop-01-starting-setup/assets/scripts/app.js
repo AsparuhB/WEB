@@ -123,6 +123,7 @@ class ProductList extends Component {
 
   constructor(renderHookId) {
     super(renderHookId);
+    this.render();
   }
 
   render() {
@@ -139,10 +140,7 @@ class ProductList extends Component {
 class Shop {
   render() {
     this.cart = new ShoppingCart("app");
-    this.cart.render();
-    const productList = new ProductList("app");
-    productList.render();
-    ;
+    new ProductList("app");
   }
 }
 
@@ -151,7 +149,6 @@ class App {
 
   static init() {
     const shop = new Shop();
-    shop.render();
     this.cart = shop.cart;
   }
 
