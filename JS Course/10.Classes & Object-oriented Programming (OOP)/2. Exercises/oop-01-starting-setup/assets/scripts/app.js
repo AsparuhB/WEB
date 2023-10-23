@@ -22,7 +22,10 @@ class ElementAttribute {
 class Component {
   constructor(renderHookId) {
     this.hookId = renderHookId;
+    this.render();
   }
+
+  render() {}
 
   createRootElement(tag, cssClasses, attributes) {
     const rootElement = document.createElement(tag);
@@ -123,7 +126,6 @@ class ProductList extends Component {
 
   constructor(renderHookId) {
     super(renderHookId);
-    this.render();
   }
 
   render() {
