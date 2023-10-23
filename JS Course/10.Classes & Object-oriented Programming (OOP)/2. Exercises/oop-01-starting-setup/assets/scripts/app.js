@@ -79,7 +79,7 @@ class ShoppingCart extends Component {
 
 class ProductItem extends Component {
   constructor(product, renderHookId) {
-    super(re);
+    super(renderHookId);
     this.product = product;
   }
 
