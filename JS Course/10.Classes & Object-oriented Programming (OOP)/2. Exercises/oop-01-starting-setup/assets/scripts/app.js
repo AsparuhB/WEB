@@ -77,8 +77,9 @@ class ShoppingCart extends Component {
   }
 }
 
-class ProductItem {
-  constructor(product) {
+class ProductItem extends Component {
+  constructor(product, renderHookId) {
+    super(re);
     this.product = product;
   }
 
@@ -87,8 +88,7 @@ class ProductItem {
   }
 
   render() {
-    const prodEl = document.createElement("li");
-    prodEl.className = "product-item";
+    const prodEl = this.createRootElement("li", "product-item");
     prodEl.innerHTML = `
             <div>
                 <img src="${this.product.imageUrl} alt="${this.product.description}" >
@@ -102,7 +102,6 @@ class ProductItem {
             `;
     const addCartButton = prodEl.querySelector("button");
     addCartButton.addEventListener("click", this.addToCart.bind(this));
-    return prodEl;
   }
 }
 
@@ -126,10 +125,10 @@ class ProductList {
 
   render() {
     const prodList = document.createElement("ul");
+    prodList.id = "prod-list";
     prodList.className = "product-list";
     for (const prod of this.products) {
-      const productItem = new ProductItem(prod);
-      const prodEl = productItem.render();
+      const productItem = new ProductItem(prod, "prod-list");
       prodList.append(prodEl);
     }
     return prodList;
