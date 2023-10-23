@@ -105,7 +105,7 @@ class ProductItem extends Component {
   }
 }
 
-class ProductList {
+class ProductList extends Component {
   products = [
     new Product(
       "A Pillow",
@@ -121,30 +121,28 @@ class ProductList {
     ),
   ];
 
-  constructor() {}
+  constructor(renderHookId) {
+    super(renderHookId);
+  }
 
   render() {
-    const prodList = document.createElement("ul");
-    prodList.id = "prod-list";
-    prodList.className = "product-list";
+    const prodList = this.createRootElement("ul", "product-list", [
+      new ElementAttribute("id", "prod-list"),
+    ]);
     for (const prod of this.products) {
       const productItem = new ProductItem(prod, "prod-list");
-      prodList.append(prodEl);
+      productItem.render();
     }
-    return prodList;
   }
 }
 
 class Shop {
   render() {
-    const renderHook = document.getElementById("app");
-
     this.cart = new ShoppingCart("app");
     this.cart.render();
-    const productList = new ProductList();
-    const prodListEl = productList.render();
-
-    renderHook.append(prodListEl);
+    const productList = new ProductList("app");
+    productList.render();
+    ;
   }
 }
 
