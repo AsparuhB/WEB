@@ -63,7 +63,12 @@ class ShoppingCart extends Component {
   }
 
   constructor(renderHookId) {
-    super(renderHookId);
+    super(renderHookId, false);
+    this.orderProducts = () => {
+      console.log("Ordering...");
+      console.log(this.items);
+    };
+    this.render();
   }
 
   addProduct(product) {
@@ -72,10 +77,10 @@ class ShoppingCart extends Component {
     this.cartItems = updatedItems;
   }
 
-  orderProducts() {
-    console.log("Ordering...");
-    console.log(this.items);
-  }
+  //   orderProducts() {
+  //     console.log("Ordering...");
+  //     console.log(this.items);
+  //   }
 
   render() {
     const cartEl = this.createRootElement("section", "cart");
@@ -85,7 +90,8 @@ class ShoppingCart extends Component {
         `;
     const orderButton = cartEl.querySelector("button");
     // orderButton.addEventListener("click", () => this.orderProducts()); You can use this approach, because "() =>"" doesn't know this
-    orderButton.addEventListener("click", this.orderProducts.bind(this)); // You can also use .bind(this) to bind it.
+    // orderButton.addEventListener("click", this.orderProducts.bind(this)); // You can also use .bind(this) to bind it.
+    orderButton.addEventListener("click", this.orderProducts); // This is the last way, but you have to move the method in the constructor.
     this.totalOutput = cartEl.querySelector("h2");
   }
 }
