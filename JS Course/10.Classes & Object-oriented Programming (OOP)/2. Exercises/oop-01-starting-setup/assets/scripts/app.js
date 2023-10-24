@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class Product {
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -274,3 +275,5 @@ productList.render();
 const shop = new Shop();
 shop.render();
 >>>>>>> adding-constructor-method-to-class
+=======
+>>>>>>> fe2455bf0a98a541f75207b7eaea5e0de8b5fbc6
