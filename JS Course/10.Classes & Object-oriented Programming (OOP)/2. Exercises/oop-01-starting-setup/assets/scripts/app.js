@@ -131,10 +131,10 @@ class ProductList extends Component {
   constructor(renderHookId) {
     super(renderHookId, false);
     this.render();
-    this.fetchProducts();
+    this.#fetchProducts();
   }
 
-  fetchProducts() {
+  #fetchProducts() {
     this.#products = [
       new Product(
         "A Pillow",
@@ -162,7 +162,7 @@ class ProductList extends Component {
     this.createRootElement("ul", "product-list", [
       new ElementAttribute("id", "prod-list"),
     ]);
-    if (this.#products && this.products.length > 0) {
+    if (this.#products && this.#products.length > 0) {
       this.renderProducts();
     }
   }
