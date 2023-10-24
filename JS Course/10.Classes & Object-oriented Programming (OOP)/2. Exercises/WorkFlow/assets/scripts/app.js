@@ -69,7 +69,7 @@ class ShoppingCart extends Component {
       console.log("Ordering...");
       console.log(this.items);
     };
-    this.render(); // Fucked up some commas
+    this.render();
   }
 
   addProduct(product) {
@@ -78,16 +78,22 @@ class ShoppingCart extends Component {
     this.cartItems = updatedItems;
   }
 
+  //   orderProducts() {
+  //     console.log("Ordering...");
+  //     console.log(this.items);
+  //   }
+
   render() {
-    const cartEL = this.createRootElement("section", "cart");
-    cartEL.innerHTML = `
-        <h2>Total: \$${0}</h2>
-        <button>Order Now!</button>
+    const cartEl = this.createRootElement("section", "cart");
+    cartEl.innerHTML = `
+            <h2>Total: \$${0}</h2>
+            <button>Order Now!</button>
         `;
-    const orderButton = cartEL.querySelector("button");
-    // orderButton.addEventListener("click", () => this.orderProducts());
-    orderButton.addEventListener("click", this.orderProducts);
-    this.totalOutput = cartEL.querySelector("h2");
+    const orderButton = cartEl.querySelector("button");
+    // orderButton.addEventListener("click", () => this.orderProducts()); You can use this approach, because "() =>"" doesn't know this
+    // orderButton.addEventListener("click", this.orderProducts.bind(this)); // You can also use .bind(this) to bind it.
+    orderButton.addEventListener("click", this.orderProducts); // This is the last way, but you have to move the method in the constructor.
+    this.totalOutput = cartEl.querySelector("h2");
   }
 }
 
