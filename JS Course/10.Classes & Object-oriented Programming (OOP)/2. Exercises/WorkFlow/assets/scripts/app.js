@@ -69,7 +69,7 @@ class ShoppingCart extends Component {
       console.log("Ordering...");
       console.log(this.items);
     };
-    this.render();
+    this.render(); // Fucked up some commas
   }
 
   addProduct(product) {
