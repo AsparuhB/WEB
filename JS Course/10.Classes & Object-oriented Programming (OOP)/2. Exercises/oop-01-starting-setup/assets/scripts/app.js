@@ -1,5 +1,6 @@
 class Product {
 <<<<<<< HEAD
+<<<<<<< HEAD
   title = "DEFAULT";
   imageUrl;
   description;
@@ -120,6 +121,23 @@ class ProductItem extends Component {
 
 class ProductList {
   products = [
+=======
+  //   title = "DEFAULT";
+  //   imageUrl;
+  //   description;
+  //   price;
+
+  constructor(title, imageUrl, description, price) {
+    this.title = title;
+    this.imageUrl = imageUrl;
+    this.description = description;
+    this.price = price;
+  }
+}
+
+const productList = {
+  products: [
+>>>>>>> adding-constructor-method-to-class
     new Product(
       "A Pillow",
       "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.dumas-paris.com%2F93-thickbox_default%2Fimperial-90-goose-down-pillow.jpg&f=1&nofb=1&ipt=34e6c2fbf86ca71690e579103d5a4e9c2686c814f08e60f16563f8adb854d0ab&ipo=images",
@@ -132,6 +150,7 @@ class ProductList {
       "A carpet which you might like - or not.",
       89.99
     ),
+<<<<<<< HEAD
   ];
 
   constructor() {}
@@ -143,12 +162,34 @@ class ProductList {
     for (const prod of this.products) {
         const productItem = new ProductItem(prod)
         const prodEl = productItem.render();
+=======
+  ],
+
+  render() {
+    const prodList = document.createElement("ul");
+    prodList.className = "product-list";
+    for (const prod of this.products) {
+      const prodEl = document.createElement("li");
+      prodEl.className = "product-item";
+      prodEl.innerHTML = `
+        <div>
+            <img src="${prod.imageUrl} alt="${prod.description}" >
+            <div class="product-item__content">
+            <h2>${prod.title}</h2>
+            <h3>\$${prod.price}</h3>
+            <p>${prod.description}</p>
+            <button>Add to Cart</button>
+            </div>
+        </div>
+        `;
+>>>>>>> adding-constructor-method-to-class
       prodList.append(prodEl);
     }
     renderHook.append(prodList);
   },
 };
 
+<<<<<<< HEAD
 productList.render();
 =======
     //   title = "DEFAULT";
@@ -229,3 +270,7 @@ productList.render();
   productList.render();
   
 >>>>>>> 0c4ef231db466d21c83aa9e93751940e3e3c1986
+=======
+const shop = new Shop();
+shop.render();
+>>>>>>> adding-constructor-method-to-class
