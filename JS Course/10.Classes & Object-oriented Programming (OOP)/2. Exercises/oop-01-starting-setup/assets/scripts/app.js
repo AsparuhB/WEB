@@ -6,8 +6,97 @@ class Product {
   price;
 }
 
+<<<<<<< HEAD
 class ProductItem {
   constructor(product) {
+=======
+class ElementAttribute {
+  constructor(attrName, attrValue) {
+    this.name = attrName;
+    this.value = attrValue;
+  }
+}
+
+class Component {
+  constructor(renderHookId, shouldRender = true) {
+    this.hookId = renderHookId;
+    if (shouldRender) {
+      this.render();
+    }
+  }
+
+  render() {}
+
+  createRootElement(tag, cssClasses, attributes) {
+    const rootElement = document.createElement(tag);
+    if (cssClasses) {
+      rootElement.className = cssClasses;
+    }
+    if (attributes && attributes.length > 0) {
+      for (const attr of attributes) {
+        rootElement.setAttribute(attr.name, attr.value);
+      }
+    }
+    document.getElementById(this.hookId).append(rootElement);
+    return rootElement;
+  }
+}
+
+class ShoppingCart extends Component {
+  items = [];
+
+  set cartItems(value) {
+    this.items = value;
+    this.totalOutput.innerHTML = `<h2>Total: \$${this.totalAmount.toFixed(
+      2
+    )}</h2>`;
+  }
+
+  get totalAmount() {
+    const sum = this.items.reduce(
+      (prevVal, currVal) => prevVal + currVal.price,
+      0
+    );
+    return sum;
+  }
+  constructor(renderHookId) {
+    super(renderHookId, false);
+    this.orderProducts = () => {
+      console.log("Ordering...");
+      console.log(this.items);
+    };
+    this.render();
+  }
+
+  addProduct(product) {
+    const updatedItems = [...this.items];
+    updatedItems.push(product);
+    this.cartItems = updatedItems;
+  }
+
+  //   orderProducts() {
+  //     console.log("Ordering...");
+  //     console.log(this.items);
+  //   }
+
+  render() {
+    const cartEl = this.createRootElement("section", "cart");
+    cartEl.innerHTML = `
+            <h2>Total: \$${0}</h2>
+            <button>Order Now!</button>
+        `;
+    const orderButton = cartEl.querySelector("button");
+    // orderButton.addEventListener("click", () => this.orderProducts()); You can use this approach, because "() =>"" doesn't know this
+    // orderButton.addEventListener("click", this.orderProducts.bind(this)); // You can also use .bind(this) to bind it.
+    orderButton.addEventListener("click", this.orderProducts); // This is the last way, but you have to move the method in the constructor.
+    this.totalOutput = cartEl.querySelector("h2");
+  }
+}
+
+class ProductItem extends Component {
+  constructor(product, renderHookId) {
+    super(renderHookId, false);
+>>>>>>> different-ways-of-adding-methods
     this.product = product;
   }
 
