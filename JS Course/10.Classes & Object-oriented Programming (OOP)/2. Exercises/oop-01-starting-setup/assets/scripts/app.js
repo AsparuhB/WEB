@@ -84,8 +84,8 @@ class ShoppingCart extends Component {
             <button>Order Now!</button>
         `;
     const orderButton = cartEl.querySelector("button");
-    orderButton.addEventListener("click", () => this.orderProducts());
-    orderButton.addEventListener("click", this.orderProducts.bind(this));
+    // orderButton.addEventListener("click", () => this.orderProducts()); You can use this approach, because "() =>"" doesn't know this
+    orderButton.addEventListener("click", this.orderProducts.bind(this)); // You can also use .bind(this) to bind it.
     this.totalOutput = cartEl.querySelector("h2");
   }
 }
