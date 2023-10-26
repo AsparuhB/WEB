@@ -22,7 +22,8 @@ function Person() {
   };
 }
 
-Person.prototype = { // setting a prototype
+Person.prototype = {
+  // setting a prototype
   printAge() {
     console.log(this.age);
   },
@@ -35,4 +36,4 @@ person.greet();
 person.printAge();
 console.log(person.__proto__);
 
-console.log(person.__proto__ === Person.prototype)
+console.log(person.__proto__ === Person.prototype);
