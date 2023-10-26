@@ -22,7 +22,7 @@ function Person() {
   };
 }
 
-Person.prototype = {
+Person.prototype = { // setting a prototype
   printAge() {
     console.log(this.age);
   },
