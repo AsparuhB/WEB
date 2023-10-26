@@ -34,3 +34,5 @@ const person = new Person();
 person.greet();
 person.printAge();
 console.log(person.__proto__);
+
+console.log(person.__proto__ === Person.prototype)
