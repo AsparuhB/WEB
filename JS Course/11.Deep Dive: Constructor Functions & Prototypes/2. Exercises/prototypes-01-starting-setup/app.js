@@ -36,9 +36,13 @@ function Person() {
 //   },
 // };
 
-Person.prototype.printAge = function() {
+Person.prototype.printAge = function () {
   console.log(this.age);
-}
+};
+
+Person.describe = function () {
+  console.log("Creating persons...");
+};
 
 console.dir(Person);
 
@@ -46,5 +50,8 @@ const person = new Person();
 person.greet();
 person.printAge();
 console.log(person.__proto__);
+console.log(person.toString());
+const p2 = new person.__proto__.constructor();
+console.log(p2);
 
-console.log(person.__proto__ === Person.prototype);
+console.dir(Object.prototype);
