@@ -84,6 +84,42 @@ const course = {
   rating: 5,
 };
 
-console.log(Object.getPrototypeOf(course));
+// console.log(Object.getPrototypeOf(course));
+Object.setPrototypeOf(course, {
+  ...Object.getPrototypeOf(course),
+  printRating: function () {
+    console.log(`${this.rating}/5`);
+  },
+});
 
-// course.printRating();
+const student = Object.create(
+  {
+    printProgress: function () {
+      console.log(this.progress);
+    },
+  },
+  {
+    name: {
+      configurable: true,
+      enumerable: true,
+      value: "Alex",
+      writable: true,
+    },
+  }
+);
+
+
+
+student.name = "Alex";
+
+Object.defineProperty(student, "progress", {
+  configurable: true,
+  enumerable: true,
+  value: 0.8,
+  writable: false,
+});
+
+console.log(student.progress);
+console.log(student);
+
+course.printRating();
