@@ -77,3 +77,4 @@ console.log(p);
 const button = document.getElementById("btn");
 // button.addEventListener("click", p.greet);
 button.addEventListener("click", p.greet.bind(p));
+
