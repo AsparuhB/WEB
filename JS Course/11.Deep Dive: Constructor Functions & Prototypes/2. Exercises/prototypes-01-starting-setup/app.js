@@ -1,7 +1,14 @@
-// class Person {
+// class AgedPerson {
+//   printAge() {
+//     console.log(this.age);
+//   }
+// }
+
+// class Person extends AgedPerson {
 //   name = "Alex";
 
 //   constructor() {
+//     super()
 //     this.age = 30;
 //   }
 
@@ -22,12 +29,16 @@ function Person() {
   };
 }
 
-Person.prototype = {
-  // setting a prototype
-  printAge() {
-    console.log(this.age);
-  },
-};
+// Person.prototype = {
+//   // setting a prototype
+//   printAge() {
+//     console.log(this.age);
+//   },
+// };
+
+Person.prototype.printAge = function() {
+  console.log(this.age);
+}
 
 console.dir(Person);
 
