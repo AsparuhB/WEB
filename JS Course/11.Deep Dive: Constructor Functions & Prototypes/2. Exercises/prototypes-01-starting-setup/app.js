@@ -4,13 +4,26 @@ class AgedPerson {
   }
 }
 
-class Person extends AgedPerson {
+class Person {
   name = "Alex";
 
   constructor() {
-    super()
+    // super()
     this.age = 30;
+    // this.greet = function() { ... }
   }
+
+  // greet = function() {
+  //   console.log(
+  //     "Hi, I am " + this.name + " and I am " + this.age + " years old."
+  //   );
+  // }
+
+  // greet = () => {
+  //   console.log(
+  //     "Hi, I am " + this.name + " and I am " + this.age + " years old."
+  //   );
+  // };
 
   greet() {
     console.log(
@@ -57,4 +70,10 @@ class Person extends AgedPerson {
 // console.dir(Object.prototype);
 
 const p = new Person();
-console.log(p)
+const p2 = new Person();
+p.greet();
+console.log(p);
+
+const button = document.getElementById("btn");
+// button.addEventListener("click", p.greet);
+button.addEventListener("click", p.greet.bind(p));
