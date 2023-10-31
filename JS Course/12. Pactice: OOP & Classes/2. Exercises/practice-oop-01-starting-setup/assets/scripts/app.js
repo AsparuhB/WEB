@@ -23,7 +23,12 @@ class ProjectItem {
     this.connectSwitchButton(type);
   }
 
-  connectMoreInfoButton() {}
+  connectMoreInfoButton() {
+    const projectItemElement = document.getElementById(this.id);
+    const moreInfoBtn = projectItemElement.querySelector(
+      "button:first-of-type"
+    );
+  }
 
   connectSwitchButton(type) {
     const projectItemElement = document.getElementById(this.id);
