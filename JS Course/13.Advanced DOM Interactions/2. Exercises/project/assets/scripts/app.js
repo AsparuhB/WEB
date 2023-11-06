@@ -9,7 +9,7 @@ class DOMHelper {
     const element = document.getElementById(elementId);
     const destinationElement = document.querySelector(newDestinationSelector);
     destinationElement.append(element);
-    element.scrollIntoView({behavior: "smooth"});
+    element.scrollIntoView({ behavior: "smooth" });
   }
 }
 
@@ -51,16 +51,15 @@ class Tooltip extends Component {
     this.closeNotifier();
   };
 
-  create() {
+  create() { 
     const tooltipElement = document.createElement("div");
     tooltipElement.className = "card";
-    tooltipElement.innerHTML = `
-      <h2>More Info</h2>
-      <p>${this.text}</p>
-    `
-    
+    const tooltipTemplate = document.getElementById("tooltip");
+    const tooltipBody = document.importNode(tooltipTemplate.content, true);
+    tooltipBody.querySelector("p").textContent = this.text;
+    tooltipElement.append(tooltipBody)
 
-    console.log(this.hostElement)
+    console.log(this.hostElement);
 
     console.log(this.hostElement.getBoundingClientRect());
 
