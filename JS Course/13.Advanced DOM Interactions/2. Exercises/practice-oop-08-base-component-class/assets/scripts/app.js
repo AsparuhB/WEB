@@ -55,6 +55,10 @@ class Tooltip extends Component {
     tooltipElement.className = "card";
     tooltipElement.textContent = this.text;
 
+    console.log(this.hostElement)
+
+    console.log(this.hostElement.getBoundingClientRect());
+
     const hostElPosLeft = this.hostElement.offsetLeft;
     const hostElPosTop = this.hostElement.offsetTop;
     const hostElHeight = this.hostElement.clientHeight;
