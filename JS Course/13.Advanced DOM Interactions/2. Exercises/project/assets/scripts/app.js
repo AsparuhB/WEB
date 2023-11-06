@@ -175,7 +175,9 @@ class App {
       activeProjectsList.addProject.bind(activeProjectsList)
     );
 
-      document.getElementById("start-analytics-btn").addEventListener("click", this.startAnalytics)
+    document
+      .getElementById("start-analytics-btn")
+      .addEventListener("click", this.startAnalytics);
   }
 
   static startAnalytics() {
@@ -183,7 +185,6 @@ class App {
     analyticsScript.src = "assets/scripts/analytics.js";
     analyticsScript.defer = true;
     document.head.append(analyticsScript);
-
   }
 }
 
