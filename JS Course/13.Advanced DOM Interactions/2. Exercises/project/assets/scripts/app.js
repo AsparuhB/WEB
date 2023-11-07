@@ -182,6 +182,7 @@ class App {
     })
   }
 
+
   static startAnalytics() {
     const analyticsScript = document.createElement("script");
     analyticsScript.src = "assets/scripts/analytics.js";
@@ -191,3 +192,4 @@ class App {
 }
 
 App.init();
+
