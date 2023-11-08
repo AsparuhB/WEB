@@ -1,11 +1,12 @@
-const button = document.querySelector("button");
+const buttons = document.querySelectorAll("button");
 
 // button.onclick = function () {
 //   alert("Hello");
 // };
 
-const buttonClickHandler = event => {
-  console.log(event)
+const buttonClickHandler = (event) => {
+  // event.target.disabled = true;
+  console.log(event);
 };
 
 const anotherButtonClickHandler = () => {
@@ -17,8 +18,16 @@ const anotherButtonClickHandler = () => {
 
 const boundFn = buttonClickHandler.bind(this);
 
-button.addEventListener("click", buttonClickHandler);
+// button.addEventListener("click", buttonClickHandler);
 
 // setTimeout(() => {
 //   button.removeEventListener("click", buttonClickHandler);
 // }, 2000);
+
+buttons.forEach((btn) => {
+  btn.addEventListener("mouseenter", buttonClickHandler);
+});
+
+window.addEventListener("scroll", (event) => {
+  console.log(event);
+});
