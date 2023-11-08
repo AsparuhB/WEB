@@ -39,13 +39,21 @@ form.addEventListener("submit", (event) => {
 });
 
 const div = document.querySelector("div");
-div.addEventListener('click',(event) => {
-  console.log('CLICKED DIV')
-  console.log(event)
-},)
+div.addEventListener("click", (event) => {
+  console.log("CLICKED DIV");
+  console.log(event);
+});
 
 button.addEventListener("click", (event) => {
   event.stopPropagation();
-  console.log('CLICKED BUTTON')
+  console.log("CLICKED BUTTON");
   console.log(event);
+});
+
+const listItems = document.querySelectorAll("li");
+
+listItems.forEach((listItem) => {
+  listItem.addEventListener("click", (event) => {
+    event.target.classList.toggle("highlight");
+  });
 });
