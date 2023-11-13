@@ -46,6 +46,7 @@ div.addEventListener("click", (event) => {
 
 button.addEventListener("click", (event) => {
   event.stopPropagation();
+  event.stopImmediatePropagation();
   console.log("CLICKED BUTTON");
   console.log(event);
 });
@@ -60,7 +61,7 @@ const list = document.querySelector("ul");
 // });
 
 list.addEventListener("click", (event) => {
-  // console.log(event.currentTarget)
+  // console.log(event.currentTarget);
   // event.target.classList.toggle("highlight");
-  event.target.closest("li").classList.toggle("highlight")
+  event.target.closest("li").classList.toggle("highlight");
 });
