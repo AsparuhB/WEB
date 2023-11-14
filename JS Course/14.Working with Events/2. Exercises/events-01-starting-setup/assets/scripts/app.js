@@ -104,6 +104,7 @@ class ProjectItem {
     this.hasActiveTooltip = true;
   }
 
+  // creating a drag event
   connectDrag() {
     const item = document.getElementById(this.id);
     item.addEventListener("dragstart", (event) => {
@@ -155,6 +156,7 @@ class ProjectList {
     console.log(this.projects);
   }
 
+   // making the drop zone.
   connectDroppable() {
     const list = document.querySelector(`#${this.type}-projects ul`);
 
