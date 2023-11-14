@@ -105,9 +105,13 @@ class ProjectItem {
   }
 
   connectDrag() {
-    document.getElementById(this.id).addEventListener("dragstart", (event) => {
+    const item = document.getElementById(this.id);
+    item.addEventListener("dragstart", (event) => {
       event.dataTransfer.setData("text/plain", this.id);
       event.dataTransfer.effectAllowed = "move";
+    });
+    item.addEventListener("dragend", (event) => {
+      console.log(event);
     });
   }
 
@@ -181,7 +185,7 @@ class ProjectList {
         .querySelector("button:last-of-type")
         .click();
       list.parentElement.classList.remove("droppable");
-      event.preventDefault();
+      // event.preventDefault(); // not required in this case.
     });
   }
 
