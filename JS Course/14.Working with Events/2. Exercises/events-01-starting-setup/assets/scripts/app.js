@@ -111,6 +111,9 @@ class ProjectItem {
       event.dataTransfer.setData("text/plain", this.id);
       event.dataTransfer.effectAllowed = "move";
     });
+    item.addEventListener("dragend", (event) => {
+      console.log(event);
+    });
   }
 
   connectMoreInfoButton() {
@@ -183,9 +186,8 @@ class ProjectList {
         .getElementById(prjId)
         .querySelector("button:last-of-type")
         .click();
-        list.parentElement.classList.remove("droppable");
-        event.preventDefault() // not required.
-
+      list.parentElement.classList.remove("droppable");
+      event.preventDefault(); // not required.
     });
   }
 
