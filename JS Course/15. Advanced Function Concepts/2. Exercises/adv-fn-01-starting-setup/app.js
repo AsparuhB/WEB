@@ -35,7 +35,7 @@ function printHobbies(h) {
 
 printHobbies(hobbies); // when we change an array inside of the function, we change it also outside of the function, because stored arrays are reference to the objects location.
 
-console.log("________________________________")
+console.log("________________________________");
 // Factory Functions:
 
 let multiplier = 1.1;
@@ -56,15 +56,16 @@ multiplier = 1.2;
 console.log(calculateVatAmount(100));
 console.log(calculateVatAmount(200));
 
-console.log("________________________________")
-
+console.log("________________________________");
 
 // Closure in practice
 let userName = "Alex";
 
 function greetUser() {
-  console.log("Hi " + userName);
+  let name = userName;
+  console.log("Hi " + name);
 }
 
+userName = "Manuel";
 
-greetUser()
+greetUser();
