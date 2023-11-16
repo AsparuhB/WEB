@@ -62,9 +62,11 @@ console.log("________________________________");
 let userName = "Alex";
 
 function greetUser() {
-  let name = userName;
+  // let name = "Anna";
   console.log("Hi " + name);
 }
+
+let name = "Maximilian"
 
 userName = "Manuel";
 
