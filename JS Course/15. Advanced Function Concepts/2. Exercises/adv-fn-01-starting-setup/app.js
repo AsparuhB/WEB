@@ -86,3 +86,16 @@ console.log("________________________________");
  */
 
 // not something that you see often, but its possible to see
+
+console.log("________________________________");
+
+// RECURSION!
+function powerOf(x, n) {
+  let result = 1;
+  for (let i = 0; i < n; i++) {
+    result *= x;
+  }
+  return result;
+}
+
+console.log(powerOf(2, 3)); // result is 2*2*2
