@@ -66,8 +66,23 @@ function greetUser() {
   console.log("Hi " + name);
 }
 
-let name = "Maximilian"
+let name = "Maximilian";
 
 userName = "Manuel";
 
 greetUser();
+
+console.log("________________________________");
+
+// IIFEs - Immediately Invoked Function Expressions.
+
+(function () {
+  var age = 30;
+  console.log(age);
+})();
+
+/* Please note that the snippet uses var, NOT let or const. 
+ Remember that var does NOT use block scope but only differ between global and function scope. 
+ */
+
+// not something that you see often, but its possible to see
