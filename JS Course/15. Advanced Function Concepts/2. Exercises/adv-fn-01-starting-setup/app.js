@@ -89,13 +89,57 @@ console.log("________________________________");
 
 console.log("________________________________");
 
-// RECURSION!
+// // Lets learn RECURSION!
+
+// //normal approach
+// function powerOf(x, n) {
+//   let result = 1;
+//   for (let i = 0; i < n; i++) {
+//     result *= x;
+//   }
+//   return result;
+// }
+
+// console.log(powerOf(2, 3)); // result is 2*2*2 or 2 to the power of 3
+
+//Recursion approach
 function powerOf(x, n) {
-  let result = 1;
-  for (let i = 0; i < n; i++) {
-    result *= x;
-  }
-  return result;
+  // if (n === 1) {
+  //   return x;
+  // }
+  // return x * powerOf(x, n - 1);
+
+  //shortest possible way for recursion
+  return n === 1 ? x : x * powerOf(x, n - 1);
 }
 
-console.log(powerOf(2, 3)); // result is 2*2*2
+console.log(powerOf(2, 3));
+
+const myself = {
+  name: "Max",
+  friends: [
+    {
+      name: "Manuel",
+      friends: [
+        {
+          name: "Chris",
+        },
+      ],
+    },
+    {
+      name: "Julia",
+    },
+  ],
+};
+
+function printFriendNames(person) {
+  const collectedNames = [];
+
+  for (const friend of person.friends) {
+    collectedNames.push(friend.name);
+  }
+
+  return collectedNames;
+}
+
+console.log(printFriendNames(myself));
