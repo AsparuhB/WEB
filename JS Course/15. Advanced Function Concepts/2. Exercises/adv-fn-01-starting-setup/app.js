@@ -54,8 +54,10 @@ const calculateIncomeTaxAmount = createTaxCalculator(0.25);
 
 multiplier = 1.2;
 
-console.log(calculateVatAmount(100));
-console.log(calculateVatAmount(200));
+console.log(`The VAT amount is: $${calculateVatAmount(100)}`);
+console.log(`The VAT amount is: $${calculateVatAmount(200)}`);
+console.log(`The Income Tax amount is: $${calculateIncomeTaxAmount(100)}`)
+console.log(`The Income Tax amount is: $${calculateIncomeTaxAmount(200)}`)
 
 console.log("________________________________");
 
