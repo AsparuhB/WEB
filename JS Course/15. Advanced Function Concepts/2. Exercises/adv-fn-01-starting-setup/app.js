@@ -36,6 +36,7 @@ function printHobbies(h) {
 printHobbies(hobbies); // when we change an array inside of the function, we change it also outside of the function, because stored arrays are reference to the objects location.
 
 console.log("________________________________");
+
 // Factory Functions:
 
 let multiplier = 1.1;
@@ -63,7 +64,7 @@ let userName = "Alex";
 
 function greetUser() {
   // let name = "Anna";
-  console.log("Hi " + name);
+  console.log("Hi " + userName);
 }
 
 let name = "Maximilian";
@@ -123,6 +124,14 @@ const myself = {
       friends: [
         {
           name: "Chris",
+          friends: [
+            {
+              name: "Harry",
+            },
+            {
+              name: "Emilia",
+            },
+          ],
         },
       ],
     },
@@ -132,14 +141,19 @@ const myself = {
   ],
 };
 
-function printFriendNames(person) {
+function getFriendNames(person) {
   const collectedNames = [];
+
+  if (!person.friends) {
+    return [];
+  }
 
   for (const friend of person.friends) {
     collectedNames.push(friend.name);
+    collectedNames.push(...getFriendNames(friend));
   }
 
   return collectedNames;
 }
 
-console.log(printFriendNames(myself));
+console.log(getFriendNames(myself));
