@@ -65,11 +65,12 @@ console.log("________________________________");
 let userName = "Alex";
 
 function greetUser() {
-  // let name = "Anna";
-  console.log("Hi " + userName);
+  let name = userName;
+  // let name = "Anna"; // this will get called, because it is inside the function and it will create a shadow clone of the global name.
+  console.log("Hi " + name);
 }
 
-// let name = "Maximilian";
+// let name = "Petya";
 
 userName = "Manuel";
 
