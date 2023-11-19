@@ -69,7 +69,7 @@ function greetUser() {
   console.log("Hi " + userName);
 }
 
-let name = "Maximilian";
+// let name = "Maximilian";
 
 userName = "Manuel";
 
