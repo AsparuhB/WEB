@@ -11,7 +11,14 @@ function productDescription(strings, productName, productPrice) {
   console.log(strings)
   console.log(productName)
   console.log(productPrice)
-  return "This is a product"
+  
+  let priceCategory = `cheap for the price`
+  
+  if (productPrice > 20) {
+    priceCategory = 'fair price'
+  }
+  
+  return `${strings[0]}${productName}${strings[1]}${priceCategory}${strings[2]}`
 }
 
 const prodName = 'JavaScript Course'
