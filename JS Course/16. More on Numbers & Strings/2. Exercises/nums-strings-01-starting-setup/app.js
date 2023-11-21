@@ -15,7 +15,7 @@ function productDescription(strings, productName, productPrice) {
   let priceCategory = `cheap for the price`;
 
   if (productPrice > 20) {
-    priceCategory = "fair price";
+    priceCategory = "fairly priced";
   }
 
   return `${strings[0]}${productName}${strings[1]}${priceCategory}${strings[2]}`;
