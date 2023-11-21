@@ -5,9 +5,5 @@ function randomIntBetween(min, max) {
 
 console.log(randomIntBetween(1, 10));
 
+// TAGGED TEMPLATE Holy God!
 
-// TAGGED TEMPLATE
-
-function productDescription(strings, productName, productPrice) {
-  return "This is a product!"
-}
