@@ -18,7 +18,9 @@ function productDescription(strings, productName, productPrice) {
     priceCategory = "fairly priced";
   }
 
-  return `${strings[0]}${productName}${strings[1]}${priceCategory}${strings[2]}`;
+  // return `${strings[0]}${productName}${strings[1]}${priceCategory}${strings[2]}`;
+
+  return {name: productName, price: productPrice}
 }
 
 const prodName = "JavaScript Course";
