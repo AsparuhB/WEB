@@ -5,7 +5,7 @@ function trackUserHandler() {
   console.log('Clicked!');
 }
 
-button.addEventListener('click', trackUserHandler); // Async task, handed to the browser.
+button.addEventListener('click', trackUserHandler); // Async task, handed to the browser and handled by it.
 
 let result = 0;
 
