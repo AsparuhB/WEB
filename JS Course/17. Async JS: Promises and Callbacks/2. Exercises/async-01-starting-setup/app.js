@@ -39,7 +39,7 @@ function trackUserHandler() {
     })
     .then((data) => {
       console.log(data, positionData);
-    }).finally(() => {
+    }).finally(() => { // the .finally() is not necessary!
       console.log("That was all folks!")
     });
     
