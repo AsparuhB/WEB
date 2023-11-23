@@ -35,7 +35,7 @@ function trackUserHandler() {
     })
     .catch((err) => {
       console.log(err);
-      return 'on we go...';
+      return "On we go..."
     })
     .then((data) => {
       console.log(data, positionData);
