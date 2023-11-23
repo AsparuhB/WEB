@@ -21,8 +21,8 @@ function trackUserHandler() {
       console.log(err);
     }
   );
-  setTimer(1000).then((data) => {
-    console.log(data);
+  setTimer(1000).then(() => {
+    console.log("Timer done!");
   });
   console.log('Getting position...'); // this will be executed first.
 }
