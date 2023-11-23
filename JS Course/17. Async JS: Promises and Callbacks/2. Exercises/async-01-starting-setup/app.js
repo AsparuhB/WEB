@@ -23,12 +23,13 @@ const setTimer = (duration) => {
   return timerPromise;
 };
 
+// promise chaining.
 function trackUserHandler() {
   let positionData;
   getPosition()
     .then((posData) => {
       positionData = posData;
-      return setTimer(2000);
+      return setTimer(1000);
     })
     .then((data) => {
       console.log(data, positionData);
