@@ -7,7 +7,9 @@ const getPosition = (opts) => {
       (success) => {
         resolve(success);
       },
-      (error) => {},
+      (error) => {
+        reject(error);
+      },
       opts
     );
   });
@@ -35,7 +37,7 @@ function trackUserHandler() {
       console.log(data, positionData);
     });
 
-  setTimer(1000).then(() => {
+  setTimer(3000).then(() => {
     console.log('Timer done!');
   });
   console.log('Getting position...'); // this will be executed first.
