@@ -24,16 +24,16 @@ const setTimer = (duration) => {
 };
 
 function trackUserHandler() {
-  navigator.geolocation.getCurrentPosition(
-    (posData) => {
-      setTimer(2000).then((data) => {
-        console.log(data, posData);
-      });
-    },
-    (err) => {
-      console.log(err);
-    }
-  );
+  let positionData;
+  getPosition()
+    .then((posData) => {
+      positionData = posData;
+      return setTimer(2000);
+    })
+    .then((data) => {
+      console.log(data, positionData);
+    });
+
   setTimer(1000).then(() => {
     console.log('Timer done!');
   });
