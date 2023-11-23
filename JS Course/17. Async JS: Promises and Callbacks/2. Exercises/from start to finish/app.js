@@ -69,3 +69,8 @@ async function trackUserHandler() {
 // }
 
 button.addEventListener('click', trackUserHandler); // Async task, handed to the browser and handled by it.
+
+
+Promise.race([getPosition(), setTimer(1000)]).then(data => {
+  console.log(data)
+});
