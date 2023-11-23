@@ -29,13 +29,21 @@ const setTimer = async (duration) => {
 
 // promise chaining
 async function trackUserHandler() {
-  // async on declarations
-  const posData = await getPosition();
-  const timerData = await setTimer(2000); // await keyword.
-  // setTimer(1000).then(() => {
-  //   console.log('Timer done!');
-  // });
-  // console.log(timerData, posData);
+  // async on declarations;
+  let posData;
+  let timerData;
+  try {
+    posData = await getPosition();
+    timerData = await setTimer(2000); // await keyword.
+  } catch (error) {
+    console.log(error);
+  }
+  console.log(timerData, posData);
+
+  setTimer(1000).then(() => {
+    console.log('Timer done!');
+  });
+  console.log("Getting Position...")
 }
 
 button.addEventListener('click', trackUserHandler); // Async task, handed to the browser and handled by it.
