@@ -1,39 +1,39 @@
-const authorList = document.getElementById("authors");
+const authorList = document.getElementById('authors');
 const coursesList = authorList.nextElementSibling;
 const totalAuthorsAndComments = coursesList.nextElementSibling;
-const modalHeader = document.getElementById("header-modal");
-const modalBody = document.getElementById("header-body");
-const pAuthors = document.getElementById("pAuthors");
+const modalHeader = document.getElementById('header-modal');
+const modalBody = document.getElementById('header-body');
+const pAuthors = document.getElementById('pAuthors');
 const pCourses = pAuthors.nextElementSibling;
-const commentSelect = document.getElementsByName("comments");
-const authorSelectionElement = document.getElementsByName("authorElements");
-const allCoursesButton = document.getElementById("myButton");
-const authorName = document.getElementById("comment-username-input");
-const commentText = document.getElementById("comment-input");
-const commentInputButton = document.getElementById("comment-input-button");
+const commentSelect = document.getElementsByName('comments');
+const authorSelectionElement = document.getElementsByName('authorElements');
+const allCoursesButton = document.getElementById('myButton');
+const authorName = document.getElementById('comment-username-input');
+const commentText = document.getElementById('comment-input');
+const commentInputButton = document.getElementById('comment-input-button');
 
 let CURRENT_COURSE_ID = 0;
 
 pictures = [
-  "https://i.pravatar.cc/150?img=1",
-  "https://i.pravatar.cc/150?img=2",
-  "https://i.pravatar.cc/150?img=3",
-  "https://i.pravatar.cc/150?img=4",
-  "https://i.pravatar.cc/150?img=5",
-  "https://i.pravatar.cc/150?img=6",
-  "https://i.pravatar.cc/150?img=7",
-  "https://i.pravatar.cc/150?img=8",
-  "https://i.pravatar.cc/150?img=9",
-  "https://i.pravatar.cc/150?img=10",
-  "https://i.pravatar.cc/150?img=11",
-  "https://i.pravatar.cc/150?img=12",
-  "https://i.pravatar.cc/150?img=13",
-  "https://i.pravatar.cc/150?img=14",
-  "https://i.pravatar.cc/150?img=15",
-  "https://i.pravatar.cc/150?img=16",
-  "https://i.pravatar.cc/150?img=17",
-  "https://i.pravatar.cc/150?img=18",
-  "https://i.pravatar.cc/150?img=19",
+  'https://i.pravatar.cc/150?img=1',
+  'https://i.pravatar.cc/150?img=2',
+  'https://i.pravatar.cc/150?img=3',
+  'https://i.pravatar.cc/150?img=4',
+  'https://i.pravatar.cc/150?img=5',
+  'https://i.pravatar.cc/150?img=6',
+  'https://i.pravatar.cc/150?img=7',
+  'https://i.pravatar.cc/150?img=8',
+  'https://i.pravatar.cc/150?img=9',
+  'https://i.pravatar.cc/150?img=10',
+  'https://i.pravatar.cc/150?img=11',
+  'https://i.pravatar.cc/150?img=12',
+  'https://i.pravatar.cc/150?img=13',
+  'https://i.pravatar.cc/150?img=14',
+  'https://i.pravatar.cc/150?img=15',
+  'https://i.pravatar.cc/150?img=16',
+  'https://i.pravatar.cc/150?img=17',
+  'https://i.pravatar.cc/150?img=18',
+  'https://i.pravatar.cc/150?img=19',
 ];
 
 function getRandomArbitrary(min, max) {
@@ -97,12 +97,15 @@ for (const author in pureAuthorArr) {
 const addingCourseComments = () => {
   const usernameCommentInputValue = authorName.value;
   const commentInputValue = commentText.value;
-  let commentId = data[CURRENT_COURSE_ID - 1].comments[data[CURRENT_COURSE_ID -1].comments.length - 1].id;
+  let commentId =
+    data[CURRENT_COURSE_ID - 1].comments[
+      data[CURRENT_COURSE_ID - 1].comments.length - 1
+    ].id;
   if (
-    commentInputValue.trim() === "" ||
-    usernameCommentInputValue.trim() === ""
+    commentInputValue.trim() === '' ||
+    usernameCommentInputValue.trim() === ''
   ) {
-    alert("Please enter a valid input!");
+    alert('Please enter a valid input!');
   } else {
     const newComment = {
       id: commentId + 1,
@@ -111,10 +114,14 @@ const addingCourseComments = () => {
       timestamp: Date(Date.now().toString()),
     };
     data[CURRENT_COURSE_ID - 1].comments.push(newComment);
-    console.log(data[CURRENT_COURSE_ID -1].comments[data[CURRENT_COURSE_ID -1].comments.length - 1].id);
-    console.log(data[CURRENT_COURSE_ID -1].comments);
-    authorName.value = "";
-    commentText.value = "";
+    console.log(
+      data[CURRENT_COURSE_ID - 1].comments[
+        data[CURRENT_COURSE_ID - 1].comments.length - 1
+      ].id
+    );
+    console.log(data[CURRENT_COURSE_ID - 1].comments);
+    authorName.value = '';
+    commentText.value = '';
   }
   showingAllCourses();
 };
@@ -122,9 +129,9 @@ const addingCourseComments = () => {
 // Showing the comments logic
 const showingComments = () => {
   commentSelect.forEach((button) => {
-    button.addEventListener("click", (event) => {
+    button.addEventListener('click', (event) => {
       const buttonId = event.target.id;
-      console.log("Button ID:", buttonId);
+      console.log('Button ID:', buttonId);
       CURRENT_COURSE_ID = +buttonId;
       console.log(CURRENT_COURSE_ID);
       for (const i in data) {
@@ -134,7 +141,7 @@ const showingComments = () => {
           Comments for "${data[i].title}"
         </h1>
           `;
-          modalBody.innerHTML = "";
+          modalBody.innerHTML = '';
           for (c in data[i].comments) {
             modalBody.innerHTML += ` 
             <div class="container mt-2 mb-2 shadow-sm">
@@ -155,9 +162,9 @@ const showingComments = () => {
   });
 };
 
- // showing the courses.
+// showing the courses.
 const courseData = () => {
-  coursesList.innerHTML = "";
+  coursesList.innerHTML = '';
   for (const obj in data) {
     let courseName = data[obj].title;
     let courseDescription = data[obj].content;
@@ -205,10 +212,10 @@ pCourses.innerHTML = `
 
 const showingSpecificAuthor = () => {
   authorSelectionElement.forEach((element) => {
-    element.addEventListener("click", () => {
+    element.addEventListener('click', () => {
       for (const i in data) {
         if (element.id === data[i].author) {
-          coursesList.innerHTML = "";
+          coursesList.innerHTML = '';
           data.forEach((course) => {
             if (course.author === element.id) {
               coursesList.innerHTML += `
@@ -252,11 +259,9 @@ const showingAllCourses = () => {
   showingComments();
 };
 
-
-
 courseData();
 showingSpecificAuthor();
 showingComments();
 
-commentInputButton.addEventListener("click", addingCourseComments);
-allCoursesButton.addEventListener("click", showingAllCourses);
+commentInputButton.addEventListener('click', addingCourseComments);
+allCoursesButton.addEventListener('click', showingAllCourses);
