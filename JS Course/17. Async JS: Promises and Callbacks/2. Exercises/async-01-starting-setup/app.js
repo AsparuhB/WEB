@@ -39,12 +39,15 @@ function trackUserHandler() {
     })
     .then((data) => {
       console.log(data, positionData);
+    }).finally(() => {
+      console.log("That was all folks!")
     });
-
+    
   setTimer(3000).then(() => {
     console.log('Timer done!');
   });
   console.log('Getting position...'); // this will be executed first.
+  
 }
 
 button.addEventListener('click', trackUserHandler);
