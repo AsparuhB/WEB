@@ -77,3 +77,7 @@ Promise.race([getPosition(), setTimer(1000)]).then((data) => {
 Promise.all([getPosition(), setTimer(1000)]).then((promiseData) => {
   console.log(promiseData);
 });
+
+Promise.allSettled([getPosition(), setTimer(1000)]).then((data) => {
+  console.log(data);
+});
