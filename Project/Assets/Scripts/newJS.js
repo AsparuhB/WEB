@@ -90,7 +90,7 @@ for (const author in pureAuthorArr) {
       </div>
     </div>
   </div>`;
-  courseCount = 0;
+  courseCount = 0; 
 }
 
 // Adding comments.
