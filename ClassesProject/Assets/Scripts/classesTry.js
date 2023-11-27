@@ -1,8 +1,9 @@
 const authorListArr = [];
+const courseId = []
 
 class AuthorNameAndCourseCount {
-  constructor(id, authorName) {
-    (this.id = id), (this.author = authorName);
+  constructor(id, author,) {
+    (this.id = id), (this.authorName = author); 
   }
 
   addingAndFilteringAuthors() {
@@ -18,8 +19,24 @@ class AuthorNameAndCourseCount {
       }
     }
   }
+
+  addingCourseCount() {
+    this.addingAndFilteringAuthors();
+    for (const author of authorListArr) {
+      console.log(author.authorName);
+      console.log(author.id)
+      let courseCount = 0;
+      for (const i in data) {
+        if (author.authorName === data[i].author) {
+          courseCount += 1;
+          console.log(author.authorName === data[i].author);
+          courseId.push(data[i].id);
+        };
+      }
+    }
+  }
 }
 
-new AuthorNameAndCourseCount().addingAndFilteringAuthors();
-
+new AuthorNameAndCourseCount().addingCourseCount();
 console.log(authorListArr);
+console.log(courseId);
