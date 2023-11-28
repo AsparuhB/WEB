@@ -26,10 +26,11 @@ function getRandomPicture(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-
 class AuthorNameAndCourseCount {
-  constructor(id, author,) {
-    (this.id = id), (this.authorName = author); 
+  constructor(id, author, courseCount) {
+    (this.id = id),
+      (this.authorName = author),
+      (this.courseCount = courseCount);
   }
 
   addingAndFilteringAuthors() {
@@ -42,13 +43,18 @@ class AuthorNameAndCourseCount {
       if (!encounteredAuthors.has(dataItem.author)) {
         encounteredAuthors.add(dataItem.author);
         authorListArr.push(authorComponent);
+        authorComponent.courseCount = 0;
       }
     }
   }
 
+  calculatingCourses() {
+    this.addingAndFilteringAuthors();
+
+  }
 
   render() {
-    this.addingAndFilteringAuthors()
+    this.calculatingCourses();
     const authorSection = document.getElementById('authors');
     const authorListEl = document.createElement('div');
     authorListEl.className = 'author-list-element';
@@ -71,17 +77,17 @@ class AuthorNameAndCourseCount {
          <h4><strong>${author.authorName}</strong></h4>
        </div>
        <h5>Courses: <span class="badge bg-secondary">${
-        "-> COurse Count<-"
+         author.courseCount
        }</span></h5>
        <div editable="rich">
          <p></p>
        </div>
      </div>
    </div>`;
-      
-      authorListEl.append(authorEl)
+      // courseCount = 0;
+      authorListEl.append(authorEl);
     }
-    authorSection.append(authorListEl)
+    authorSection.append(authorListEl);
   }
 }
 
