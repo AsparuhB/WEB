@@ -38,18 +38,27 @@ class AuthorNameAndCourseCount {
     for (const dataItem of data) {
       const authorComponent = new AuthorNameAndCourseCount(
         dataItem.id,
-        dataItem.author
+        dataItem.author,
+        this.courseCount
       );
       if (!encounteredAuthors.has(dataItem.author)) {
         encounteredAuthors.add(dataItem.author);
         authorListArr.push(authorComponent);
-        authorComponent.courseCount = 0;
+        
       }
     }
   }
 
   calculatingCourses() {
     this.addingAndFilteringAuthors();
+    for (const author of authorListArr) {
+      author.courseCount = 0;
+      for (const dataEl in data) {
+        if (author.authorName === data[dataEl].author) {
+          author.courseCount += 1;
+        }
+      }
+    }
 
   }
 
