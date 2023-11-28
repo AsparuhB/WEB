@@ -62,7 +62,7 @@ class AuthorNameAndCourseCount {
 
   }
 
-  render() {
+  authorRender() {
     this.calculatingCourses();
     const authorSection = document.getElementById('authors');
     const authorListEl = document.createElement('div');
@@ -100,5 +100,11 @@ class AuthorNameAndCourseCount {
   }
 }
 
-new AuthorNameAndCourseCount().render();
-console.log(authorListArr);
+class Comments extends AuthorNameAndCourseCount {
+  constructor() {
+    super();
+    this.authorRender()
+  }
+}
+
+new Comments()
