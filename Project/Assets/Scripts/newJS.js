@@ -142,7 +142,7 @@ const showingComments = () => {
         </h1>
           `;
           modalBody.innerHTML = '';
-          for (c in data[i].comments) {
+          for (const c in data[i].comments) {
             modalBody.innerHTML += ` 
             <div class="container mt-2 mb-2 shadow-sm">
                <div class="lc-block">

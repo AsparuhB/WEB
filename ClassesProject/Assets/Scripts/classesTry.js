@@ -1,5 +1,16 @@
 const authorListArr = [];
 
+class CourseComponent {
+  constructor(id, courseTitle, courseContent, courseAuthor, timeStamp, courseComments ) {
+    this.id = id,
+    this.courseTitle = courseTitle,
+    this.courseContent = courseContent,
+    this.courseAuthor = courseAuthor,
+    this.timeStamp = timeStamp,
+    this.courseComments = courseComments
+  }
+}
+
 pictures = [
   'https://i.pravatar.cc/150?img=1',
   'https://i.pravatar.cc/150?img=2',
@@ -26,7 +37,7 @@ function getRandomPicture(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-class AuthorNameAndCourseCount {
+class AuthorNameAndCourseCount{
   constructor(id, author, courseCount) {
     (this.id = id),
       (this.authorName = author),
@@ -44,7 +55,7 @@ class AuthorNameAndCourseCount {
       if (!encounteredAuthors.has(dataItem.author)) {
         encounteredAuthors.add(dataItem.author);
         authorListArr.push(authorComponent);
-        
+       
       }
     }
   }
@@ -59,7 +70,6 @@ class AuthorNameAndCourseCount {
         }
       }
     }
-
   }
 
   authorRender() {
@@ -100,11 +110,6 @@ class AuthorNameAndCourseCount {
   }
 }
 
-class Comments extends AuthorNameAndCourseCount {
-  constructor() {
-    super();
-    this.authorRender()
-  }
-}
+new AuthorNameAndCourseCount().authorRender();
 
-new Comments()
+console.log(authorListArr);
