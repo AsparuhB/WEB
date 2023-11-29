@@ -1,13 +1,37 @@
 const authorListArr = [];
+const componentArray = [];
 
 class CourseComponent {
-  constructor(id, courseTitle, courseContent, courseAuthor, timeStamp, courseComments ) {
-    this.id = id,
-    this.courseTitle = courseTitle,
-    this.courseContent = courseContent,
-    this.courseAuthor = courseAuthor,
-    this.timeStamp = timeStamp,
-    this.courseComments = courseComments
+  constructor(
+    id,
+    courseTitle,
+    courseContent,
+    courseAuthor,
+    timeStamp,
+    courseComments,
+    courseCount
+  ) {
+    (this.id = id),
+      (this.courseTitle = courseTitle),
+      (this.courseContent = courseContent),
+      (this.courseAuthor = courseAuthor),
+      (this.timeStamp = timeStamp),
+      (this.courseComments = courseComments);
+    this.courseCount = courseCount;
+  }
+
+  createEL() {
+    for (const el of data) {
+      const component = new CourseComponent(
+        el.id,
+        el.title,
+        el.content,
+        el.author,
+        el.timestamp,
+        el.comments
+      );
+      componentArray.push(component);
+    }
   }
 }
 
@@ -37,25 +61,28 @@ function getRandomPicture(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-class AuthorNameAndCourseCount{
+class AuthorNameAndCourseCount extends CourseComponent {
   constructor(id, author, courseCount) {
+    super(id, author);
     (this.id = id),
       (this.authorName = author),
       (this.courseCount = courseCount);
   }
 
   addingAndFilteringAuthors() {
+    this.createEL();
     const encounteredAuthors = new Set();
     for (const dataItem of data) {
-      const authorComponent = new AuthorNameAndCourseCount(
+      const authorComponent = new CourseComponent(
         dataItem.id,
+        dataItem.content,
+        dataItem.content,
         dataItem.author,
-        this.courseCount
+        this.courseCount 
       );
       if (!encounteredAuthors.has(dataItem.author)) {
         encounteredAuthors.add(dataItem.author);
         authorListArr.push(authorComponent);
-       
       }
     }
   }
@@ -65,7 +92,7 @@ class AuthorNameAndCourseCount{
     for (const author of authorListArr) {
       author.courseCount = 0;
       for (const dataEl in data) {
-        if (author.authorName === data[dataEl].author) {
+        if (author.courseAuthor === data[dataEl].author) {
           author.courseCount += 1;
         }
       }
@@ -93,7 +120,7 @@ class AuthorNameAndCourseCount{
          loading="lazy"
        />
        <div editable="rich">
-         <h4><strong>${author.authorName}</strong></h4>
+         <h4><strong>${author.courseAuthor}</strong></h4>
        </div>
        <h5>Courses: <span class="badge bg-secondary">${
          author.courseCount
@@ -112,4 +139,4 @@ class AuthorNameAndCourseCount{
 
 new AuthorNameAndCourseCount().authorRender();
 
-console.log(authorListArr);
+
