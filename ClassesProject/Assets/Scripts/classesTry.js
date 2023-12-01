@@ -78,7 +78,7 @@ class AuthorNameAndCourseCount extends CourseComponent {
         dataItem.content,
         dataItem.content,
         dataItem.author,
-        this.courseCount 
+        this.courseCount
       );
       if (!encounteredAuthors.has(dataItem.author)) {
         encounteredAuthors.add(dataItem.author);
@@ -137,6 +137,48 @@ class AuthorNameAndCourseCount extends CourseComponent {
   }
 }
 
+class CommentSection extends CourseComponent {
+  constructor() {
+    super();
+  }
+
+  coursesRender() {
+    const coursesList = document.getElementById("courses-section")
+    const courseEl = document.createElement("div");;
+    courseEl.className = 'course-list-element'
+    for (const courseComponent of componentArray) {
+      courseEl.innerHTML += `
+     <div class="container mt-2 mb-2 col-md-6">
+     <!-- Courses section -->
+     <div class="container shadow-sm">
+       <div class="text-center">
+         <img
+           src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pixelstalk.net%2Fwp-content%2Fuploads%2F2016%2F08%2FFunny-Random-Wallpaper-1.jpg&f=1&nofb=1&ipt=c26e9fc128e917745d19e4a14e2fecd94ccc42f6c03f6c0b14b21bbaf2479cae&ipo=images"
+           class="img-fluid"
+           alt="..."
+         />
+       </div>
+       <h2 class="text-center">${courseComponent.courseTitle}</h2>
+       <p class="text-center">${courseComponent.courseContent}</p>
+       <div class="row">
+         <div class="col-md-6 text-center">
+           <button id="${courseComponent.id}" name="comments" class="btn btn-primary rounded-pill px-3" type="button " data-bs-toggle="modal" data-bs-target="#comment-modal">
+             Comments: ${courseComponent.courseComments.length}
+           </button>
+         </div>
+         <div class="col-md-6 text-center">
+           <p>${Date(courseComponent.timeStamp)}</p>
+         </div>
+       </div>
+     </div>
+     `;
+    }
+    coursesList.append(courseEl)
+  }
+}
+
+class Modal {}
+
 new AuthorNameAndCourseCount().authorRender();
-
-
+new CommentSection().coursesRender();
+console.log(componentArray);
