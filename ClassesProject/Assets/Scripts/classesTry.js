@@ -137,15 +137,15 @@ class AuthorNameAndCourseCount extends CourseComponent {
   }
 }
 
-class CommentSection extends CourseComponent {
+class CourseSection extends CourseComponent {
   constructor() {
     super();
   }
 
   coursesRender() {
-    const coursesList = document.getElementById("courses-section")
-    const courseEl = document.createElement("div");;
-    courseEl.className = 'course-list-element'
+    const coursesList = document.getElementById('courses-section');
+    const courseEl = document.createElement('div');
+    courseEl.className = 'course-list-element';
     for (const courseComponent of componentArray) {
       courseEl.innerHTML += `
      <div class="container mt-2 mb-2 col-md-6">
@@ -162,7 +162,9 @@ class CommentSection extends CourseComponent {
        <p class="text-center">${courseComponent.courseContent}</p>
        <div class="row">
          <div class="col-md-6 text-center">
-           <button id="${courseComponent.id}" name="comments" class="btn btn-primary rounded-pill px-3" type="button " data-bs-toggle="modal" data-bs-target="#comment-modal">
+           <button id="${
+             courseComponent.id
+           }" name="comments" class="btn btn-primary rounded-pill px-3" type="button " data-bs-toggle="modal" data-bs-target="#comment-modal">
              Comments: ${courseComponent.courseComments.length}
            </button>
          </div>
@@ -173,12 +175,61 @@ class CommentSection extends CourseComponent {
      </div>
      `;
     }
-    coursesList.append(courseEl)
+    coursesList.append(courseEl);
+  }
+
+  commentsRender() {
+    const commentSection = document.getElementsByName('comments');
+    const modalHeader = document.getElementById('header-modal');
+    const modalBody = document.getElementById('header-body');
+    const modalElement = document.createElement('div');
+    console.log(commentSection);
+    commentSection.forEach((buttonEl) => {
+      buttonEl.addEventListener('click', (event) => {
+        const buttonId = +event.target.id;
+        console.log(typeof buttonId);
+        console.log(`Button Id: ${buttonId}`);
+        for (const authorComp of componentArray) {
+          for (const comment of authorComp.courseComments) {
+            if (buttonId === authorComp.id) {
+              modalHeader.innerHTML = `
+              <h1 class="modal-title fs-5" id="comment-modal-Label">
+              Comments for "${authorComp.courseTitle}"
+            </h1>
+              `;
+              modalElement.innerHTML += ` 
+            <div class="container mt-2 mb-2 shadow-sm">
+               <div class="lc-block">
+             <div editable="rich">
+               <h4><strong>${comment.author}</strong></h4>
+             </div>
+             <h5>${comment.text}</h5>
+             <div editable="rich">
+               <p></p>
+             </div>
+           </div>
+         </div>`;
+            }
+          }
+          modalBody.append(modalElement);
+          
+        }
+      });
+    });
+  }
+
+  allRender() {
+    this.coursesRender();
+    this.commentsRender();
   }
 }
 
-class Modal {}
-
 new AuthorNameAndCourseCount().authorRender();
-new CommentSection().coursesRender();
+new CourseSection().allRender();
 console.log(componentArray);
+
+for (const authorComp of componentArray) {
+  for (const comment of authorComp.courseComments) {
+    console.log(comment);
+  }
+}
