@@ -182,13 +182,13 @@ class CourseSection extends CourseComponent {
     const commentSection = document.getElementsByName('comments');
     const modalHeader = document.getElementById('header-modal');
     const modalBody = document.getElementById('header-body');
-    const modalElement = document.createElement('div');
     console.log(commentSection);
     commentSection.forEach((buttonEl) => {
       buttonEl.addEventListener('click', (event) => {
         const buttonId = +event.target.id;
         console.log(typeof buttonId);
         console.log(`Button Id: ${buttonId}`);
+        modalBody.innerHTML = '';
         for (const authorComp of componentArray) {
           for (const comment of authorComp.courseComments) {
             if (buttonId === authorComp.id) {
@@ -197,7 +197,7 @@ class CourseSection extends CourseComponent {
               Comments for "${authorComp.courseTitle}"
             </h1>
               `;
-              modalElement.innerHTML += ` 
+              modalBody.innerHTML += ` 
             <div class="container mt-2 mb-2 shadow-sm">
                <div class="lc-block">
              <div editable="rich">
@@ -211,8 +211,6 @@ class CourseSection extends CourseComponent {
          </div>`;
             }
           }
-          modalBody.append(modalElement);
-          
         }
       });
     });
