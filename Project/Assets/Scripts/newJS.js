@@ -90,7 +90,7 @@ for (const author in pureAuthorArr) {
       </div>
     </div>
   </div>`;
-  courseCount = 0;
+  courseCount = 0; 
 }
 
 // Adding comments.
@@ -142,7 +142,7 @@ const showingComments = () => {
         </h1>
           `;
           modalBody.innerHTML = '';
-          for (c in data[i].comments) {
+          for (const c in data[i].comments) {
             modalBody.innerHTML += ` 
             <div class="container mt-2 mb-2 shadow-sm">
                <div class="lc-block">

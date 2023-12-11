@@ -28,45 +28,45 @@ const setTimer = async (duration) => {
 };
 
 //promise chaining
-async function trackUserHandler() {
-  // async on declarations;
-  let posData;
-  let timerData;
-  try {
-    posData = await getPosition();
-    timerData = await setTimer(2000); // await keyword.
-  } catch (error) {
-    console.log(error);
-  }
-  console.log(timerData, posData);
+// async function trackUserHandler() {
+//   // async on declarations;
+//   let posData;
+//   let timerData;
+//   try {
+//     posData = await getPosition();
+//     timerData = await setTimer(2000); // await keyword.
+//   } catch (error) {
+//     console.log(error);
+//   }
+//   console.log(timerData, posData);
 
-  setTimer(1000).then(() => {
-    console.log('Timer done!');
-  });
-  console.log('Getting Position...');
-}
-
-//  // using .then() and .catch() blocks.
-// function trackUserHandler() {
-//   let positionData;
-
-//   getPosition()
-//     .then((posData) => {
-//       positionData = posData;
-//       return setTimer(2000);
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       return 'on we go...';
-//     })
-//     .then((data) => {
-//       console.log(data, positionData);
-//     });
 //   setTimer(1000).then(() => {
 //     console.log('Timer done!');
 //   });
-//   console.log('Getting position...');
+//   console.log('Getting Position...');
 // }
+
+ // using .then() and .catch() blocks.
+function trackUserHandler() {
+  let positionData;
+
+  getPosition()
+    .then((posData) => {
+      positionData = posData;
+      return setTimer(2000);
+    })
+    .catch((err) => {
+      console.log(err);
+      return 'on we go...';
+    })
+    .then((data) => {
+      console.log(data, positionData);
+    });
+  setTimer(1000).then(() => {
+    console.log('Timer done!');
+  });
+  console.log('Getting position...');
+}
 
 button.addEventListener('click', trackUserHandler); // Async task, handed to the browser and handled by it.
 
