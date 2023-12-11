@@ -182,7 +182,6 @@ class CourseSection extends CourseComponent {
     const commentSection = document.getElementsByName('comments');
     const modalHeader = document.getElementById('header-modal');
     const modalBody = document.getElementById('header-body');
-    console.log(commentSection);
     commentSection.forEach((buttonEl) => {
       buttonEl.addEventListener('click', (event) => {
         const buttonId = +event.target.id;
@@ -216,7 +215,8 @@ class CourseSection extends CourseComponent {
   }
 
   addingComments()  {
-    
+    const commentAuthorName = document.getElementById('comment-username-input');
+    const commentText = document.getElementById('comment-input')
   }
 
   allRender() {
