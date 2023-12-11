@@ -186,7 +186,6 @@ class CourseSection extends CourseComponent {
     commentSection.forEach((buttonEl) => {
       buttonEl.addEventListener('click', (event) => {
         const buttonId = +event.target.id;
-        console.log(typeof buttonId);
         console.log(`Button Id: ${buttonId}`);
         modalBody.innerHTML = '';
         for (const authorComp of componentArray) {
@@ -214,6 +213,10 @@ class CourseSection extends CourseComponent {
         }
       });
     });
+  }
+
+  addingComments()  {
+    
   }
 
   allRender() {
