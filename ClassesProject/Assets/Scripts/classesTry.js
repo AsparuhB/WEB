@@ -150,6 +150,7 @@ class CourseSection extends CourseComponent {
     const courseEl = document.createElement('div');
     courseEl.className = 'course-list-element';
     for (const courseComponent of componentArray) {
+    COMMENT_COUNT = courseComponent.courseComments.length
       courseEl.innerHTML += `
      <div class="container mt-2 mb-2 col-md-6">
      <!-- Courses section -->
@@ -168,7 +169,7 @@ class CourseSection extends CourseComponent {
            <button id="${
              courseComponent.id
            }" name="comments" class="btn btn-primary rounded-pill px-3" type="button " data-bs-toggle="modal" data-bs-target="#comment-modal">
-             Comments: ${courseComponent.courseComments.length}
+             Comments: ${COMMENT_COUNT}
            </button>
          </div>
          <div class="col-md-6 text-center">
@@ -185,10 +186,11 @@ class CourseSection extends CourseComponent {
     const commentSection = document.getElementsByName('comments');
     const modalHeader = document.getElementById('header-modal');
     const modalBody = document.getElementById('header-body');
-    console.log(commentSection);
     commentSection.forEach((buttonEl) => {
       buttonEl.addEventListener('click', (event) => {
         const buttonId = +event.target.id;
+        CURRENT_COURSE_ID = +buttonId;
+
         console.log(`Button Id: ${buttonId}`);
         modalBody.innerHTML = '';
         for (const authorComp of componentArray) {
@@ -218,11 +220,44 @@ class CourseSection extends CourseComponent {
     });
   }
 
-  addingComments()  {
+  addingComments() {
+    const commentAuthorName = document.getElementById('comment-username-input');
+    const commentText = document.getElementById('comment-input');
+    const commentInputButton = document.getElementById('comment-input-button');
+    commentInputButton.addEventListener('click', this.addingComments);
+
+    // console.log(componentArray[0].courseComments)
+    const usernameCommentInputValue = commentAuthorName.value;
+    const commentInputValue = commentText.value;
+    let commentId =
+      componentArray[CURRENT_COURSE_ID -1].courseComments[
+        componentArray[CURRENT_COURSE_ID - 1].courseComments.length - 1
+      ].id;
+
+    const newComment = {
+      id: commentId + 1,
+      text: commentInputValue,
+      author: usernameCommentInputValue,
+      timestamp: Date(Date.now().toString()),
+    };
+    componentArray[CURRENT_COURSE_ID - 1].courseComments.push(newComment);
+    console.log(componentArray[CURRENT_COURSE_ID - 1].courseComments);
+    commentAuthorName.value = '';
+    commentText.value = '';
+    COMMENT_COUNT +=1;
     
+    // tomorrow I show you.
+  }
+
+  addedCommentRender() {
+    const commentInputButton = document.getElementById('comment-input-button');
+    commentInputButton.addEventListener('click', this.addingComments);
+  
   }
 
   allRender() {
+
+    this.addedCommentRender();
     this.coursesRender();
     this.commentsRender();
   }
