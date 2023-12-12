@@ -200,6 +200,7 @@ const courseData = () => {
   }
 };
 
+// showing all courses logic.
 pAuthors.innerHTML = `
   <p id="pAuthors">Authors: ${pureAuthorArr.length}</p>
   `;

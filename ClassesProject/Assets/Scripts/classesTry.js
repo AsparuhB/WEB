@@ -246,7 +246,7 @@ class CourseSection extends CourseComponent {
     commentText.value = '';
     COMMENT_COUNT +=1;
     
-    // tomorrow I show you.
+    // Need to fix! Must update UI!
   }
 
   addedCommentRender() {
@@ -263,8 +263,18 @@ class CourseSection extends CourseComponent {
   }
 }
 
+class ShowingAllCourses extends CourseSection {
+  allAuthorsAndCoursesRender() {
+    const allAuthorsLength = document.getElementById("pAuthors")
+    // const allCoursesLength = allAuthorsLength.nextElementSibling
+    allAuthorsLength.innerHTML = `
+    <p id="pAuthors">Authors: ${authorListArr.length}</p>`
+  }
+}
+
 new AuthorNameAndCourseCount().authorRender();
 new CourseSection().allRender();
+new ShowingAllCourses().allAuthorsAndCoursesRender();
 console.log(componentArray);
 
 for (const authorComp of componentArray) {
