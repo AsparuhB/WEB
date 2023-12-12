@@ -147,11 +147,10 @@ class CourseSection extends CourseComponent {
 
   coursesRender() {
     const coursesList = document.getElementById('courses-section');
-    let co
     const courseEl = document.createElement('div');
     courseEl.className = 'course-list-element';
     for (const courseComponent of componentArray) {
-      let COMMENT_COUNT = courseComponent.courseComments.length
+    COMMENT_COUNT = courseComponent.courseComments.length
       courseEl.innerHTML += `
      <div class="container mt-2 mb-2 col-md-6">
      <!-- Courses section -->
@@ -246,11 +245,14 @@ class CourseSection extends CourseComponent {
     commentAuthorName.value = '';
     commentText.value = '';
     COMMENT_COUNT +=1;
+    
+    // tomorrow I show you.
   }
 
   addedCommentRender() {
     const commentInputButton = document.getElementById('comment-input-button');
     commentInputButton.addEventListener('click', this.addingComments);
+  
   }
 
   allRender() {
