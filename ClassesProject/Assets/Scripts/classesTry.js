@@ -275,7 +275,7 @@ class ShowingAllCourses extends CourseSection {
   renderingAllCourses() {
     this.allAuthorsAndCoursesRender();
     const allCoursesButton = document.getElementById("myButton");
-    
+    allCoursesButton.addEventListener('click', this.coursesRender)
   }
 }
 
