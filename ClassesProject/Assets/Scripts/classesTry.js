@@ -2,7 +2,6 @@ const authorListArr = [];
 const componentArray = [];
 
 let CURRENT_COURSE_ID = 0;
-let COMMENT_COUNT = 0;
 
 class CourseComponent {
   constructor(
@@ -140,6 +139,7 @@ class AuthorNameAndCourseCount extends CourseComponent {
   }
 }
 
+// various things with the courses... turned out, not the way I want it...
 class CourseSection extends CourseComponent {
   constructor() {
     super();
@@ -150,7 +150,8 @@ class CourseSection extends CourseComponent {
     const courseEl = document.createElement('div');
     courseEl.className = 'course-list-element';
     for (const courseComponent of componentArray) {
-      COMMENT_COUNT = courseComponent.courseComments.length;
+      // console.log(courseComponent.courseComments);
+      // COMMENT_COUNT = courseComponent.courseComments.length;
       courseEl.innerHTML += `
      <div class="container mt-2 mb-2 col-md-6">
      <!-- Courses section -->
@@ -169,7 +170,7 @@ class CourseSection extends CourseComponent {
            <button id="${
              courseComponent.id
            }" name="comments" class="btn btn-primary rounded-pill px-3" type="button " data-bs-toggle="modal" data-bs-target="#comment-modal">
-             Comments: ${COMMENT_COUNT}
+             Comments: ${courseComponent.courseComments.length}
            </button>
          </div>
          <div class="col-md-6 text-center">
@@ -201,7 +202,7 @@ class CourseSection extends CourseComponent {
               Comments for "${authorComp.courseTitle}"
             </h1>
               `;
-              modalBody.innerHTML += ` 
+              modalBody.innerHTML += `
             <div class="container mt-2 mb-2 shadow-sm">
                <div class="lc-block">
              <div editable="rich">
@@ -223,10 +224,7 @@ class CourseSection extends CourseComponent {
   addingComments() {
     const commentAuthorName = document.getElementById('comment-username-input');
     const commentText = document.getElementById('comment-input');
-    const commentInputButton = document.getElementById('comment-input-button');
-    commentInputButton.addEventListener('click', this.addingComments);
 
-    // console.log(componentArray[0].courseComments)
     const usernameCommentInputValue = commentAuthorName.value;
     const commentInputValue = commentText.value;
     let commentId =
@@ -241,12 +239,16 @@ class CourseSection extends CourseComponent {
       timestamp: Date(Date.now().toString()),
     };
     componentArray[CURRENT_COURSE_ID - 1].courseComments.push(newComment);
-    console.log(componentArray[CURRENT_COURSE_ID - 1].courseComments);
+    // console.log(componentArray[CURRENT_COURSE_ID - 1].courseComments);
     commentAuthorName.value = '';
     commentText.value = '';
-    COMMENT_COUNT += 1;
 
-    // Need to fix! Must update UI!
+    const commentButton = document.getElementsByName('comments');
+    if (commentButton[CURRENT_COURSE_ID - 1].id == CURRENT_COURSE_ID) {
+      commentButton[CURRENT_COURSE_ID - 1].innerHTML = `Comments: ${
+        componentArray[CURRENT_COURSE_ID - 1].courseComments.length
+      }`;
+    }
   }
 
   addedCommentRender() {
@@ -255,13 +257,13 @@ class CourseSection extends CourseComponent {
   }
 
   allRender() {
-    this.addedCommentRender();
     this.coursesRender();
     this.commentsRender();
+    this.addedCommentRender();
   }
 }
 
-class ShowingAllCourses extends CourseSection {
+class ShowingAllCourses {
   allAuthorsAndCoursesRender() {
     const allAuthorsLength = document.getElementById('allAuthors');
     const allCoursesLength = allAuthorsLength.nextElementSibling;
@@ -274,18 +276,16 @@ class ShowingAllCourses extends CourseSection {
 
   renderingAllCourses() {
     this.allAuthorsAndCoursesRender();
-    const allCoursesButton = document.getElementById("myButton");
-    allCoursesButton.addEventListener('click', this.coursesRender)
+    const allCoursesButton = document.getElementById('myButton');
+    allCoursesButton.addEventListener('click', this.coursesRender);
   }
 }
+
+
 
 new AuthorNameAndCourseCount().authorRender();
 new CourseSection().allRender();
 new ShowingAllCourses().renderingAllCourses();
 console.log(componentArray);
 
-for (const authorComp of componentArray) {
-  for (const comment of authorComp.courseComments) {
-    console.log(comment);
-  }
-}
+
