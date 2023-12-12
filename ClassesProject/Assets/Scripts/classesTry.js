@@ -1,6 +1,9 @@
 const authorListArr = [];
 const componentArray = [];
 
+let CURRENT_COURSE_ID = 0;
+let COMMENT_COUNT = 0
+
 class CourseComponent {
   constructor(
     id,
