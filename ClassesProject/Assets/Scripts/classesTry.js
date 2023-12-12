@@ -2,7 +2,7 @@ const authorListArr = [];
 const componentArray = [];
 
 let CURRENT_COURSE_ID = 0;
-let COMMENT_COUNT = 0
+let COMMENT_COUNT = 0;
 
 class CourseComponent {
   constructor(
@@ -150,7 +150,7 @@ class CourseSection extends CourseComponent {
     const courseEl = document.createElement('div');
     courseEl.className = 'course-list-element';
     for (const courseComponent of componentArray) {
-    COMMENT_COUNT = courseComponent.courseComments.length
+      COMMENT_COUNT = courseComponent.courseComments.length;
       courseEl.innerHTML += `
      <div class="container mt-2 mb-2 col-md-6">
      <!-- Courses section -->
@@ -230,7 +230,7 @@ class CourseSection extends CourseComponent {
     const usernameCommentInputValue = commentAuthorName.value;
     const commentInputValue = commentText.value;
     let commentId =
-      componentArray[CURRENT_COURSE_ID -1].courseComments[
+      componentArray[CURRENT_COURSE_ID - 1].courseComments[
         componentArray[CURRENT_COURSE_ID - 1].courseComments.length - 1
       ].id;
 
@@ -244,19 +244,17 @@ class CourseSection extends CourseComponent {
     console.log(componentArray[CURRENT_COURSE_ID - 1].courseComments);
     commentAuthorName.value = '';
     commentText.value = '';
-    COMMENT_COUNT +=1;
-    
+    COMMENT_COUNT += 1;
+
     // Need to fix! Must update UI!
   }
 
   addedCommentRender() {
     const commentInputButton = document.getElementById('comment-input-button');
     commentInputButton.addEventListener('click', this.addingComments);
-  
   }
 
   allRender() {
-
     this.addedCommentRender();
     this.coursesRender();
     this.commentsRender();
@@ -265,16 +263,25 @@ class CourseSection extends CourseComponent {
 
 class ShowingAllCourses extends CourseSection {
   allAuthorsAndCoursesRender() {
-    const allAuthorsLength = document.getElementById("pAuthors")
-    // const allCoursesLength = allAuthorsLength.nextElementSibling
+    const allAuthorsLength = document.getElementById('allAuthors');
+    const allCoursesLength = allAuthorsLength.nextElementSibling;
     allAuthorsLength.innerHTML = `
-    <p id="pAuthors">Authors: ${authorListArr.length}</p>`
+    <p class="container" id="allAuthors">Authors: ${authorListArr.length}</p>`;
+    allCoursesLength.innerHTML = `
+    <p class="container">Courses:${data.length}</p>
+    `;
+  }
+
+  renderingAllCourses() {
+    this.allAuthorsAndCoursesRender();
+    const allCoursesButton = document.getElementById("myButton");
+    
   }
 }
 
 new AuthorNameAndCourseCount().authorRender();
 new CourseSection().allRender();
-new ShowingAllCourses().allAuthorsAndCoursesRender();
+new ShowingAllCourses().renderingAllCourses();
 console.log(componentArray);
 
 for (const authorComp of componentArray) {
