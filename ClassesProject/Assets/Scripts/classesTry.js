@@ -149,6 +149,7 @@ class CourseSection extends CourseComponent {
     const coursesList = document.getElementById('courses-section');
     const courseEl = document.createElement('div');
     courseEl.className = 'course-list-element';
+    coursesList.innerHTML = '';
     for (const courseComponent of componentArray) {
       // console.log(courseComponent.courseComments);
       // COMMENT_COUNT = courseComponent.courseComments.length;
@@ -239,7 +240,7 @@ class CourseSection extends CourseComponent {
       timestamp: Date(Date.now().toString()),
     };
     componentArray[CURRENT_COURSE_ID - 1].courseComments.push(newComment);
-    console.log(componentArray[CURRENT_COURSE_ID - 1].courseComments);
+    // console.log(componentArray[CURRENT_COURSE_ID - 1].courseComments);
     commentAuthorName.value = '';
     commentText.value = '';
 
@@ -264,18 +265,74 @@ class CourseSection extends CourseComponent {
   //     targetEl.remove();
   //     componentArray[0].courseComments.pop();
   //   });
-   
+
   // }
+
+
+  showingSpecificAuthor() {
+    const authorSelectionElement = document.getElementsByName('authorElements');
+    const coursesList = document.getElementById('courses-section');
+    console.log(authorSelectionElement);
+    authorSelectionElement.forEach((element) => {
+      element.addEventListener('click', () => {
+        const selectedAuthorId = element.id;
+        console.log('Selected Author ID:', selectedAuthorId);
+        // Clear the courses list before rendering new courses
+        coursesList.innerHTML = '';
+
+        // Filter courses for the selected author
+        const coursesByAuthor = componentArray.filter((course) => {
+          console.log(course);
+          console.log('Course Author ID:', course.id);
+          return course.id == selectedAuthorId;
+        });
+
+        // Render courses for the selected author
+        coursesByAuthor.forEach((course) => {
+          coursesList.innerHTML += `
+            <div class="container mt-2 mb-2 col-md-6">
+              <!-- Courses section -->
+              <div class="container shadow-sm">
+                <div class="text-center">
+                  <img
+                    src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pixelstalk.net%2Fwp-content%2Fuploads%2F2016%2F08%2FFunny-Random-Wallpaper-1.jpg&f=1&nofb=1&ipt=c26e9fc128e917745d19e4a14e2fecd94ccc42f6c03f6c0b14b21bbaf2479cae&ipo=images"
+                    class="img-fluid"
+                    alt="..."
+                  />
+                </div>
+                <h2 class="text-center">${course.courseTitle}</h2>
+                <p class="text-center">${course.courseContent}</p>
+                <div class="row">
+                  <div class="col-md-6 text-center">
+                    <button id="${course.id}" name="comments" class="btn btn-primary rounded-pill px-3" type="button" data-bs-toggle="modal" data-bs-target="#comment-modal">
+                      Comments: ${course.courseComments.length}
+                    </button>
+                  </div>
+                  <div class="col-md-6 text-center">
+                    <p>${new Date(course.timeStamp)}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        });
+        this.commentsRender()
+      });
+    });
+    
+  }
+
 
   allRender() {
     this.coursesRender();
     this.commentsRender();
     this.addedCommentRender();
+    this.showingSpecificAuthor();
     // this.removingComments()
   }
 }
 
-class ShowingAllCourses {
+class ShowingAllCourses extends CourseSection{
   allAuthorsAndCoursesRender() {
     const allAuthorsLength = document.getElementById('allAuthors');
     const allCoursesLength = allAuthorsLength.nextElementSibling;
@@ -289,7 +346,7 @@ class ShowingAllCourses {
   renderingAllCourses() {
     this.allAuthorsAndCoursesRender();
     const allCoursesButton = document.getElementById('myButton');
-    allCoursesButton.addEventListener('click', this.coursesRender);
+    allCoursesButton.addEventListener('click', this.allRender.bind(this));
   }
 }
 
