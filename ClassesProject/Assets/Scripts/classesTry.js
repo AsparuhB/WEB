@@ -203,7 +203,7 @@ class CourseSection extends CourseComponent {
             </h1>
               `;
               modalBody.innerHTML += `
-            <div class="container mt-2 mb-2 shadow-sm">
+            <div class="container mt-2 mb-2 shadow-sm" name="comments">
                <div class="lc-block">
              <div editable="rich">
                <h4><strong>${comment.author}</strong></h4>
@@ -239,7 +239,7 @@ class CourseSection extends CourseComponent {
       timestamp: Date(Date.now().toString()),
     };
     componentArray[CURRENT_COURSE_ID - 1].courseComments.push(newComment);
-    // console.log(componentArray[CURRENT_COURSE_ID - 1].courseComments);
+    console.log(componentArray[CURRENT_COURSE_ID - 1].courseComments);
     commentAuthorName.value = '';
     commentText.value = '';
 
@@ -255,11 +255,23 @@ class CourseSection extends CourseComponent {
     const commentInputButton = document.getElementById('comment-input-button');
     commentInputButton.addEventListener('click', this.addingComments);
   }
+  // removing comments. needs more work.
+  // removingComments() {
+  //   const modalBody = document.getElementById('header-body');
+  //   modalBody.addEventListener('click', (event) => {
+  //     let targetEl = event.target.closest('.lc-block');
+  //     console.log(targetEl);
+  //     targetEl.remove();
+  //     componentArray[0].courseComments.pop();
+  //   });
+   
+  // }
 
   allRender() {
     this.coursesRender();
     this.commentsRender();
     this.addedCommentRender();
+    // this.removingComments()
   }
 }
 
@@ -281,11 +293,7 @@ class ShowingAllCourses {
   }
 }
 
-
-
 new AuthorNameAndCourseCount().authorRender();
 new CourseSection().allRender();
 new ShowingAllCourses().renderingAllCourses();
 console.log(componentArray);
-
-
