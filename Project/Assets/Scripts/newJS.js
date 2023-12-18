@@ -213,6 +213,7 @@ pCourses.innerHTML = `
 
 const showingSpecificAuthor = () => {
   authorSelectionElement.forEach((element) => {
+    console.log(element);
     element.addEventListener('click', () => {
       for (const i in data) {
         if (element.id === data[i].author) {

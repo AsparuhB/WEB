@@ -107,11 +107,12 @@ class AuthorNameAndCourseCount extends CourseComponent {
     const authorListEl = document.createElement('div');
     authorListEl.className = 'author-list-element';
     for (const author of authorListArr) {
+      console.log(author);
       const authorEl = document.createElement('div');
       authorEl.className = 'authorLEl';
       authorEl.innerHTML = `
       <div id="${
-        author.id
+        author.courseAuthor
       }" name="authorElements" class="container mt-2 mb-2 shadow-sm">
          <div class="lc-block">
        <img
