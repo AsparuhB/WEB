@@ -122,7 +122,7 @@ class AuthorNameAndCourseCount extends CourseComponent {
          loading="lazy"
        />
        <div editable="rich">
-         <h4><strong>${author.courseAuthor}</strong></h4>
+         <h4><strong name="authorName">${author.courseAuthor}</strong></h4>
        </div>
        <h5>Courses: <span class="badge bg-secondary">${
          author.courseCount
@@ -204,7 +204,7 @@ class CourseSection extends CourseComponent {
             </h1>
               `;
               modalBody.innerHTML += `
-            <div class="container mt-2 mb-2 shadow-sm" name="comments">
+            <div class="container mt-2 mb-2 shadow-sm">
                <div class="lc-block">
              <div editable="rich">
                <h4><strong>${comment.author}</strong></h4>
@@ -240,15 +240,19 @@ class CourseSection extends CourseComponent {
       timestamp: Date(Date.now().toString()),
     };
     componentArray[CURRENT_COURSE_ID - 1].courseComments.push(newComment);
+    console.log(componentArray[CURRENT_COURSE_ID - 1]);
     // console.log(componentArray[CURRENT_COURSE_ID - 1].courseComments);
     commentAuthorName.value = '';
     commentText.value = '';
 
     const commentButton = document.getElementsByName('comments');
+    console.log(commentButton.inner);
+    console.log("current course: " + CURRENT_COURSE_ID);
     if (commentButton[CURRENT_COURSE_ID - 1].id == CURRENT_COURSE_ID) {
-      commentButton[CURRENT_COURSE_ID - 1].innerHTML = `Comments: ${
-        componentArray[CURRENT_COURSE_ID - 1].courseComments.length
-      }`;
+      commentButton[CURRENT_COURSE_ID - 1].innerHTML = '';
+      commentButton[CURRENT_COURSE_ID - 1].innerHTML =
+        'Comments: ' +
+        componentArray[CURRENT_COURSE_ID - 1].courseComments.length;
     }
   }
 
@@ -268,26 +272,27 @@ class CourseSection extends CourseComponent {
 
   // }
 
-
   showingSpecificAuthor() {
     const authorSelectionElement = document.getElementsByName('authorElements');
     const coursesList = document.getElementById('courses-section');
-    console.log(authorSelectionElement);
     authorSelectionElement.forEach((element) => {
+
       element.addEventListener('click', () => {
+        console.log(element);
         const selectedAuthorId = element.id;
         console.log('Selected Author ID:', selectedAuthorId);
-        // Clear the courses list before rendering new courses
+        CURRENT_COURSE_ID = +element.id;
+        console.log('Course Id: ' + CURRENT_COURSE_ID);
+        console.log(componentArray[CURRENT_COURSE_ID - 1]);
+
         coursesList.innerHTML = '';
 
-        // Filter courses for the selected author
         const coursesByAuthor = componentArray.filter((course) => {
-          console.log(course);
-          console.log('Course Author ID:', course.id);
-          return course.id == selectedAuthorId;
+          // console.log(course);
+          return course.courseAuthor == selectedAuthorId;
         });
+        // console.log(coursesByAuthor)
 
-        // Render courses for the selected author
         coursesByAuthor.forEach((course) => {
           coursesList.innerHTML += `
             <div class="container mt-2 mb-2 col-md-6">
@@ -304,7 +309,9 @@ class CourseSection extends CourseComponent {
                 <p class="text-center">${course.courseContent}</p>
                 <div class="row">
                   <div class="col-md-6 text-center">
-                    <button id="${course.id}" name="comments" class="btn btn-primary rounded-pill px-3" type="button" data-bs-toggle="modal" data-bs-target="#comment-modal">
+                    <button id="${
+                      course.id
+                    }" name="comments" class="btn btn-primary rounded-pill px-3" type="button" data-bs-toggle="modal" data-bs-target="#comment-modal">
                       Comments: ${course.courseComments.length}
                     </button>
                   </div>
@@ -316,12 +323,10 @@ class CourseSection extends CourseComponent {
             </div>
           `;
         });
-        this.commentsRender()
+        this.commentsRender();
       });
     });
-    
   }
-
 
   allRender() {
     this.coursesRender();
@@ -332,7 +337,7 @@ class CourseSection extends CourseComponent {
   }
 }
 
-class ShowingAllCourses extends CourseSection{
+class ShowingAllCourses extends CourseSection {
   allAuthorsAndCoursesRender() {
     const allAuthorsLength = document.getElementById('allAuthors');
     const allCoursesLength = allAuthorsLength.nextElementSibling;
