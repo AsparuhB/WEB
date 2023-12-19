@@ -3,6 +3,7 @@ const componentArray = [];
 
 let CURRENT_COURSE_ID = 0;
 
+
 class CourseComponent {
   constructor(
     id,
@@ -107,7 +108,7 @@ class AuthorNameAndCourseCount extends CourseComponent {
     const authorListEl = document.createElement('div');
     authorListEl.className = 'author-list-element';
     for (const author of authorListArr) {
-      console.log(author);
+      // console.log(author);
       const authorEl = document.createElement('div');
       authorEl.className = 'authorLEl';
       authorEl.innerHTML = `
@@ -247,14 +248,14 @@ class CourseSection extends CourseComponent {
     commentText.value = '';
 
     const commentButton = document.getElementsByName('comments');
-    console.log(commentButton.inner);
-    console.log("current course: " + CURRENT_COURSE_ID);
-    if (commentButton[CURRENT_COURSE_ID - 1].id == CURRENT_COURSE_ID) {
-      commentButton[CURRENT_COURSE_ID - 1].innerHTML = '';
-      commentButton[CURRENT_COURSE_ID - 1].innerHTML =
-        'Comments: ' +
-        componentArray[CURRENT_COURSE_ID - 1].courseComments.length;
-    }
+    // console.log(commentButton.inner);
+    console.log('Current course: ' + CURRENT_COURSE_ID);
+    // if (commentButton[CURRENT_COURSE_ID - 1].id == CURRENT_COURSE_ID) {
+    //   commentButton[CURRENT_COURSE_ID - 1].innerHTML = '';
+    //   commentButton[CURRENT_COURSE_ID - 1].innerHTML =
+    //     'Comments: ' +
+    //     componentArray[CURRENT_COURSE_ID - 1].courseComments.length;
+    // }
   }
 
   addedCommentRender() {
@@ -277,14 +278,13 @@ class CourseSection extends CourseComponent {
     const authorSelectionElement = document.getElementsByName('authorElements');
     const coursesList = document.getElementById('courses-section');
     authorSelectionElement.forEach((element) => {
-
       element.addEventListener('click', () => {
-        console.log(element);
+        // console.log(element);
         const selectedAuthorId = element.id;
         console.log('Selected Author ID:', selectedAuthorId);
-        CURRENT_COURSE_ID = +element.id;
+        CURRENT_COURSE_ID = element.id;
         console.log('Course Id: ' + CURRENT_COURSE_ID);
-        console.log(componentArray[CURRENT_COURSE_ID - 1]);
+        // console.log(componentArray[CURRENT_COURSE_ID - 1]);
 
         coursesList.innerHTML = '';
 
