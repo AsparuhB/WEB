@@ -3,7 +3,6 @@ const componentArray = [];
 
 let CURRENT_COURSE_ID = 0;
 
-
 class CourseComponent {
   constructor(
     id,
@@ -247,15 +246,16 @@ class CourseSection extends CourseComponent {
     commentAuthorName.value = '';
     commentText.value = '';
 
-    const commentButton = document.getElementsByName('comments');
+    const commentButton = document.getElementById(CURRENT_COURSE_ID);
     // console.log(commentButton.inner);
     console.log('Current course: ' + CURRENT_COURSE_ID);
-    // if (commentButton[CURRENT_COURSE_ID - 1].id == CURRENT_COURSE_ID) {
-    //   commentButton[CURRENT_COURSE_ID - 1].innerHTML = '';
-    //   commentButton[CURRENT_COURSE_ID - 1].innerHTML =
-    //     'Comments: ' +
-    //     componentArray[CURRENT_COURSE_ID - 1].courseComments.length;
-    // }
+    console.log(commentButton.id, CURRENT_COURSE_ID);
+    if (commentButton.id == CURRENT_COURSE_ID) {
+      commentButton.innerHTML = '';
+      commentButton.innerHTML =
+        'Comments: ' +
+        componentArray[CURRENT_COURSE_ID - 1].courseComments.length;
+    }
   }
 
   addedCommentRender() {
