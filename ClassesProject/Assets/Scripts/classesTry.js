@@ -24,7 +24,7 @@ class CourseComponent {
       (this.courseComments = courseComments);
     this.courseCount = courseCount;
   }
- // field that creates the individual objects and pushes them to an array
+  // field that creates the individual objects and pushes them to an array
   createEL() {
     for (const el of data) {
       const component = new CourseComponent(
@@ -66,7 +66,7 @@ pictures = [
 function getRandomPicture(min, max) {
   return Math.random() * (max - min) + min;
 }
- // author section.
+// author section.
 class AuthorNameAndCourseCount extends CourseComponent {
   constructor(id, author, courseCount) {
     super(id, author);
@@ -74,7 +74,7 @@ class AuthorNameAndCourseCount extends CourseComponent {
       (this.authorName = author),
       (this.courseCount = courseCount);
   }
- // filtering authors, so there are no duplicates
+  // filtering authors, so there are no duplicates
   addingAndFilteringAuthors() {
     this.createEL();
     const encounteredAuthors = new Set();
@@ -92,7 +92,7 @@ class AuthorNameAndCourseCount extends CourseComponent {
       }
     }
   }
- // calculating and showing the courses of each author
+  // calculating and showing the courses of each author
   calculatingCourses() {
     this.addingAndFilteringAuthors();
     for (const author of authorListArr) {
@@ -104,7 +104,7 @@ class AuthorNameAndCourseCount extends CourseComponent {
       }
     }
   }
- // rendering the filtered authors and courses.
+  // rendering the filtered authors and courses.
   authorRender() {
     this.calculatingCourses();
     const authorSection = document.getElementById('authors');
@@ -144,7 +144,7 @@ class AuthorNameAndCourseCount extends CourseComponent {
   }
 }
 
- //differentiating the course section
+//differentiating the course section
 class CourseSection extends CourseComponent {
   constructor() {
     super();
@@ -188,7 +188,7 @@ class CourseSection extends CourseComponent {
     }
     coursesList.append(courseEl);
   }
- // rendering the comments for each course
+  // rendering the comments for each course
   commentsRender() {
     const commentSection = document.getElementsByName('comments');
     const modalHeader = document.getElementById('header-modal');
@@ -226,7 +226,7 @@ class CourseSection extends CourseComponent {
       });
     });
   }
- // implementing adding comment logic.
+  // implementing adding comment logic.
   addingComments() {
     const commentAuthorName = document.getElementById('comment-username-input');
     const commentText = document.getElementById('comment-input');
@@ -266,6 +266,7 @@ class CourseSection extends CourseComponent {
     const commentInputButton = document.getElementById('comment-input-button');
     commentInputButton.addEventListener('click', this.addingComments);
   }
+  
   // removing comments. needs more work.
   // removingComments() {
   //   const modalBody = document.getElementById('header-body');
@@ -275,9 +276,9 @@ class CourseSection extends CourseComponent {
   //     targetEl.remove();
   //     componentArray[0].courseComments.pop();
   //   });
-
   // }
- // showing specific author logic
+
+  // showing specific author logic
   showingSpecificAuthor() {
     const authorSelectionElement = document.getElementsByName('authorElements');
     const coursesList = document.getElementById('courses-section');
@@ -332,7 +333,7 @@ class CourseSection extends CourseComponent {
       });
     });
   }
- // rendering everything
+  // rendering everything
   allRender() {
     this.coursesRender();
     this.commentsRender();
@@ -341,7 +342,7 @@ class CourseSection extends CourseComponent {
     // this.removingComments()
   }
 }
- // showing all courses class
+// showing all courses class
 class ShowingAllCourses extends CourseSection {
   //rendering the total authors
   allAuthorsAndCoursesRender() {
@@ -353,7 +354,7 @@ class ShowingAllCourses extends CourseSection {
     <p class="container">Courses:${data.length}</p>
     `;
   }
- // rendering the total courses.
+  // rendering the total courses.
   renderingAllCourses() {
     this.allAuthorsAndCoursesRender();
     const allCoursesButton = document.getElementById('myButton');
