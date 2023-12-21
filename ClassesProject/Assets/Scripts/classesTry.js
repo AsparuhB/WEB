@@ -113,7 +113,7 @@ class AuthorNameAndCourseCount extends CourseComponent {
     for (const author of authorListArr) {
       // console.log(author);
       const authorEl = document.createElement('div');
-      authorEl.className = 'authorLEl';
+      authorEl.className = 'authorEl';
       authorEl.innerHTML = `
       <div id="${
         author.courseAuthor
@@ -180,7 +180,7 @@ class CourseSection extends CourseComponent {
            </button>
          </div>
          <div class="col-md-6 text-center">
-           <p>${Date(courseComponent.timeStamp)}</p>
+           <p>${new Date(courseComponent.timeStamp)}</p>
          </div>
        </div>
      </div>
@@ -193,8 +193,9 @@ class CourseSection extends CourseComponent {
     const commentSection = document.getElementsByName('comments');
     const modalHeader = document.getElementById('header-modal');
     const modalBody = document.getElementById('header-body');
-    commentSection.forEach((buttonEl) => {
-      buttonEl.addEventListener('click', (event) => {
+    // implementing event delegation ? Is it optimal ?
+    document.addEventListener('click', (event) => {
+      if (event.target.matches('.btn-primary')) {
         const buttonId = +event.target.id;
         CURRENT_COURSE_ID = +buttonId;
 
@@ -223,8 +224,41 @@ class CourseSection extends CourseComponent {
             }
           }
         }
-      });
+      }
     });
+    
+    // commentSection.forEach((buttonEl) => {
+    //   buttonEl.addEventListener('click', (event) => {
+    //     const buttonId = +event.target.id;
+    //     CURRENT_COURSE_ID = +buttonId;
+
+    //     console.log(`Button Id: ${buttonId}`);
+    //     modalBody.innerHTML = '';
+    //     for (const authorComp of componentArray) {
+    //       for (const comment of authorComp.courseComments) {
+    //         if (buttonId === authorComp.id) {
+    //           modalHeader.innerHTML = `
+    //           <h1 class="modal-title fs-5" id="comment-modal-Label">
+    //           Comments for "${authorComp.courseTitle}"
+    //         </h1>
+    //           `;
+    //           modalBody.innerHTML += `
+    //         <div class="container mt-2 mb-2 shadow-sm">
+    //            <div class="lc-block">
+    //          <div editable="rich">
+    //            <h4><strong>${comment.author}</strong></h4>
+    //          </div>
+    //          <h5>${comment.text}</h5>
+    //          <div editable="rich">
+    //            <p></p>
+    //          </div>
+    //        </div>
+    //      </div>`;
+    //         }
+    //       }
+    //     }
+    //   });
+    // });
   }
   // implementing adding comment logic.
   addingComments() {
@@ -266,7 +300,7 @@ class CourseSection extends CourseComponent {
     const commentInputButton = document.getElementById('comment-input-button');
     commentInputButton.addEventListener('click', this.addingComments);
   }
-  
+
   // removing comments. needs more work.
   // removingComments() {
   //   const modalBody = document.getElementById('header-body');
@@ -287,7 +321,7 @@ class CourseSection extends CourseComponent {
         // console.log(element);
         const selectedAuthorId = element.id;
         console.log('Selected Author ID:', selectedAuthorId);
-        CURRENT_COURSE_ID = element.id;
+        // CURRENT_COURSE_ID = element.id;
         console.log('Course Id: ' + CURRENT_COURSE_ID);
         // console.log(componentArray[CURRENT_COURSE_ID - 1]);
 
