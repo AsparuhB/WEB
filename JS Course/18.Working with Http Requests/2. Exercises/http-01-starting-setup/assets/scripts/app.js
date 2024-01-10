@@ -4,7 +4,8 @@
  xhr.open('GET', 'https://jsonplaceholder.typicode.com/posts');
 
  xhr.onload = function() {
-  console.log(xhr.response);
- };
+  const listOfPosts = xhr.response;
+
+};
 
  xhr.send();
