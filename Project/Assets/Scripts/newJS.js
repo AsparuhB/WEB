@@ -267,3 +267,5 @@ showingComments();
 
 commentInputButton.addEventListener('click', addingCourseComments);
 allCoursesButton.addEventListener('click', showingAllCourses);
+
+console.log(JSON.parse(courses.JSON));
