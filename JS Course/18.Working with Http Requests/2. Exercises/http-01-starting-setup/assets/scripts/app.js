@@ -12,4 +12,7 @@
 };
 
  xhr.send();
+
+ const listElemenenet = document.querySelector('.posts');
+ const postTemplate = document.getElementById("single-post")
  
