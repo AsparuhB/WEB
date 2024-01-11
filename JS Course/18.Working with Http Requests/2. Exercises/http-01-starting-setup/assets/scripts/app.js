@@ -17,7 +17,6 @@ function sendHttpRequest(method, url) {
 
     xhr.send();
   });
-  console.log(promise);
   return promise;
 }
 
@@ -28,7 +27,6 @@ async function fetchPosts() {
   );
 
   const listOfPosts = responseData;
-  console.log(listOfPosts);
   //sorting the posts and appending them
   for (const post of listOfPosts) {
     const postEl = document.importNode(postTemplate.content, true);
