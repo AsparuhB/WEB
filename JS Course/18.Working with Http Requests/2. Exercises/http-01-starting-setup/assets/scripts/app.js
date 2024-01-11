@@ -33,6 +33,7 @@ async function fetchPosts() {
     const postEl = document.importNode(postTemplate.content, true);
     postEl.querySelector('h2').textContent = post.title.toUpperCase();
     postEl.querySelector('p').textContent = post.body;
+    postEl.querySelector('li').id = post.id
     listElement.append(postEl);
   }
 }
