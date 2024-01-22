@@ -53,6 +53,9 @@ form.addEventListener('submit', (event) => {
   const enteredTitle = event.currentTarget.querySelector('#title').value;
   const enteredContent = event.currentTarget.querySelector('#content').value;
 
+  if (enteredTitle.trim() === '' || enteredContent.trim() === '') {
+    alert('Please add a valid input');
+  }
   createPost(enteredTitle, enteredContent);
 });
 createPost('Dummy', 'A dummy post!');
