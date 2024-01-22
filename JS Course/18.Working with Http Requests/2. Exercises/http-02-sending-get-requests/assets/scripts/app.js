@@ -13,6 +13,7 @@ function sendHttpRequest(method, url) {
       resolve(xhr.response);
       // const listOfPosts = JSON.parse(xhr.response);
     };
+    
     xhr.send();
   });
 

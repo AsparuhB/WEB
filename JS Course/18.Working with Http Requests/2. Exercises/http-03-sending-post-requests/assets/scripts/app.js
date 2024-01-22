@@ -9,12 +9,12 @@ function sendHttpRequest(method, url, data) {
 
     xhr.responseType = 'json';
 
-    xhr.onload = function() {
+    xhr.onload = function () {
       resolve(xhr.response);
       // const listOfPosts = JSON.parse(xhr.response);
     };
 
-    xhr.send(JSON.stringify(data));
+    xhr.send();
   });
 
   return promise;
@@ -34,16 +34,4 @@ async function fetchPosts() {
   }
 }
 
-async function createPost(title, content) {
-  const userId = Math.random();
-  const post = {
-    title: title,
-    body: content,
-    userId: userId
-  };
-
-  sendHttpRequest('POST', 'https://jsonplaceholder.typicode.com/posts', post);
-}
-
 fetchPosts();
-createPost('DUMMY', 'A dummy post!');
