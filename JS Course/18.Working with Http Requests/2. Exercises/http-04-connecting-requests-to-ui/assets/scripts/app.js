@@ -58,4 +58,4 @@ form.addEventListener('submit', (event) => {
   }
   createPost(enteredTitle, enteredContent);
 });
-createPost('Dummy', 'A dummy post!');
+
