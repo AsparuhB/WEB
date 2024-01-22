@@ -25,7 +25,7 @@ async function fetchPosts() {
     'https://jsonplaceholder.typicode.com/posts'
   );
 
-  const listOfPosts = xhr.response;
+  const listOfPosts = responseData;
   for (const post of listOfPosts) {
     const postEl = document.importNode(postTemplate.content, true);
     postEl.querySelector('h2').textContent = post.title.toUpperCase();
@@ -33,3 +33,5 @@ async function fetchPosts() {
     listElement.append(postEl);
   }
 }
+
+fetchPosts();
