@@ -5,6 +5,7 @@ const fetchButton = document.querySelector('#available-posts button');
 const postList = document.querySelector('ul');
 
 function sendHttpRequest(method, url, data) {
+  // older method using XMLHttpRequest(); - more on it, if you google
   const promise = new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
 
