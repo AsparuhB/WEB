@@ -59,10 +59,10 @@ function sendHttpRequest(method, url, data) {
 }
 
 async function fetchPosts() {
-  // try {
+  try {
   const responseData = await sendHttpRequest(
     'GET',
-    'https://jsonplaceholder.typicode.com/pos'
+    'https://jsonplaceholder.typicode.com/posts'
   );
   const listOfPosts = responseData;
   listElement.innerHTML = '';
@@ -73,9 +73,9 @@ async function fetchPosts() {
     postEl.querySelector('li').id = post.id;
     listElement.append(postEl);
   }
-  // } catch (error) {
-  //   alert(error.message);
-  // }
+  } catch (error) {
+    alert(error.message);
+  }
 }
 
 async function createPost(title, content) {
