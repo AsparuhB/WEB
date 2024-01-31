@@ -46,7 +46,7 @@ function sendHttpRequest(method, url, data) {
       if (response.status >= 200 && response.status < 300) {
         return response.json();
       } else {
-        response.json().then(errorData => {
+        return response.json().then((errorData) => {
           console.log(errorData);
           throw new Error('Something went wrong - server side');
         });
