@@ -19,6 +19,7 @@ function sendHttpRequest(method, url, data) {
   //     if (xhr.status >= 200 && xhr.status < 300) {
   //       resolve(xhr.response);
   //     } else {
+            //xhr.response;
   //       reject(new Error('Something went wrong!'));
   //     }
   //     // const listOfPosts = JSON.parse(xhr.response);
@@ -47,7 +48,10 @@ function sendHttpRequest(method, url, data) {
       if (response.status >= 200 && response.status < 300) {
         return response.json();
       } else {
-        throw new Error('Something went wrong - server side.');
+        return response.json().then(errData => {
+          console.log(errData);
+          throw new Error('Something went wrong - server side.');
+        })
       }
     })
     .catch((error) => {
