@@ -19,7 +19,7 @@ function sendHttpRequest(method, url, data) {
   //     if (xhr.status >= 200 && xhr.status < 300) {
   //       resolve(xhr.response);
   //     } else {
-            //xhr.response;
+  //xhr.response;
   //       reject(new Error('Something went wrong!'));
   //     }
   //     // const listOfPosts = JSON.parse(xhr.response);
@@ -48,10 +48,10 @@ function sendHttpRequest(method, url, data) {
       if (response.status >= 200 && response.status < 300) {
         return response.json();
       } else {
-        return response.json().then(errData => {
+        return response.json().then((errData) => {
           console.log(errData);
           throw new Error('Something went wrong - server side.');
-        })
+        });
       }
     })
     .catch((error) => {
@@ -62,22 +62,22 @@ function sendHttpRequest(method, url, data) {
 
 async function fetchPosts() {
   try {
-  const responseData = await sendHttpRequest(
-    'GET',
-    'https://jsonplaceholder.typicode.com/posts'
-  );
-  const listOfPosts = responseData;
-  listElement.innerHTML = '';
-  for (const post of listOfPosts) {
-    const postEl = document.importNode(postTemplate.content, true);
-    postEl.querySelector('h2').textContent = post.title.toUpperCase();
-    postEl.querySelector('p').textContent = post.body;
-    postEl.querySelector('li').id = post.id;
-    listElement.append(postEl);
-  }
-    } catch (error) {
-      alert(error.message);
+    const responseData = await sendHttpRequest(
+      'GET',
+      'https://jsonplaceholder.typicode.com/posts'
+    );
+    const listOfPosts = responseData;
+    listElement.innerHTML = '';
+    for (const post of listOfPosts) {
+      const postEl = document.importNode(postTemplate.content, true);
+      postEl.querySelector('h2').textContent = post.title.toUpperCase();
+      postEl.querySelector('p').textContent = post.body;
+      postEl.querySelector('li').id = post.id;
+      listElement.append(postEl);
     }
+  } catch (error) {
+    alert(error.message);
+  }
 }
 
 async function createPost(title, content) {
