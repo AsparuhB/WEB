@@ -89,7 +89,7 @@ async function createPost(title, content) {
     userId: userId,
   };
 
-  const fd = new FormData();
+  const fd = new FormData(form);
   // fd.append('title', title);
   // fd.append('body', content);
   fd.append('userId', userId);
