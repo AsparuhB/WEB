@@ -8,7 +8,8 @@ function sendHttpRequest(method, url, data) {
   // const promise = new Promise((resolve, reject) => {
   ////older method
   // const xhr = new XMLHttpRequest();
-  // xhr.setRequestHeader('Content-Type', 'application/json')
+  // xhr.setRequestHeader('Content-Type', 'application/json') // first argument is the header name, second argument is the value.
+  // // once a header is entered it cannot be deleted
 
   //   xhr.open(method, url);
 
@@ -41,16 +42,25 @@ function sendHttpRequest(method, url, data) {
     headers: {
       'Content-Type': 'application/json',
     },
-  }).then((response) => {
-    return response.json();
-  });
+  })
+    .then((response) => {
+      if (response.status >= 200 && response.status < 300) {
+        return response.json();
+      } else {
+        throw new Error('Something went wrong - server side.');
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      throw new Error('Something went wrong!');
+    });
 }
 
 async function fetchPosts() {
   // try {
   const responseData = await sendHttpRequest(
     'GET',
-    'https://jsonplaceholder.typicode.com/posts'
+    'https://jsonplaceholder.typicode.com/pos'
   );
   const listOfPosts = responseData;
   listElement.innerHTML = '';
