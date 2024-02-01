@@ -41,29 +41,29 @@ function sendHttpRequest(method, url, data) {
     headers: {
       'Content-Type': 'application/json',
     },
-  }).then(response => {
+  }).then((response) => {
     return response.json();
   });
 }
 
 async function fetchPosts() {
   // try {
-    const responseData = await sendHttpRequest(
-      'GET',
-      'https://jsonplaceholder.typicode.com/posts'
-    );
-    const listOfPosts = responseData;
-    listElement.innerHTML = '';
-    for (const post of listOfPosts) {
-      const postEl = document.importNode(postTemplate.content, true);
-      postEl.querySelector('h2').textContent = post.title.toUpperCase();
-      postEl.querySelector('p').textContent = post.body;
-      postEl.querySelector('li').id = post.id;
-      listElement.append(postEl);
-    }
-//   } catch (error) {
-//     alert(error.message);
-//   }
+  const responseData = await sendHttpRequest(
+    'GET',
+    'https://jsonplaceholder.typicode.com/posts'
+  );
+  const listOfPosts = responseData;
+  listElement.innerHTML = '';
+  for (const post of listOfPosts) {
+    const postEl = document.importNode(postTemplate.content, true);
+    postEl.querySelector('h2').textContent = post.title.toUpperCase();
+    postEl.querySelector('p').textContent = post.body;
+    postEl.querySelector('li').id = post.id;
+    listElement.append(postEl);
+  }
+  //   } catch (error) {
+  //     alert(error.message);
+  //   }
 }
 
 async function createPost(title, content) {
