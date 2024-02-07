@@ -1,4 +1,4 @@
-// import Cmp from './Component.js';
+// import Cmp { doSomething } from './Component.js';
 import { Component } from "./Component.js";
 
 export class Tooltip extends Component {
