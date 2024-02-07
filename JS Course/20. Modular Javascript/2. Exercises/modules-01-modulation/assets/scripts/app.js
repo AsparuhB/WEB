@@ -1,5 +1,4 @@
 
-import { ProjectItem } from "./App/ProjectItem.js";
 import { ProjectList } from "./App/ProjectList.js";
 
 
