@@ -1,5 +1,9 @@
-import { ProjectItem } from './ProjectItem.js';
-import { DOMHelper } from '../Utility/DOMHelper.js';
+// import { ProjectItem } from './ProjectItem.js';
+import { ProjectItem as PrjItem } from './ProjectItem.js'; // we can use aliases to rename code that are relevant only in this file.
+// import { DOMHelper } from '../Utility/DOMHelper.js'; // importing the whole class with the stuff in it
+// import {DOMHelper, moveElement, clearEventListeners} from '../Utility/DOMHelper.js'; // importing the function. We can also import more than 1
+import * as DOMHelp from '../Utility/DOMHelper.js'; // we can use * to bundle up everything into one file, with a name of our choice.
+
 
 export class ProjectList {
   projects = [];
@@ -9,7 +13,8 @@ export class ProjectList {
     const prjItems = document.querySelectorAll(`#${type}-projects li`);
     for (const prjItem of prjItems) {
       this.projects.push(
-        new ProjectItem(prjItem.id, this.switchProject.bind(this), this.type)
+        // new ProjectItem(prjItem.id, this.switchProject.bind(this), this.type)
+        new PrjItem(prjItem.id, this.switchProject.bind(this), this.type)
       );
     }
     console.log(this.projects);
@@ -58,7 +63,9 @@ export class ProjectList {
 
   addProject(project) {
     this.projects.push(project);
-    DOMHelper.moveElement(project.id, `#${this.type}-projects ul`);
+    DOMHelp.moveElement(project.id, `#${this.type}-projects ul`);
+    // moveElement(project.id, `#${this.type}-projects ul`);
+    // DOMHelper.moveElement(project.id, `#${this.type}-projects ul`);
     project.update(this.switchProject.bind(this), this.type);
   }
 
