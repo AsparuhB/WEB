@@ -1,4 +1,5 @@
-import { Component } from './Component.js';
+// import Cmp from './Component.js';
+import { Component } from "./Component.js";
 
 export class Tooltip extends Component {
   constructor(closeNotifierFunction, text, hostElementId) {

@@ -1,6 +1,7 @@
 export function doSomething() {};
 
-export default class {
+// export default class {
+  export class Component{
   constructor(hostElementId, insertBefore = false) {
     if (hostElementId) {
       this.hostElement = document.getElementById(hostElementId);
