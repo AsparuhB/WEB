@@ -15,13 +15,34 @@ export class ProjectItem {
     this.connectDrag();
   }
 
-  showMoreInfoHandler() {
-    if (this.hasActiveTooltip) {
-      return;
-    }
-    const projectElement = document.getElementById(this.id);
-    const tooltipText = projectElement.dataset.extraInfo;
-    import('./Tooltip.js').then((module) => {
+ // using dynamic import (old way) 
+  // showMoreInfoHandler() {
+  //   if (this.hasActiveTooltip) {
+  //     return;
+  //   }
+  //   const projectElement = document.getElementById(this.id);
+  //   const tooltipText = projectElement.dataset.extraInfo;
+  //   import('./Tooltip.js').then((module) => {
+  //     const tooltip = new module.Tooltip(
+  //       () => {
+  //         this.hasActiveTooltip = false;
+  //       },
+  //       tooltipText,
+  //       this.id
+  //     );
+  //     tooltip.attach();
+  //     this.hasActiveTooltip = true;
+  //   });
+  // }
+
+    // using async/await (new way)
+    async showMoreInfoHandler() {
+      if (this.hasActiveTooltip) {
+        return;
+      }
+      const projectElement = document.getElementById(this.id);
+      const tooltipText = projectElement.dataset.extraInfo;
+      const module = await import('./Tooltip.js');
       const tooltip = new module.Tooltip(
         () => {
           this.hasActiveTooltip = false;
@@ -31,8 +52,7 @@ export class ProjectItem {
       );
       tooltip.attach();
       this.hasActiveTooltip = true;
-    });
-  }
+    }
 
   connectDrag() {
     const item = document.getElementById(this.id);
