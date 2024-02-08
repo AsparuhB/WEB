@@ -1,5 +1,6 @@
 import { DOMHelper } from '../Utility/DOMHelper.js';
 // import { Tooltip } from './Tooltip.js';
+// import { Tooltip } from './Tooltip.js';
 
 export class ProjectItem {
   hasActiveTooltip = false;
@@ -11,7 +12,6 @@ export class ProjectItem {
     this.connectSwitchButton(type);
     this.connectDrag();
   }
-
   showMoreInfoHandler() {
     if (this.hasActiveTooltip) {
       return;
