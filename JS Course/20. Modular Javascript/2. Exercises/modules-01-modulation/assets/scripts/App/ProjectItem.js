@@ -12,7 +12,8 @@ export class ProjectItem {
     this.connectSwitchButton(type);
     this.connectDrag();
   }
-  showMoreInfoHandler() {
+
+ showMoreInfoHandler() {
     if (this.hasActiveTooltip) {
       return;
     }
@@ -30,6 +31,7 @@ export class ProjectItem {
       this.hasActiveTooltip = true;
     });
   }
+
 
   connectDrag() {
     const item = document.getElementById(this.id);
