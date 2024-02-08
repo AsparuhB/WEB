@@ -1,6 +1,8 @@
 import Cmp, { doSomething } from './Component.js';
 // import { Component } from "./Component.js";
 
+console.log("Code imported with modules will be executed once.");
+
 export class Tooltip extends Cmp {
   constructor(closeNotifierFunction, text, hostElementId) {
     super(hostElementId);
