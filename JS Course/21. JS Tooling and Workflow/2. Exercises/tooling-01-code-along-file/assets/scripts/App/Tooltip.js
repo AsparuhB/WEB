@@ -2,6 +2,8 @@ import Cmp, { doSomething } from './Component.js';
 
 console.log('Tooltip running');
 
+globalThis.DEFAULT_VALUE = "MAX";
+
 export class Tooltip extends Cmp {
   constructor(closeNotifierFunction, text, hostElementId) {
     super(hostElementId);
