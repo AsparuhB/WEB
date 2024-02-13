@@ -1,14 +1,16 @@
 {
-  "name": "web",
+  "name": "javascript-complete-guide",
   "version": "1.0.0",
-  "description": "JavaScript The Complete Guide",
-  "main": "test.js",
+  "description": "JavaScript - The Complete Guide",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Asparuh Bambov",
   "license": "ISC",
   "devDependencies": {
+    "@babel/eslint-parser": "^7.23.10",
+    "@babel/preset-env": "^7.23.9",
     "eslint": "^8.56.0"
   }
 }
