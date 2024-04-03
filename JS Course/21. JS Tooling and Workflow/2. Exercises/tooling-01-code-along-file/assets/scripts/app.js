@@ -1,6 +1,6 @@
 import { ProjectList } from './App/ProjectList.js';
 
-globalThis.DEFAULT_VALUE = "MAX";
+globalThis.DEFAULT_VALUE = 'Max';
 
 class App {
   static init() {
